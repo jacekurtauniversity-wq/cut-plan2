@@ -397,6 +397,9 @@ h2{font-size:1.7rem}
 <li><b>Creatine monohydrate, 5 g a day, every day</b> (stirred into the Meal 1 yogurt). About $0.10 a day. It helps keep strength and muscle during the deficit and has decent evidence for working memory and mental fatigue, especially when sleep-deprived. The one supplement on this list with strong evidence for both goals; added to the Walmart list.</li>
 <li><b>Optional:</b> 200 mg L-theanine with the morning coffee smooths the caffeine; a 10-minute walk between study blocks does more for the next hour than any snack.</li>
 </ul>
+<h3>Recipes</h3>
+<p>Every recipe uses your plan portions (the amounts in the tables above), so the macros hold; anything extra that counts is marked with its calories. Pick by what you have and how much time there is. Tap a recipe to open it.</p>
+<div id="recipeList"></div>
 <h3>Flavor rotation (free or nearly free)</h3>
 <p>Same four meals, a different kitchen every day. Spices, vinegar, citrus, hot sauce, mustard, salsa and herbs cost under 15 kcal a plate and change nothing in the macros; the few items that do count are marked. The Today tab tells you which day it is. Brown the week's meat plain at prep and season each plate when you reheat it, so one batch covers seven cuisines.</p>
 <div class="tblwrap"><table><thead><tr><th>Day</th><th>Chicken / Meal 2</th><th>Beef-thigh / Meal 3</th><th>Vegetables</th><th>Yogurt bowl</th></tr></thead><tbody id="flavorRows"></tbody></table></div>
@@ -788,7 +791,7 @@ function renderChart(rows){
  svg.innerHTML=s;
 }
 function renderFlavors(){const tb=$("#flavorRows");if(!tb)return;tb.innerHTML=FLAVORS.map((f,i)=>`<tr><td><b>${f.n}</b><br><span class="small muted">days ${i+1}, ${i+8}, ${i+15}…</span></td><td>${f.chx}</td><td>${f.beef}</td><td>${f.veg}</td><td>${f.bowl}</td></tr>`).join("");}
-function renderAll(){renderFlavors();renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
+function renderAll(){renderFlavors();renderRecipes();renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
 
 /* ---------- persistence ---------- */
 async function persist(){
@@ -985,7 +988,7 @@ function renderDay(off){
  if(P.dow===0)h+=weeklyReviewHTML(P.iso);
  h+=coachHTML(P);
 
- h+=`<div class="block"><p class="small" style="margin:0 0 6px"><b>Today's kitchen: ${flavorFor(P.dayN).n}.</b> Meal 2: ${flavorFor(P.dayN).chx}. Meal 3: ${flavorFor(P.dayN).beef}. Veg: ${flavorFor(P.dayN).veg}. Bowl: ${flavorFor(P.dayN).bowl}.</p><h3>Meals (your portions; hers are half)</h3>`;
+ h+=`<div class="block"><p class="small" style="margin:0 0 6px"><b>Today's kitchen: ${flavorFor(P.dayN).n}.</b> Meal 2: ${flavorFor(P.dayN).chx}. Meal 3: ${flavorFor(P.dayN).beef}. Veg: ${flavorFor(P.dayN).veg}. Bowl: ${flavorFor(P.dayN).bowl}.</p><p class="small muted" style="margin:0 0 6px">Recipes for each meal (reheat, 10-minute, and full-cook versions) are on the Meals tab.</p><h3>Meals (your portions; hers are half)</h3>`;
  P.meals.forEach((m,i)=>{const sw=(E.swaps||{})[i];h+=`<div class="mealrow"><span class="t">${m.t}</span><div><b>${m.name.split("· ")[1]}</b> <button type="button" class="swapbtn" data-i="${i}" style="font:inherit;font-size:.8rem;padding:2px 7px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer">Swap</button><br>${m.items.join(" · ")}<div class="m">${m.p} g protein · ${m.c} g carbs · ${m.f} g fat · ${m.kcal} kcal${m.note?"<br>"+m.note:""}</div>${sw?`<div class="swapbox">Today: ${sw} <button type="button" class="unswap" data-i="${i}">Back to plan</button></div>`:""}<div class="swapbox" id="swap${i}" hidden></div></div></div>`;});
  h+=`<div class="mealrow" style="background:var(--bg);margin:6px -12px -10px;padding:10px 12px;border-radius:0 0 6px 6px"><span class="t">Day</span><div><b>Expected by end of day</b><div class="m" style="color:var(--ink);font-family:var(--mono)">${Math.round(P.tt.p)} g protein · ${Math.round(P.tt.c)} g carbs · ${Math.round(P.tt.f)} g fat · ${P.kcal} kcal</div><div class="m">${T.label} day target; the weekly average is ${Math.round(weekAvg(state.adj))} kcal and that is what drives the loss.</div></div></div></div>`;
  $("#dayView").innerHTML=h;
@@ -1219,6 +1222,36 @@ const FLAVORS=[
  {n:"Italian",chx:"Italian herbs, garlic, lemon, black pepper; 2 tbsp marinara (count 20 kcal)",beef:"garlic, oregano, basil, fennel seed, 2 tbsp marinara",veg:"garlic, balsamic vinegar, chili flakes",bowl:"vanilla + a teaspoon of cocoa"}
 ];
 function flavorFor(dayN){return FLAVORS[(dayN-1)%FLAVORS.length];}
+
+/* ---------- recipes ---------- */
+const RECIPES=[
+ {m:0,n:"Yogurt power bowl (base)",d:["all","nored","pesc","veg"],t:"2 min",i:"Your yogurt, oats, peanut butter, banana (high days), cinnamon, creatine.",s:["Stir creatine and cinnamon into the yogurt.","Add oats dry for crunch, or stir in the night before for overnight oats.","Top with sliced banana and peanut butter."]},
+ {m:0,n:"Overnight oats jar",d:["all","nored","pesc","veg"],t:"3 min the night before",i:"Same portions as the bowl, plus 2 tbsp water.",s:["Layer oats, yogurt, water and cinnamon in a jar, stir, lid on, fridge.","Morning: top with peanut butter and fruit. Eat cold or microwave 60 s.","Make four jars on Sunday for the week."]},
+ {m:0,n:"Protein pancakes",d:["all","nored","pesc","veg"],t:"10 min",i:"Your oats and yogurt, 1 whole egg (counts: +70 kcal, +6 g protein), cinnamon, vanilla.",s:["Blend oats, half the yogurt, the egg, cinnamon and vanilla until smooth.","Cook as 3 small pancakes in a nonstick pan, 2 min a side.","Serve with the rest of the yogurt on top and the peanut butter drizzled; banana on high days."]},
+ {m:0,n:"Savory yogurt bowl",d:["all","nored","pesc","veg"],t:"3 min",i:"Yogurt, cucumber, cherry tomatoes, lemon, salt, pepper, olive oil (use the day's oil here), oats toasted.",s:["Toast the oats dry in a pan 2 min for crunch.","Dice cucumber and tomato into the yogurt with lemon, salt and pepper.","Top with the oats and a drizzle of oil. Skip the peanut butter; use it at Meal 4."]},
+ {m:1,n:"Chicken rice bowl (base)",d:["all","nored"],t:"4 min reheat",i:"Your chicken, rice, veg, oil, salsa; today's spice blend.",s:["Microwave rice and veg 4 min with a splash of water.","Slice the chicken, season with today's blend, warm 60 s.","Oil and salsa over the top."]},
+ {m:1,n:"Fajita bowl",d:["all","nored"],t:"12 min",i:"Chicken, rice, bell pepper and onion (count as veg), cumin, chili, paprika, lime.",s:["Slice pepper and onion; sear in a hot pan with the day's oil 4 min.","Add sliced chicken and spices, toss 2 min.","Serve over rice with lime and salsa."]},
+ {m:1,n:"Greek chicken bowl",d:["all","nored"],t:"8 min",i:"Chicken, rice, cucumber, tomato, red onion, oregano, lemon, 2 tbsp yogurt tzatziki (15 kcal).",s:["Warm chicken with oregano, garlic and lemon.","Build: rice, chopped cucumber-tomato-onion, chicken.","Tzatziki on top: yogurt, grated cucumber, garlic, dill, lemon."]},
+ {m:1,n:"Teriyaki-style chicken",d:["all","nored"],t:"10 min",i:"Chicken, rice, broccoli, soy sauce, ginger, garlic, 1 tsp honey (20 kcal), rice vinegar.",s:["Mix 2 tbsp soy, 1 tsp honey, 1 tsp vinegar, grated ginger and garlic.","Sear chicken pieces 3 min, add sauce, reduce 1 min until glossy.","Over rice with steamed broccoli; sesame seeds if you have them."]},
+ {m:1,n:"Tuna rice bowl (poke style)",d:["pesc","all","nored"],t:"5 min",i:"Canned tuna (your portion), rice, cucumber, scallion, soy, rice vinegar, chili flakes.",s:["Drain tuna, mix with soy, vinegar and chili.","Over warm or cold rice with cucumber and scallion.","Add the day's oil as 1 tsp sesame oil + the rest olive."]},
+ {m:1,n:"Salmon and rice",d:["pesc"],t:"12 min",i:"Salmon portion, rice, green beans, lemon, dill, garlic.",s:["Pan: skin side down in the day's oil, 5 min; flip 3 min.","Green beans in the microwave 4 min, toss with lemon and garlic.","Dill and lemon over the salmon; rice on the side."]},
+ {m:1,n:"Tofu stir-fry",d:["veg","pesc","all","nored"],t:"12 min",i:"Extra-firm tofu (your portion), rice, mixed veg, soy, garlic, ginger, chili-garlic sauce.",s:["Press tofu 5 min between towels, cube, toss in 1 tsp cornstarch (10 kcal).","Sear in the day's oil until golden on two sides, 6 min.","Add veg, soy, garlic, ginger; 3 min. Over rice."]},
+ {m:1,n:"Egg-white fried rice",d:["veg","pesc","all","nored"],t:"10 min",i:"Day-old rice, your protein (diced), 3 egg whites (50 kcal), peas, scallion, soy.",s:["Hot pan, the day's oil, scramble egg whites, set aside.","Toast the rice 2 min, add protein and peas, 2 min.","Soy, scallion, egg back in. Hot sauce."]},
+ {m:2,n:"Beef-thigh plate (base)",d:["all"],t:"4 min reheat",i:"Your beef-thigh mix, potato, veg, oil; today's blend.",s:["Microwave potato and veg 4 min.","Warm the meat with today's seasoning and a splash of water, 90 s.","Oil over the potato; hot sauce or mustard."]},
+ {m:2,n:"Skillet chili",d:["all"],t:"20 min",i:"Beef-thigh mix, 1 cup canned tomatoes (40 kcal), onion, garlic, chili powder, cumin, paprika; potato on the side.",s:["Brown the meat with onion and garlic.","Add spices and tomatoes; simmer 12 min until thick.","Over the baked potato with the veg stirred in."]},
+ {m:2,n:"Shepherd-style skillet",d:["all"],t:"15 min",i:"Beef-thigh mix, your potato mashed with 2 tbsp yogurt, mixed veg, Worcestershire, thyme.",s:["Cook meat with Worcestershire, thyme and the veg.","Mash the potato with yogurt, salt and pepper.","Meat in a bowl, mash on top; broil 3 min if you want a crust."]},
+ {m:2,n:"Chicken thigh curry",d:["all","nored"],t:"20 min",i:"Chicken thigh (swap the beef for thigh tonight), onion, garlic, ginger, curry powder, 1 cup canned tomatoes, 2 tbsp yogurt; potato or rice.",s:["Brown thigh pieces; add onion, garlic, ginger, curry powder 2 min.","Tomatoes in, simmer 12 min; stir in yogurt off the heat.","Over potato or rice with the veg."]},
+ {m:2,n:"Garlic-lemon chicken and potato",d:["all","nored"],t:"25 min",i:"Chicken breast (your Meal 3 protein weight), potato wedges, green beans, garlic, lemon, oregano.",s:["Oven 425°F. Potato wedges with half the oil, salt, 20 min.","Chicken seasoned with garlic, lemon, oregano; pan 5 min a side.","Green beans with lemon; squeeze more over everything."]},
+ {m:2,n:"Salmon and potato",d:["pesc"],t:"15 min",i:"Salmon, potato, broccoli, lemon, dill, mustard.",s:["Potato in the microwave 7 min, then split and crisp in the pan 3 min.","Salmon skin-down 5 min, flip 3.","Mustard-dill sauce: 1 tbsp mustard, 1 tbsp yogurt, dill, lemon."]},
+ {m:2,n:"Tempeh skillet",d:["veg","pesc","all","nored"],t:"15 min",i:"Tempeh (your portion), potato, peppers and onion, smoked paprika, cumin, soy, lime.",s:["Crumble tempeh; brown in the day's oil 5 min.","Add peppers, onion, spices, soy; 5 min.","Over the potato with lime and salsa."]},
+ {m:2,n:"Egg and potato hash",d:["veg","pesc","all","nored"],t:"15 min",i:"3 eggs (your Meal 3 protein on vegetarian days), diced potato, onion, peppers, paprika, hot sauce.",s:["Potato diced small, pan with the oil, lid on 8 min, then uncovered to crisp.","Add onion and peppers 3 min.","Make wells, crack in the eggs, lid on 3 min. Hot sauce."]},
+ {m:2,n:"Sunday steak (base)",d:["all"],t:"12 min",i:"Your steak, salad, veg, oil (skip the oil with fatty cuts).",s:["Steak out of the fridge 20 min early; pat dry, salt, pepper.","Very hot pan, 3–4 min a side for medium; rest 5 min before slicing.","Salad with vinegar, mustard and the oil; veg on the side."]},
+ {m:3,n:"Cottage cheese (base)",d:["all","nored","pesc","veg"],t:"1 min",i:"Your portion, pepper or cinnamon.",s:["Savory: pepper, hot sauce, everything-bagel seasoning.","Sweet: cinnamon and a few berries (40 kcal).","Blend it smooth if the texture bothers you."]},
+ {m:3,n:"Yogurt instead",d:["all","nored","pesc","veg"],t:"1 min",i:"1 cup Greek yogurt in place of cottage cheese; vanilla, cinnamon.",s:["Same protein, same calories.","Stir in vanilla and cinnamon; cocoa powder if you want chocolate."]}
+];
+function renderRecipes(){const el=$("#recipeList");if(!el)return;const diet=(typeof DIET!=="undefined")?DIET:"all";const names=["Meal 1 · 11:00","Meal 2 · 14:30","Meal 3 · 18:30","Meal 4 · 18:50"];let h="";
+ for(let m=0;m<4;m++){const rs=RECIPES.filter(r=>r.m===m&&r.d.includes(diet));if(!rs.length)continue;h+=`<h3>${names[m]}</h3>`;for(const r of rs){h+=`<details class="block" style="padding:8px 12px;margin:6px 0"><summary style="cursor:pointer;font-weight:600">${r.n} <span class="small muted">· ${r.t}</span></summary><p class="small"><b>You need:</b> ${r.i}</p><ol class="small" style="margin:4px 0;padding-left:18px">${r.s.map(x=>`<li>${x}</li>`).join("")}</ol></details>`;}}
+ el.innerHTML=h;}
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
