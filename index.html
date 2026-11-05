@@ -165,6 +165,38 @@ ul.cues li{margin:1px 0}
 .swapbox button{font:inherit;font-size:.85rem;padding:4px 8px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;margin:2px 4px 2px 0}
 .coach{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--hi);border-radius:6px;padding:10px 12px;margin:10px 0}
 .coach b{font-family:var(--display);font-size:1.1rem}
+
+/* ---- modern refresh ---- */
+body{font-size:16px}
+.wrap{padding-block:14px 100px}
+header.top{padding:18px 18px 16px;margin:0 0 10px;border-radius:16px;background:linear-gradient(135deg,var(--accent) 0%,#1f3f5f 100%);color:#fff;box-shadow:0 10px 30px rgba(31,63,95,.18)}
+header.top .eyebrow,header.top .sub{color:rgba(255,255,255,.82)}
+header.top h1{color:#fff;font-size:2.2rem;letter-spacing:.005em}
+header.top .btn.ghost{color:#fff;border-color:rgba(255,255,255,.45)}
+nav.tabs{gap:8px;padding-block:10px;border-bottom:none;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+nav.tabs a{border-radius:999px;padding:8px 14px;background:var(--panel);border:1px solid var(--line);color:var(--ink);font-size:.98rem;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+nav.tabs a.on{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.block,.tile,.verdict,.review,.coach,form.ci,.tblwrap,.note{border-radius:14px;box-shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(20,40,60,.06)}
+.tile{padding:14px 16px}
+.tile .v{font-size:1.5rem}
+.block{padding:14px 16px}
+.btn{border-radius:999px;padding:10px 18px;box-shadow:0 4px 14px rgba(47,93,138,.25)}
+.btn.ghost{box-shadow:none}
+form.ci input,form.ci select,.daynav input,.lrow input{border-radius:10px;padding:9px 11px}
+.seg button{border-radius:999px;padding:7px 14px}
+.pill{border-radius:999px;padding:3px 9px}
+.day{border-radius:12px}
+.timerbar{border-radius:16px 16px 0 0}
+.mealrow .t{color:var(--accent)}
+h2{font-size:1.7rem}
+.timeline li::before{background:var(--accent);box-shadow:0 0 0 3px var(--bg)}
+.bodyviz{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end;max-width:460px}
+.bodyviz figure{margin:0;text-align:center}
+.bodyviz svg{width:100%;height:auto;max-height:300px}
+.bodyviz figcaption{font-family:var(--display);font-size:1rem;margin-top:4px}
+.bodyviz .m{font-size:.82rem;color:var(--muted);font-family:var(--mono)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) header.top{background:linear-gradient(135deg,#2a4f73 0%,#15202b 100%)}}
+:root[data-theme="dark"] header.top{background:linear-gradient(135deg,#2a4f73 0%,#15202b 100%)}
 @media (prefers-reduced-motion:no-preference){nav.tabs a{transition:background .15s,color .15s}}
 </style>
 
@@ -233,6 +265,9 @@ ul.cues li{margin:1px 0}
 <p>The plan runs a deficit of roughly 1,000 kcal a day against an estimated maintenance of ~3,100 kcal (Katch-McArdle on 174.6 lb lean mass from the Day 1 scan) (5 lifts + 2–3 runs a week at your size). That targets about 2 lb of fat a week, which is right at the ~1% of bodyweight per week ceiling that keeps muscle and gives skin the best chance to keep up. Faster than this is where strength drops and loose skin risk climbs.</p>
 
 <div class="tiles" id="goalTiles"></div>
+<h3>Estimated shape, Day 1 vs end of plan</h3>
+<div class="bodyviz" id="bodyViz"></div>
+<p class="small muted">A proportional outline from height, weight and body fat (the way BMI visualizers work), not a photo or a promise. Waist and hips narrow fastest; shoulders and legs hold their width when you keep lifting.</p>
 
 <h3>Milestone targets</h3>
 <div class="tblwrap"><table id="milestones">
@@ -743,7 +778,7 @@ function renderChart(rows){
  const lp=pts[pts.length-1];s+=`<text x="${Math.min(x(lp[0])+7,W-40)}" y="${y(lp[1])-8}" font-size="12" font-weight="600" fill="var(--ink)" font-family="IBM Plex Mono,monospace">${r1(lp[1])}</text>`;
  svg.innerHTML=s;
 }
-function renderAll(){renderOverview();renderMeals();renderLog();renderDay(curOff);}
+function renderAll(){renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
 
 /* ---------- persistence ---------- */
 async function persist(){
@@ -1126,6 +1161,30 @@ function coachHTML(P){
  const le=state.entries[state.entries.length-1];if(le&&le.energy==="hungry"&&P.dayN>14)msgs.push(`<b>Very hungry last week.</b> Add 2 cups of vegetables and a glass of water before Meals 2 and 3, move 20 g of carbs from Meal 1 to Meal 4, and check sleep; hunger is usually sleep debt wearing a food costume.`);
  if(le&&le.energy==="low"&&P.dayN>14)msgs.push(`<b>Dragging last week.</b> Make sure the salt is in the morning drink, eat Meal 2 before your hardest block, and if it persists two weeks the check-in adds carbs. Lifting at 90% for a week is fine.`);
  return msgs.length?`<div class="coach">${msgs.join("<br><br>")}</div>`:"";
+}
+
+/* ---------- body shape visualizer ---------- */
+function bodySVG(sex,bmi,bf,label){
+ const f=sex==="f";const refBf=f?23:15;const db=Math.max(-.1,(bf-refBf)/100),dm=(bmi-22)/10;
+ const H=300,cx=100,s=H,sx=H*0.5;
+ const w={neck:.042*(1+.5*db+.3*dm),sh:(f?.20:.235)*(1+.12*db+.22*dm),chest:(f?.175:.19)*(1+.55*db+.5*dm),waist:(f?.14:.16)*(1+1.5*db+.85*dm),hip:(f?.215:.19)*(1+.85*db+.6*dm),thigh:(f?.088:.085)*(1+.75*db+.5*dm),knee:.05*(1+.3*db+.3*dm),calf:(f?.058:.06)*(1+.45*db+.3*dm),ankle:.03*(1+.1*dm),arm:.04*(1+.6*db+.4*dm),wrist:.022*(1+.1*dm)};
+ const y=p=>p*s;
+ // smooth closed/open path through points using Catmull-Rom -> cubic Bezier
+ function smooth(pts,closed){let d="";const n=pts.length;const P=i=>pts[(i+n)%n];for(let i=0;i<n-(closed?0:1);i++){const p0=P(i-1),p1=P(i),p2=P(i+1),p3=P(i+2);if(i===0)d+=`M${p1[0]} ${p1[1]} `;const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6],c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];d+=`C${c1[0]} ${c1[1]} ${c2[0]} ${c2[1]} ${p2[0]} ${p2[1]} `;}return d+(closed?"Z":"");}
+ const R=[[.11,w.neck],[.135,w.sh],[.2,w.chest],[.3,w.waist],[.39,w.hip],[.46,w.hip*.96]];
+ const right=R.map(([py,ww])=>[cx+ww*sx,y(py)]);const left=R.map(([py,ww])=>[cx-ww*sx,y(py)]).reverse();
+ const torso=smooth(right.concat([[cx,y(.47)]],left),true);
+ function leg(sign){const L=[[.42,w.hip*.5+w.thigh*.1],[.52,w.thigh],[.66,w.knee*1.05],[.72,w.knee],[.8,w.calf],[.92,w.ankle],[.985,w.ankle*1.3]];
+  const off=sign*(w.hip*.5)*sx;const outer=L.map(([py,ww])=>[cx+off+sign*ww*sx,y(py)]);const inner=L.map(([py,ww])=>[cx+off-sign*ww*sx*.9,y(py)]).reverse();return smooth(outer.concat(inner),true);}
+ function arm(sign){const A=[[.14,w.arm*1.2],[.22,w.arm],[.33,w.arm*.8],[.44,w.wrist*1.2],[.5,w.wrist]];const x0=cx+sign*(w.sh*sx+w.arm*sx*1.1);const outer=A.map(([py,ww])=>[x0+sign*ww*sx+sign*(py-.14)*14,y(py)]);const inner=A.map(([py,ww])=>[x0-sign*ww*sx+sign*(py-.14)*14,y(py)]).reverse();return smooth(outer.concat(inner),true);}
+ const head=`<ellipse cx="${cx}" cy="${y(.058)}" rx="${.04*s*(1+.12*dm)}" ry="${.05*s}" fill="var(--accent)"/>`;
+ const neck=`<rect x="${cx-w.neck*sx}" y="${y(.09)}" width="${2*w.neck*sx}" height="${y(.04)}" fill="var(--accent)"/>`;
+ return `<svg viewBox="0 0 200 ${H}" role="img" aria-label="${label} body outline">${head}${neck}<path d="${arm(-1)}" fill="var(--accent)" opacity=".8"/><path d="${arm(1)}" fill="var(--accent)" opacity=".8"/><path d="${leg(-1)}" fill="var(--accent)" opacity=".92"/><path d="${leg(1)}" fill="var(--accent)" opacity=".92"/><path d="${torso}" fill="var(--accent)"/></svg>`;
+}
+function renderBodyViz(){
+ const el=$("#bodyViz");if(!el)return;const sex=START.sex==="f"?"f":"m";const h=START.height;
+ const bmi=w=>703*w/(h*h);const w0=START.weight,w1=projectedAt(120/7);const bf0=START.bfHi,bf1=bfAfter(START.bfHi,w1);
+ el.innerHTML=`<figure>${bodySVG(sex,bmi(w0),bf0,"Day 1")}<figcaption>Day 1</figcaption><div class="m">${Math.round(w0)} lb · BMI ${bmi(w0).toFixed(1)} · ~${r1(bf0)}% fat</div></figure><figure>${bodySVG(sex,bmi(w1),bf1,"End")}<figcaption>Day ${120}</figcaption><div class="m">${Math.round(w1)} lb · BMI ${bmi(w1).toFixed(1)} · ~${r1(bf1)}% fat</div></figure>`;
 }
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
