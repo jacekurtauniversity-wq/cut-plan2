@@ -41,7 +41,7 @@
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;margin:0}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
-.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 48px}
+.wrap{max-width:900px;margin:0 auto;padding-bottom:90px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 48px}
 header.top{display:flex;flex-direction:column;gap:2px;padding-block:8px 10px}
 h1{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
 .sub{color:var(--muted);font-size:.95rem;margin:0}
@@ -149,6 +149,22 @@ ul.cues li{margin:1px 0}
 .checks input{width:20px;height:20px;accent-color:var(--accent);margin:0}
 .review{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:10px 12px;margin:10px 0}
 .review b{font-family:var(--display);font-size:1.15rem}
+.timerbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--ink);color:var(--bg);padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:12px;font-family:var(--display);font-size:1.3rem}
+.timerbar .big{font-family:var(--mono);font-size:1.8rem;font-variant-numeric:tabular-nums;min-width:3.2em}
+.timerbar.done{background:var(--good)}
+.timerbar button{font:inherit;font-size:.95rem;padding:6px 10px;border-radius:4px;border:1px solid var(--bg);background:transparent;color:var(--bg);cursor:pointer}
+.restbtns{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap}
+.restbtns button{font:inherit;font-family:var(--display);font-size:.85rem;text-transform:uppercase;letter-spacing:.04em;padding:4px 9px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.photos{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:8px 0}
+.photos figure{margin:0;min-width:0}
+.photos img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;border:1px solid var(--line);display:block}
+.photos figcaption{font-size:.78rem;color:var(--muted);font-family:var(--mono);margin-top:3px}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.compare img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:6px;border:1px solid var(--line)}
+.swapbox{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin:6px 0 2px;font-size:.9rem}
+.swapbox button{font:inherit;font-size:.85rem;padding:4px 8px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer;margin:2px 4px 2px 0}
+.coach{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--hi);border-radius:6px;padding:10px 12px;margin:10px 0}
+.coach b{font-family:var(--display);font-size:1.1rem}
 @media (prefers-reduced-motion:no-preference){nav.tabs a{transition:background .15s,color .15s}}
 </style>
 
@@ -159,6 +175,7 @@ ul.cues li{margin:1px 0}
   <p class="sub">Open the Today tab each morning. 6'1" · 269 lb start · 35.1% body fat by scale (Day 1, Nov 5) · 100.8 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
 </header>
 
+<div class="timerbar" id="timerbar" hidden><span>Rest</span><span class="big" id="timerVal">1:30</span><span id="timerNext" class="small" style="flex:1;min-width:0;font-family:var(--body);font-size:.9rem"></span><button type="button" id="timerPlus">+30</button><button type="button" id="timerStop">Done</button></div>
 <nav class="tabs" id="tabs">
   <a href="#today">Today</a>
   <a href="#overview">Goals</a>
@@ -910,7 +927,7 @@ function renderDay(off){
  const E=daily[P.iso]||{};
  if(P.train){h+=`<div class="block"><h3>06:00 · ${P.train.name}${P.deload?" (deload: 60%, 2 sets)":""}</h3><div id="liftLog">`;
   P.train.rows.forEach((r,i)=>{const last=lastLift(P.iso,P.dow,i);const v=(E.lifts&&E.lifts[i])||"";
-   h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off">${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}</div>`;});
+   h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off"><span class="restbtns"><button type="button" class="rest" data-s="${i===0?150:90}" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest ${i===0?"2:30":"1:30"}</button><button type="button" class="rest" data-s="60" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest 1:00</button></span>${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}</div>`;});
   h+=`</div><div class="actions" style="margin-top:8px"><button type="button" class="btn" id="saveLift">Save workout</button><span class="status" id="liftStatus"></span></div><p class="small muted">Warm-up: 3 min incline walk, bar × 10, 50% × 5, 70% × 3. Rest 2–3 min on the first lift, 60–90 s after. Beat last session by a rep or 5 lb; if you can't two sessions running, drop 10%.</p></div>`;}
  if(P.run)h+=`<div class="block"><h3>${P.dow===6?"08:00":"18:00"} · Run</h3><p>${P.run}</p><div class="checks"><label>Minutes <input type="number" id="runMin" step="1" inputmode="numeric" style="width:5em" value="${E.runT||""}"></label><label>Miles <input type="number" id="runMi" step="0.01" inputmode="decimal" style="width:5em" value="${E.runD||""}"></label><label>Avg HR <input type="number" id="runHr" step="1" inputmode="numeric" style="width:5em" value="${E.runHr||""}"></label><button type="button" class="btn ghost" id="saveRun">Save run</button><span class="status" id="runStatus"></span></div>${lastRun(P.iso)?`<p class="small muted">Last run: ${lastRun(P.iso)}</p>`:""}<p class="small muted">Sentence pace. Sharp or joint pain = stop and walk. Repeat the week if it felt hard.</p></div>`;
  h+=`<div class="block"><h3>Done today</h3><div class="checks" id="doneChecks">
@@ -921,11 +938,14 @@ function renderDay(off){
   ${P.dow===0?`<label><input type="checkbox" id="ck_prep" ${E.prep?"checked":""}> Prepped</label>`:""}
  </div><div class="actions"><button type="button" class="btn ghost" id="roughBtn">Rough day?</button><span class="status" id="ckStatus"></span></div><div id="roughBox" hidden class="note"></div></div>`;
  if(P.dow===0)h+=weeklyReviewHTML(P.iso);
+ h+=coachHTML(P);
+ const photoDay=(P.dayN-1)%30===0||P.dayN===120;
+ h+=`<div class="block"><h3>Progress photos${photoDay?" · today is a photo day":""}</h3><p class="small muted">Front, side, back. Same spot, same light, same time of day. Stored only on this device.</p><div class="checks"><label class="btn ghost" style="cursor:pointer">Add photo<input type="file" id="photoIn" accept="image/*" capture="environment" hidden></label><button type="button" class="btn ghost" id="photoCompare">Compare first vs latest</button><span class="status" id="photoStatus"></span></div><div class="photos" id="photoGrid"></div><div id="photoCmp"></div></div>`;
  h+=`<div class="block"><h3>Meals (your portions; hers are half)</h3>`;
- for(const m of P.meals){h+=`<div class="mealrow"><span class="t">${m.t}</span><div><b>${m.name.split("· ")[1]}</b><br>${m.items.join(" · ")}<div class="m">${m.p} g protein · ${m.c} g carbs · ${m.f} g fat · ${m.kcal} kcal${m.note?"<br>"+m.note:""}</div></div></div>`;}
+ P.meals.forEach((m,i)=>{const sw=(E.swaps||{})[i];h+=`<div class="mealrow"><span class="t">${m.t}</span><div><b>${m.name.split("· ")[1]}</b> <button type="button" class="swapbtn" data-i="${i}" style="font:inherit;font-size:.8rem;padding:2px 7px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer">Swap</button><br>${m.items.join(" · ")}<div class="m">${m.p} g protein · ${m.c} g carbs · ${m.f} g fat · ${m.kcal} kcal${m.note?"<br>"+m.note:""}</div>${sw?`<div class="swapbox">Today: ${sw} <button type="button" class="unswap" data-i="${i}">Back to plan</button></div>`:""}<div class="swapbox" id="swap${i}" hidden></div></div></div>`;});
  h+=`<div class="mealrow" style="background:var(--bg);margin:6px -12px -10px;padding:10px 12px;border-radius:0 0 6px 6px"><span class="t">Day</span><div><b>Expected by end of day</b><div class="m" style="color:var(--ink);font-family:var(--mono)">${Math.round(P.tt.p)} g protein · ${Math.round(P.tt.c)} g carbs · ${Math.round(P.tt.f)} g fat · ${P.kcal} kcal</div><div class="m">${T.label} day target; the weekly average is ${Math.round(weekAvg(state.adj))} kcal and that is what drives the loss.</div></div></div></div>`;
  $("#dayView").innerHTML=h;
- dlFill(P.iso);dlSummary(P.iso);wireDay(P.iso);
+ dlFill(P.iso);dlSummary(P.iso);wireDay(P.iso);renderPhotos(P.iso);
 }
 function todayOff(){const t=new Date();t.setHours(12,0,0,0);return Math.round((t-new Date(START.date+"T12:00:00"))/86400000);}
 $("#dPrev").addEventListener("click",()=>renderDay(curOff-1));
@@ -1056,6 +1076,58 @@ $("#exportBtn").addEventListener("click",async()=>{
 $("#bkExport").addEventListener("click",()=>{const data={exported:new Date().toISOString(),daily,state};const blob=new Blob([JSON.stringify(data,null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="cut-plan-log-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);$("#bkStatus").textContent="Backup file created; save it to Files or iCloud.";});
 $("#bkImport").addEventListener("change",ev=>{const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(rd.result);if(d.daily&&typeof d.daily==="object"){for(const k of Object.keys(d.daily)){daily[k]=Object.assign({},daily[k]||{},d.daily[k]);}}if(d.state&&Array.isArray(d.state.entries)){state=d.state;}dlSaveLocal();lsSave();renderAll();$("#bkStatus").textContent="Restored "+Object.keys(d.daily||{}).length+" days.";}catch(e){$("#bkStatus").textContent="That file isn't a plan backup.";}};rd.readAsText(f);});
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
+/* ---------- rest timer ---------- */
+let tLeft=0,tInt=null;
+function tShow(){$("#timerVal").textContent=Math.floor(tLeft/60)+":"+String(tLeft%60).padStart(2,"0");}
+function startRest(sec,next){clearInterval(tInt);tLeft=sec;$("#timerbar").hidden=false;$("#timerbar").classList.remove("done");$("#timerNext").textContent="Next: "+next;tShow();
+ tInt=setInterval(()=>{tLeft--;if(tLeft<=0){tLeft=0;clearInterval(tInt);$("#timerbar").classList.add("done");$("#timerNext").textContent="Go: "+next;try{navigator.vibrate&&navigator.vibrate([200,100,200]);}catch(e){}}tShow();},1000);}
+$("#timerPlus").addEventListener("click",()=>{tLeft+=30;$("#timerbar").classList.remove("done");tShow();if(!tInt||tLeft>0){clearInterval(tInt);tInt=setInterval(()=>{tLeft--;if(tLeft<=0){tLeft=0;clearInterval(tInt);$("#timerbar").classList.add("done");try{navigator.vibrate&&navigator.vibrate([200,100,200]);}catch(e){}}tShow();},1000);}});
+$("#timerStop").addEventListener("click",()=>{clearInterval(tInt);$("#timerbar").hidden=true;});
+document.addEventListener("click",ev=>{const b=ev.target.closest("button.rest");if(b)startRest(parseInt(b.dataset.s,10),b.dataset.next);});
+
+/* ---------- meal swaps ---------- */
+function swapOptions(i,m,t){
+ const P=m.p,K=m.kcal;
+ const o=[];
+ if(i===0){o.push(["Eating out / café","Greek yogurt parfait or egg-white omelet, no pastry; a piece of fruit on high-carb days. Aim ~"+P+" g protein, ~"+K+" kcal."]);o.push(["No yogurt","3 whole eggs + 4 egg whites scrambled, the day's oats or 1 slice toast, 1 tbsp peanut butter."]);o.push(["Protein shake","2 scoops whey in water + the day's oats + banana (high days) or 1 tbsp peanut butter."]);}
+ if(i===1){o.push(["Eating out","Grilled chicken, fish or lean steak, fist-size rice or potato ("+(t==="L"?"skip the starch today":"half portion on moderate days")+"), double vegetables, dressing on the side."]);o.push(["No time to cook","1 can tuna or chicken (drained), microwave rice cup ("+(t==="L"?"skip":"1 cup")+"), frozen veg 4 min, hot sauce."]);o.push(["Fast food","Grilled chicken sandwich (no mayo) + side salad, or a burrito bowl: double chicken, rice "+(t==="L"?"none":"half")+", beans no, salsa, no cheese or sour cream."]);}
+ if(i===2){o.push(["Eating out","Any lean protein the size of your palm and a half, potato or rice "+(t==="L"?"none":"fist-size")+", vegetables. Skip bread, fried sides and dessert."]);o.push(["No time to cook","Rotisserie chicken (skin off, ~8 oz) + microwave potato + frozen veg."]);o.push(["Have eggs & cheese","4-egg omelet with 1 oz cheese and a big salad; add the potato on high/moderate days."]);}
+ if(i===3){o.push(["No cottage cheese","1 cup Greek yogurt, or 1 scoop whey in water, or 3 egg whites + 1 egg."]);o.push(["Skip it","If you're not hungry, skip Meal 4 and add 1 extra egg to tomorrow's Meal 2. Don't chase the calories."]);}
+ return o;
+}
+document.addEventListener("click",async ev=>{
+ const sb=ev.target.closest("button.swapbtn");if(sb){const i=+sb.dataset.i;const P=dayPlan(curOff);const box=$("#swap"+i);if(!box.hidden){box.hidden=true;return;}const opts=swapOptions(i,P.meals[i],P.type);box.innerHTML=`<b>Same macros, different food:</b><br>`+opts.map((o,j)=>`<button type="button" class="pickswap" data-i="${i}" data-j="${j}">${o[0]}</button>`).join("")+`<div id="swapdesc${i}" class="small muted" style="margin-top:4px"></div>`;box.hidden=false;return;}
+ const ps=ev.target.closest("button.pickswap");if(ps){const i=+ps.dataset.i,j=+ps.dataset.j;const P=dayPlan(curOff);const o=swapOptions(i,P.meals[i],P.type)[j];const iso=P.iso;daily[iso]=daily[iso]||{};daily[iso].swaps=daily[iso].swaps||{};daily[iso].swaps[i]=o[0]+": "+o[1];dlSaveLocal();await dlPersist();renderDay(curOff);return;}
+ const us=ev.target.closest("button.unswap");if(us){const i=+us.dataset.i;const iso=$("#dPick").value;if(daily[iso]&&daily[iso].swaps){delete daily[iso].swaps[i];dlSaveLocal();await dlPersist();renderDay(curOff);}return;}
+});
+
+/* ---------- progress photos (IndexedDB, device only) ---------- */
+function pdb(){return new Promise((res,rej)=>{const r=indexedDB.open("cutplan-photos",1);r.onupgradeneeded=()=>{r.result.createObjectStore("photos");};r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+async function photoPut(key,blob){const db=await pdb();return new Promise((res,rej)=>{const tx=db.transaction("photos","readwrite");tx.objectStore("photos").put(blob,key);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error);});}
+async function photoKeys(){const db=await pdb();return new Promise((res,rej)=>{const r=db.transaction("photos").objectStore("photos").getAllKeys();r.onsuccess=()=>res(r.result.sort());r.onerror=()=>rej(r.error);});}
+async function photoGet(key){const db=await pdb();return new Promise((res,rej)=>{const r=db.transaction("photos").objectStore("photos").get(key);r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error);});}
+async function photoDel(key){const db=await pdb();return new Promise((res,rej)=>{const tx=db.transaction("photos","readwrite");tx.objectStore("photos").delete(key);tx.oncomplete=()=>res();tx.onerror=()=>rej(tx.error);});}
+function shrink(file){return new Promise(res=>{const img=new Image();img.onload=()=>{const sc=Math.min(1,900/Math.max(img.width,img.height));const c=document.createElement("canvas");c.width=Math.round(img.width*sc);c.height=Math.round(img.height*sc);c.getContext("2d").drawImage(img,0,0,c.width,c.height);c.toBlob(b=>res(b),"image/jpeg",0.82);};img.src=URL.createObjectURL(file);});}
+async function renderPhotos(iso){const grid=$("#photoGrid");if(!grid)return;try{const keys=await photoKeys();grid.innerHTML="";for(const k of keys){const b=await photoGet(k);const u=URL.createObjectURL(b);const d=k.split("_")[0];const off=Math.round((new Date(d+"T12:00:00")-new Date(START.date+"T12:00:00"))/86400000)+1;grid.insertAdjacentHTML("beforeend",`<figure><img src="${u}" alt="Progress photo ${d}"><figcaption>Day ${off} · ${fmtDate(d)} <button type="button" class="pdel" data-k="${k}" style="font:inherit;font-size:.7rem;border:none;background:none;color:var(--warn);cursor:pointer">remove</button></figcaption></figure>`);}}catch(e){grid.innerHTML=`<p class="small muted">Photos can't be stored in this browser mode.</p>`;}}
+document.addEventListener("change",async ev=>{if(ev.target.id!=="photoIn")return;const f=ev.target.files[0];if(!f)return;const iso=$("#dPick").value;$("#photoStatus").textContent="Saving…";try{const b=await shrink(f);await photoPut(iso+"_"+Date.now(),b);$("#photoStatus").textContent="Saved on this device.";renderPhotos(iso);}catch(e){$("#photoStatus").textContent="Couldn't save the photo here.";}});
+document.addEventListener("click",async ev=>{const d=ev.target.closest("button.pdel");if(d){await photoDel(d.dataset.k);renderPhotos($("#dPick").value);return;}
+ if(ev.target.id==="photoCompare"){const keys=await photoKeys();const box=$("#photoCmp");if(keys.length<2){box.innerHTML=`<p class="small muted">Need at least two photos.</p>`;return;}const a=URL.createObjectURL(await photoGet(keys[0])),b=URL.createObjectURL(await photoGet(keys[keys.length-1]));box.innerHTML=`<div class="compare"><div><img src="${a}" alt="first"><div class="small muted">${fmtDate(keys[0].split("_")[0])}</div></div><div><img src="${b}" alt="latest"><div class="small muted">${fmtDate(keys[keys.length-1].split("_")[0])}</div></div></div>`;}});
+
+/* ---------- coaching ---------- */
+function coachHTML(P){
+ const iso=P.iso;const msgs=[];
+ // missed days: last logged day before today
+ const ks=Object.keys(daily).filter(k=>k<iso&&daily[k]&&(daily[k].w||daily[k].lift||daily[k].m1)).sort();
+ if(ks.length){const last=ks[ks.length-1];const gap=Math.round((new Date(iso+"T12:00:00")-new Date(last+"T12:00:00"))/86400000);
+  if(gap>=3&&gap<=14)msgs.push(`<b>${gap} days since your last log.</b> Nothing is lost. Don't make up missed lifts or cut calories to compensate; today is a normal day on the plan. Weigh in tomorrow morning, and expect the number to be a little up from water: it comes back off in 3–4 days.`);
+  if(gap>14)msgs.push(`<b>More than two weeks away.</b> Treat this as a restart: tell Claude to reset the start date to today; your old log stays. Start the running progression from week 1 and lifts at 80% of your last numbers.`);}
+ // plateau: two slow weeks and already stepped down
+ const W=weekStats(iso);if(P.dow===0&&state.adj<=-2&&W.prev&&W.cur&&W.cur.w&&W.prev.w){const pct=-(W.cur.w-W.prev.w)/W.prev.w*100;if(pct<0.5)msgs.push(`<b>Two steps down and still slow: this is a plateau, not a failure.</b> Cutting more food now mostly costs muscle and sleep. Take a 7-day maintenance break: double the oats, rice and potato portions, keep protein and training, sleep 8 hours. Weight will rise 2–4 lb of water and then the loss restarts. The check-in will keep your level where it is this week.`);}
+ // energy/hunger flags from last check-in
+ const le=state.entries[state.entries.length-1];if(le&&le.energy==="hungry"&&P.dayN>14)msgs.push(`<b>Very hungry last week.</b> Add 2 cups of vegetables and a glass of water before Meals 2 and 3, move 20 g of carbs from Meal 1 to Meal 4, and check sleep; hunger is usually sleep debt wearing a food costume.`);
+ if(le&&le.energy==="low"&&P.dayN>14)msgs.push(`<b>Dragging last week.</b> Make sure the salt is in the morning drink, eat Meal 2 before your hardest block, and if it persists two weeks the check-in adds carbs. Lifting at 90% for a week is fine.`);
+ return msgs.length?`<div class="coach">${msgs.join("<br><br>")}</div>`:"";
+}
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
