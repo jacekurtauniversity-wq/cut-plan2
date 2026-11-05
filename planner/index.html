@@ -1,0 +1,1054 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Stockbuild Cut Planner</title>
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAbCElEQVR4Xu2deZhcVZXA771vrbXXJCQhW5OlE0ggBE0iIAQwSFiUxWVEmOEDxVFnJh9ujGiG0RkYFZ0ZB/lcxhkR/WBUUAYBIRJHZAeTICGbWTuQdJZean31tnvnO/dVVzpdS+pVvXS6uu7vqz+S7lev37vvvHPPOfecc/HUGdOQQFAKIoZFUA4ZISxGR1ASWciGQGgOgW+EzSEQmkPgHxlhYZAKSiOmFYGYVgT+kcWsIhCurMA3wuYQVNAcYl4RCG9F4Bex8CaoNK2I0RGURmgOgXBlBf4RrqygvObAwpUVCFdW4BdhkAqEKyvwj9AcgrIIb0VQaVoRIVJBaYTmEFTQHKKqSVAGUfEmKK85sNAcgrKaQwiHQEwrAr+IIJigLMKVFQhXVuAf4coKhOYQ+EfYHIIKmkMsvAnKxTlEhFRQDjGtCMS0IvCP0BwC4coK/COCYAKhOQT+ETaH4ERrDowQQxhjIhHGGGJFKUT8twwx6lLxNGqBjzAhGBPCKCuZoQUjTCn1fstq+SMjCMzmIJJk23Y6mZJlqWRxtuM4iixHoxHXdQO48OZDkqWskcvlTEWRS969bTuhkBbSdRjhIApOgomQShJJp7OdHe033/DBJWedgTEZLrqMwY29vb/3fx9f+9KrG2KxKGgXgR8kQhKJVPe82de+77K5p810KR3x9DEmW7fv/MWjT+zYtbclHgvkDcQzFy3zc5ElIJKUyWQXdM/+zj1f6Z7TZVo2KorJc/kgtmV//d+/f99//iQWjYD2C0T3NQGSJCWSqatWXfK1Oz/f1tZq23axbmYMqYp86EjfZ+646+l1fwhEPvDMM5fXM7wYY9d1QyH95z+6d96crr6BQUmSik+IEaKUSbLUGo99fPUdjz35TEs86gr7owoIIVnDOKN77s/uv1eSSDabkyRSrHgxQq5LI5GwYeSuveGTu/b06JpK69PQhJuOtX8IIemMseo9KxZ0z+kfGFQVRSKk+EMIkWWJuq5l2zddf52mqFxz1P53m+e7GGPbcj764atj0Ug2m1MUmZQZYUWRM5lMR3vrRz5wpZEzMZHqHKX6XVmY+xadPs91XUKOczZCiGlaM6ZNnTixw7Yd8G4wkgjmnypeouagMCaEmxWePuie25UzTel4wyRJkmmaC+bNCek6pfU6hnXvt4Kx96myfVQ+e4R/hRBsWMxwXISwhFFMAwFpckuVYJQ2qU0pYkiVcUQlXMOCmFQ9wtzi855LfZR2ikYBgnHKZHMnKFecHo2HyCt7ck9vy8gEpKSZ5SNtsnO7wivmhF3Gfrst++reXIS/MyeF+utWvOnfHwTjtMkuXxi55/2dLTq8HLcsa31offKOX/cxLvdNKB8Eo4xF//bCttsubPPe+VuWt9z19MAPX0yElRoGuYavjKTuIJj/a8AYWS6a2ibfdWWnKuEjGZdgTBn76DviWw5a33sh0RYmzebHSBglTXbRnPBnV7QNGtTlXoZM8BdXtv9pv/nK3qzk9wX0/1yKqddbGbKHfUAwylps+czQhKiUtZgigTUqEZw26SXzwppMGGsiZyQ/gBi7DL2nO0wRchmIhUyw4yJFQhfPDVuuX/shmAGU/UrkCGoTUIyQJsNUOsJm8mwOWIjxIWzjAYzgNVW4f1K4d29wVKkWw7K25zKCgLwVv08T45LhGVCmQZjZjQf3L0q8FHwRMy8mvgyxIIbx5BikIEyllUMt89R4oYy6BMVRgyKo4SsjOWlukmDsE5Tm8GskVJDrAES+Mak8Jj7J65u6CMiV9SkbmJSPqDanbBTuusiwgJHyAum+CGIYA9Ec/uYmjLHjUtO0ysSDg7ithqSEBGCMLdv21qH4PVUvJQEMo7/nGgTYtp2O9tb3X35xefkQAITgTNa45N3L5542i6+yVi8ZwRCUK1vtkhks8aezK1e86+J3d/eve5nocUhTGU4QPljjkV8qGzES2DByZ5wz+yPXzspmDVJ9vGNoNbTOcRhtzYExooxN7Gh3HMeX396cYIxNy+rsaBt9tQHx+zqr7L0Fez9zIRztuLRkQJifyDthc1Hhxr1cu+qHw3vlAhnGgLwVn5R9D2qL94wDvGmlJKz8cFXA3wtbmkC8lQBf9KaVjgLlJlu/gxyAdNQsHJCfBLminCqTlAqUs60wxt75ms0cgXVpiZUbRgh0VG+N8pwx77kwBlVOvBDEr2xxm6OWb4Gig8q2RDqNEe4fTFqlkuXLQRkzSgU5MEaO4/YPJmHV3t8qU8MjETyQpZalYxwakerEbVLbcQqhjuMAYSTH6R9M6qqKEIpGwpJE8mVwPqlFc2ACf54xdsV7Lli65Azbds5eNN8wzOMmGPPrdttaYxcsX2Kae4frD4j2WM7UyRO+tuY6CZWp9xu/YEQtpJ6FXjVyuwlRC/JBCDFy5jlnvjOqVAgbHoUPozVt6ilfW7NakeVNW3c88dvnDSOn6166vz9855CC8Uypqij3/ONtl19yvkspIThr5EyrXMTzGCil0Uh40YSpxuYdw1Ulxsi23c6JrbdcdjWjTm1qsIFhFMuR9PMHzG3bsKYVYj+eKzu3a7qbS1WjnqGOwXYmdLR/7PprKGOSRK6/dtUnv3D3wUN9qqr4LTT0rTkIIYlU5s7P3nrVyhW9hw8THrYjUOFb7axGKTNMk9dVH8PQtJJATSkcSHWQVaKUzZtWkOPwOpTjMzStJKCsgdJzzlzw1ds/efPqr8D4+tQdPm0OjC3HOWVix6UXLR9MJcrVTB8XUiQZHrxOX0IgNtWK2jiBYSRJtPyw+MoT9AxShKCMpa8/sfTshQvmzdq8fXdI13wpD385pBhhx6GtLbF4NMqbKTTZI2xAKEO6qkyAkLTLC9x9pJfCrFD9BzGmqUrvob7eQ0dUVaGs3poqwQmFMSZLOJnO7u55W9dU5DN12/fCmyyRwWT6xz9//J41q23bsaFejTcVqdrmgDW6MgW+jE+TCOr4mkwnMYpcOnINcgjeD4dVP8CMIXhvebOX9tb2++5/aHfP/ngsCgWS1Z8F4hw+cV0aj0Ye/OVTsUjk1r+8pjUeIxgbJmQdVCkfGGNVVXJF8sGgUoNEY1FE7SYUDqxGM4ps8Zd7OIwxTVEolRy3bJTs2OPhBQ6FwoyxrJH7/k9/cc99D0TC8F+fjxrh05at8vsdz3JMpTMzTp28aMFsI2fe8IFV5y9bnMnkPOelHIwxRZEPH+57fceBldOzmee/S7QYvDTcr9cI253Wv71tmtx8BinBLONIN3YdWN45mHFk4nlymNBcMnrW1c+bZ3REJKilzoGXV3mENU3dsXvft3/wkKIq23f2bNuxJxzSCQ9a+n3QPr2VgqJDqCUeO3ik/4l1L/QPJi889xxVVtLMOO4bD90mcuaOPftWdU0afrmMy/tgMv3ob57VJAw6sZmQJYiQrrim/d2TI8ymhUmVMaYqSs+uXjQhqsiywczK0wIYGbI0kEj96qnfa6qqKnIsFmHQpqOWWiDfcY4CLqWKooRDOuU3UL1gEow1VS0+HqYVibS2xFSpyUQDwdoKU0oPoycfsgwLJdW8L1w+5NaWmKaqrsv7x3EtVM13R1C7cHC7ErmUuS6r8rqPKp4ytwkndJnbhIXU/MbL2umc6p8uY/BQ+AlrFAuPGqeVowSwMlx0tlqkvMGpnKpQw4AE8Vzq0hxD+sr3tXOJDipxYfxTkwIIQDpGO4fU47jtiwTDpmAml+rBNwrIVQYnysH7PfmI/Hvm0vZdPXTpglIpP/nzNRtDQ1hCByuKvHXH3snvmFftmHC/JJBxDERz+JhW+JJ96PcvbvjpI0/xbqRFAXgfJxvnUMqikfC651578NG18WjYV5pxIPhbiSm/DuMDAjkH7oZN22UiHWuDF5yu6ld7xtmRxwBOrKq8uX1XIpmRZb+x7ABGxu+fDAZMCCwfN104wzcQO1dVSfLyQH0RgAb2vfA2kvxs6ftSeHPdUjfcjGUrwzRyEd4mFD7J9//0+a2RBOjK+rqFCtdd7y01MuXuvYYxaVhXVtAQBDSt+JVsjEumJwz1BGuIoQsU/p6X1L3gmfoJFuSp4StFBOLK1kJxY02G4IdNKBgFirs3e2NysgjK5vB3BwTjfoObWkMvC2UwCokcslwMq7K+DJhxAUNowIBBgKHgd+T9o9+obfEsAJtD9pM2VgKMoemsD9Fg0IQ1oqHn9tJNh9jCSagvC1/XJBiXn70JSYfN6a+EFPzoFvdDC6WYhjIWyEpcRwcz7PHtblgBQfFBTRNRyWklgGiJj+vmSBibDr7tSfuPb7OYhuIaMl205hnnmZ0spmHafB2MKcO6jLceQbc9aR/M5MdkX4KtftzuGUSaXLpta3kCeaYnKQjmMqTLaF8C3fiwvWQKiWto0yHWM8iims9XZBxBGYqq6P92szcedBZPxpSh9ftZIsciKuJJ3CeBYLwVXhBRLdDKGRN4V1TsUvR8D2yFqcsopsOI+JmixhsUoSifU57eCcozpKCIhnnGuL/k/vxSaJ0WQw3Z58UwhKBer2psx7VdFxMuCnw4MIKkUX/T6jgFjFCCWjTIMIYGCrxzi2Mzy/YxwpZlUwqp6v6D7sdQ78IbY9Cl44XXNmHYFuM4NU6OSyNh/Y1tuw8e7lcg7RSsT8pgwwCf5TbBzKl+6rlG72CGYEBoPicYdtHLGOYrG7aGdc05Xv8nx6UhXX1p/WYrX3Zb12X7mA5KQhmLRsPrXtz4xO9ePqWzw3WpC9Dij+O6sWgomc5+58eP+l9jbF74wn3ogV+u3bprX2db3CkzvN7IT+xoeX3zzoce+100Gq6h58II8JwLP1TnwEPZv+OEdO0fVt94+YqlqgJ2zHAHxvPCGKW7eg58+Zs/enH9m9FIuP7t6ZoH3uTC7Jo++a7P33L2GXMkiIuVGGHXdV/esOWLX//hW71HQjU15CgWjg/XPcqMYGI7UBq5+IzZixfMHpFdxis2pbd6jzz36huDyXQ0EuKS4dsBbmKY18VFVZTlZy+YM3Oqy+iI6BLGeNvOfS9t2Oy6lLdqCWCE8ZwAhAPwDOqMYVp8R2quK/JPExpDMMgbDYd0WZKEzqgNQjClLGPkeL38MUFk77+KLIXDOuyJFpBtX28O6XAYQ9GwjiOh0jfPq3sZFAQLnVELjMEbGI9GyvakhPZw4KAENcIBZ4KJHepPNKOpd+tfeBOMW+queBOMX4TmEJSl3iCYYBxT98KbYPwSsLcy6ngLkOAb882KgaF+BWULtUe4ghWquot9wmEHB+Aw1rkwdqJpVJsDOtTxoBB0BXdcF/x7WOYmBFpwKrLkFR8XepcU4MGAY0a1IF7FuHz5aziFg4vPUwOVu2SddBptWoElbEgHyeZM07RCutbZHp/Y3tISi0DrS5emjdyR/sShvsRgOosRioR1QjBf+eaRN96UzNtOwNM0Xrdux3ZKZj/oiuL1/S0c7Eki5DoA+fPUBkPItsf0dlX17mU/ykgyMS07lzPmz56+8vzFS8+aN2PKxHgsoioyCAGDfReyuVzv4YFN2/f+/uU3Xli/JWfaqiIz3gg8kcp+9mPXXHfZeclklkigeGKR0LoXX//yvz4QDXsrPnkY79P4b2tu7Zo2KWfasPuYy+Lx0De+9/Cv1r7EELvusvM+c/PVCX4ev4MADdBkkkplP7HmO/2DKUWGy/N7klGgkaYVSSLJdHbKxPZP3XDFqgvPaYlFbMe1bNt1adYwGbSI5n0sFWX2jCkLZk+/7r3n7eg58Lm7f7h151shTUUIpKclFpk6qSOi65JEXEpbYuG2luhQd5QRjxlP7GiZMqnDyFkE9tKirS2RcEj36hMjIX3qpM6wnq6h14jX1i2ha+RoS+GxSMMYpN57f+6S+f/yub+aNrkzkc4OJNLcHIUcMoyRBJ1yIUfGAYlxvIlg/mnTTp3c+ca2PWFd84bfcahl25ZtSxSEw4KtTMqmaNq2Y1lwsCcclg0ZVt55XJfmTCtnWiOFA9LxR+qSESthIByulPOTPndSaAybA3RGKrti2aJ777yVENI3mJLBciCUUlmSozGdzyam6zJFlvQQaIWcaWUMM2uYts17fuf3KSxN6b02i4+FhEbQTgwxRVF0LRSNOMOFA3rDu67JRbMAxjisK8O1kqc5HJ4rGUhp2gmiATQHpDIY1pxZU7/x9zch3i1ZlsETcSmNhUP9idT/PP6Hlzdu6z08YDtuOKRNntC2qHvW+ecsmDNziqoGf4O8Zap0uD+xYfP2ZNqQCn15+TaObfHo9CkTHEo9+fA2QNmycx8kdR41aJgkS+mM4Tg0AIf4hNEANgdDkJZ9+63XtrVEB5OZgo8aj4Rf2rjtS9/6yc6eXlkmMmw1Bwp8/Zu7Hlv3ams8cuHShatvuor3PC0UjZU0HocnWg6n9MEuZfFY+LfPb/zNs+uHTyASIQPJzDUrl397zccS6azEmwYrsnSwL/3xO+7NGhbsXXeM3YnBc8p3sPFt1Y4CY33hjRCSyhgrli48/5zTE6nskGSwSEjfuGXXJ9bclzPtjvYYTOrePnf5iBjsF/bLtS+9/Pp2TVP0kEYhXa3MDrhe0l1x+WDJgsIhQSKSpHEFVkAiRNMUWRm5ZQ5GSFUVx2VFwiGCYPWBuYtx1cXvhHjR0GtHCGxe9E/3/TxrWPFYeLhFOeQTQkpRe2sslTES6awCAYlCh5SSlOwDWq7c1Pv5SPfTK/0t6ZMWflX027GoMAqM6WkFY2TZkFF91vxZOdP24okupfFo+Kln12/csqclLxmlh9h1KeyfmX+M5eYOj3LCUUyF81QWpgAqm0eZMT2twF6HjjN9yoQJ7S02JE56UU7wFZ/745Z8ZLtS0uHQNnLeMYWnUxxwql42yglShZ9X/tUYpt697E8oUDVJ6ZQJ7ZqmmLYt8SobQnDOtHbuO6jw1ZPqS/zLe41eo5ORxf1luquWPti7kiGPeSQlzz/2Gdv5HBDgQvFYGGxJ/rozvhOlYdrJVJYvkYz9EW5gxnYQjHeHOqa5M19Bc13quDxCUGlOKWUulPtKQR0Mp+TJ865NqT8NP/TKS4tVx5gOdpVjbGsO7mOatpOftvl/GYICDb794Ni29RufMe2tcIeUDCQy7lDA0UvRCOlqR2ts2+79eWGpFnjry8xE1VukNXgrjWqRjmnNAUsYsvT2of6sYRKSv1RKYfvSBbNPzc8s1cNPACsawxQ/bA8lS3ypbJj9AgcwnjcEUc784aC0GFSbjekxCxLPvh6jH8YgtrjvQN/bB/u9nIzCasWKpQt1TR1qTVn2+olEMBm6R+7ZJjNHN6KDviCwah+RFfloR0cIshKKUDisR8N6IcmDH8ySGSO/dW+FQatg7ozVoS55YWP6LfBe64Fk5sWN23VN8Ra+CcEZw1xyetel553VP5iBov4Stge0tZCgswWsyRcCJBiT/QcH+PaqXNdDkM2ZPrmjLR5xKS0stRMCrfunTmzvaI0V4ivchbYP9iXkpvGS6m3ecqL7nzCGNFV59JnXUpkckfKizB+qffvH37+oe8ahvqS3dftwMEZZw+pLZJadObe7a2rOdDAmDCFVkf+8tzdrmBKfpCDIZjuTJ7RdtGzhkf4UyA7HcVkqa16xYglIpJdSzBfZD/cn3+rtAx2WTx0sd/ulHKWyB5/wMaz5T5MxfG1wU5SxcEj70/aeh59+uS0OqV9DD9Vti0d+8NVbr1651HHdwVRmMJUdTGUHkvAPx6UL5027+7a/+NHdfz11UrvtOpgQypimKTt6ev+8t/eoHsLYyFl/d+NlH1z1LspY1rQM01ZkafWNl1136bJUJueJEaUspCnrN+86PJBSQDjKDHgZT3aMD3K5yxvTEVIPKN4P6f/xwJOL589cOHf6QDKjyJD2lTPtlmjom1+44Y3tPa+9sfOtg/2W7UTD+qmndJw++9T5XVN1TaWMWrZDIKkGjAaJkMFM5pG1r5x9+ixQRUTCGNJzwiHtns9/dMfe3gNHBiVCpk/unDGlM2uYBQ3AdYz78NOvyKRsWLZCKKNBI6Rj25UdEg5ZlrI5a/VdP/7unTfP65rSn8gQmAIwzyF1Tz/t1MXzZ3o+qud2WI6TM+2BZCYa1oYW40E8XMgoDj+y9pX3nn/meWd3HxlMyjI0oXAc13bcrmmT5s2a4iWFpzKG5x8xxhyXTupo+a+Hf/fK6zti0RA3fSrnhVSYVhqJsT6teBqPMhbStQNHBm6647tPP/+ntngkHFIpb0eBEMsYZn8iPZCET/9gui+RTmVyrks1RY5FwooiDZ8FIEkdodu/9eDGrXsmtLcQng3qGRaGaSXTRipt8OaIULLgulSWpYkd8UfXvfaN//51OMw3EKo4ifM9XY9tiebZvw34aQDN4eFC7EtLpI2/+ef7r7zw7OuvPG/BaVM1VXZc6jj88ULXEliwlSVJlglj6HB/8snHNm7a8XZI8zbAhtcdLA9VOTKQvvlL3//09Ze+76IlbS3gqjgO9c4CDhFYuPnUsv2HBu/96VP3/+pZifs/FVdzuO8Nu3RHiQRTmLeZdDZnDtNejQSef/mnGuh6Pac0lTHCIW1x98ylZ86e3zXllM7WaFhXFGgoZeTsvsHUrrcObdi859VNO3v29+m6ypN9jlmjIwQ7Ds0Y5pwZp1zwju6zumeeekp7PBri0RRoqzqYzO7Zf/i1TbuefW3L/kODsYh+3LaeGEMK0tyZk1eeuzBnOYS3AZUkks7kHln7KneJG2ik+Rw9/4pPN9glw87vUFWQzVmO46qKFA5pIU3l4QeWs+yMYeZMaOka0hQNlmC8SWMkvKU/MaC8wJahX5kW1lVIXeYmS9YwszmLMRbWNVWRYWqoAi87KWuYXIhBVzEGvd6gG1ajSUYwHYxHH+9ReSPu7duezBh8VoF+v6oi66rizSAVHiqD/RuopiohHTKQKaWpbM4TI27tkpZoGMwdWukkI+DTiqxr8NeH41VQNhwNY3MUU6gUwhhzD5O/rDyL0z2qK47zwsLBrqdYvNyAoZOAlVNQOD7e+mEnHI6PM4wdgi/rOClUaKNQPYGcZDwxtpN9BCeVBoiQCk4WY3pVVnByEdOKoCxCcwjK0sCurOBEM6Yr3gQnF6E5BMLmEPhHeCsCoTkE/hERUkEFV7Yh1wsFo4HwVgQVNIdQHYIyiPC5oJLNIYwOQWmE5hAIm0PgH7HwJhCaQ+CfBtupSTCaiIU3QVmEtyIQNofAP2JaEYhpReAfsSorEJpD4B9hcwiE5hD45/8BZf9x7AiKe+kAAAAASUVORK5CYII=">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Cut Planner">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#F5F6F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15181A" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;600&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a tabbed planner. One sticky tab bar, one view at a time, dense tables that scroll inside their own box. */
+:root{
+  --bg:#F5F6F3; --panel:#FFFFFF; --ink:#1B1F1D; --muted:#5B655F; --line:#D8DDD6;
+  --accent:#2F5D8A; --accent-ink:#FFFFFF;
+  --hi:#B8691B; --hi-bg:#FBEEDC; --mod:#2F5D8A; --mod-bg:#E3ECF5; --lo:#4D6B5A; --lo-bg:#E2EEE6;
+  --warn:#9A3B2E; --warn-bg:#F9E5E1; --good:#2F6B45;
+  --display:"Barlow Condensed","Arial Narrow",sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#15181A; --panel:#1E2326; --ink:#ECEFEA; --muted:#A3ADA6; --line:#343B3F;
+  --accent:#7FAEDC; --accent-ink:#0F1A24;
+  --hi:#E9A35A; --hi-bg:#3A2A17; --mod:#7FAEDC; --mod-bg:#1E2E3E; --lo:#8FC3A5; --lo-bg:#1C2E24;
+  --warn:#E68A7A; --warn-bg:#3A1F1A; --good:#7FC998; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#15181A; --panel:#1E2326; --ink:#ECEFEA; --muted:#A3ADA6; --line:#343B3F;
+  --accent:#7FAEDC; --accent-ink:#0F1A24;
+  --hi:#E9A35A; --hi-bg:#3A2A17; --mod:#7FAEDC; --mod-bg:#1E2E3E; --lo:#8FC3A5; --lo-bg:#1C2E24;
+  --warn:#E68A7A; --warn-bg:#3A1F1A; --good:#7FC998; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;margin:0}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+.wrap{max-width:900px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 48px}
+header.top{display:flex;flex-direction:column;gap:2px;padding-block:8px 10px}
+h1{font-family:var(--display);font-weight:700;font-size:2rem;line-height:1;margin:0;letter-spacing:.01em;text-wrap:balance}
+.sub{color:var(--muted);font-size:.95rem;margin:0}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:6px;overflow-x:auto;padding-block:8px;border-bottom:1px solid var(--line);scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{flex:0 0 auto;text-decoration:none;color:var(--muted);font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.03em;text-transform:uppercase;padding:6px 10px;border-radius:4px;border:1px solid transparent}
+nav.tabs a.on{color:var(--accent-ink);background:var(--accent)}
+nav.tabs a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section.view{display:none;padding-top:16px}
+section.view.on{display:block}
+h2{font-family:var(--display);font-weight:700;font-size:1.55rem;line-height:1.05;margin:22px 0 8px;text-wrap:balance}
+h2:first-child{margin-top:4px}
+h3{font-family:var(--display);font-weight:600;font-size:1.2rem;margin:16px 0 6px;letter-spacing:.01em}
+p{margin:6px 0;max-width:68ch}
+ul{margin:6px 0;padding-left:20px;max-width:68ch}
+li{margin:3px 0}
+.eyebrow{font-family:var(--display);text-transform:uppercase;letter-spacing:.08em;font-size:.8rem;color:var(--muted);font-weight:600}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:10px 0}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;min-width:0}
+.tile .k{font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-family:var(--display)}
+.tile .v{font-family:var(--mono);font-size:1.35rem;font-weight:600;font-variant-numeric:tabular-nums;line-height:1.2}
+.tile .d{font-size:.85rem;color:var(--muted)}
+.tblwrap{overflow-x:auto;margin:8px 0 14px;border:1px solid var(--line);border-radius:6px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:.92rem}
+th,td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-size:.8rem;color:var(--muted);font-weight:600;background:var(--bg)}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td{border-bottom:none}
+tr.sum td{font-weight:600;background:var(--bg)}
+.pill{display:inline-block;font-family:var(--display);font-weight:600;letter-spacing:.05em;text-transform:uppercase;font-size:.75rem;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.pill.hi{background:var(--hi-bg);color:var(--hi)}
+.pill.mod{background:var(--mod-bg);color:var(--mod)}
+.pill.lo{background:var(--lo-bg);color:var(--lo)}
+.pill.rest{background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.note{background:var(--panel);border-left:3px solid var(--accent);padding:8px 12px;margin:10px 0;max-width:72ch}
+.note.warn{border-left-color:var(--warn)}
+.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin:10px 0}
+.day{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px 6px;min-width:0;display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+.day b{font-family:var(--display);font-size:1.05rem}
+.day small{color:var(--muted);font-size:.78rem;line-height:1.3}
+@media (max-width:560px){.week{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.timeline{list-style:none;padding:0;margin:8px 0;border-left:2px solid var(--line);max-width:68ch}
+.timeline li{position:relative;padding:4px 0 6px 16px;margin:0}
+.timeline li::before{content:"";position:absolute;left:-6px;top:11px;width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.timeline .t{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums;display:inline-block;min-width:4.6em}
+.seg{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.seg button{font-family:var(--display);text-transform:uppercase;letter-spacing:.04em;font-weight:600;font-size:.95rem;padding:6px 12px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer}
+.seg button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+form.ci{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:12px;margin:10px 0}
+form.ci label{display:flex;flex-direction:column;gap:3px;font-size:.85rem;color:var(--muted);min-width:0}
+form.ci input,form.ci select{font:inherit;font-family:var(--mono);padding:7px 8px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);width:100%}
+form.ci input:focus-visible,form.ci select:focus-visible{outline:2px solid var(--accent)}
+.btn{font:inherit;font-family:var(--display);text-transform:uppercase;letter-spacing:.05em;font-weight:700;font-size:1rem;padding:9px 16px;border-radius:4px;border:none;background:var(--accent);color:var(--accent-ink);cursor:pointer}
+.btn.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.status{font-size:.9rem;color:var(--muted)}
+.verdict{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:10px 12px;margin:10px 0}
+.verdict.up{border-left-color:var(--good)} .verdict.down{border-left-color:var(--warn)}
+.verdict b{font-family:var(--display);font-size:1.15rem}
+svg.chart{width:100%;height:auto;display:block;max-width:100%}
+.chartbox{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px;margin:10px 0}
+.leg{display:flex;gap:14px;font-size:.82rem;color:var(--muted);padding:2px 6px 0}
+.leg i{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:5px;border-radius:2px}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+
+.daynav{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:4px 0 12px}
+.daynav input{font:inherit;font-family:var(--mono);padding:7px 8px;border:1px solid var(--line);border-radius:4px;background:var(--panel);color:var(--ink);min-width:0;flex:1 1 150px}
+.daynav .btn{padding:7px 12px}
+.dayhead{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:6px}
+.dayhead h2{margin:0;font-size:1.8rem}
+.dayhead .pill{align-self:center}
+.daymeta{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+.block{background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:10px 12px;margin:10px 0}
+.block h3{margin:0 0 6px}
+.block ul{margin:0;padding-left:18px}
+.block.alert{border-left:4px solid var(--hi)}
+.mealrow{display:grid;grid-template-columns:5.2em 1fr;gap:4px 10px;padding:6px 0;border-top:1px solid var(--line)}
+.mealrow:first-of-type{border-top:none}
+.mealrow .t{font-family:var(--mono);font-weight:600;font-variant-numeric:tabular-nums}
+.mealrow .m{font-size:.86rem;color:var(--muted)}
+.mealrow b{font-weight:600}
+.setlist{display:grid;grid-template-columns:1fr auto;gap:3px 12px;font-size:.95rem}
+.setlist span:nth-child(2n){font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+@media (max-width:420px){.mealrow{grid-template-columns:1fr}}
+
+
+a.watch{font-family:var(--display);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--accent);text-decoration:none;white-space:nowrap}
+a.watch:hover,a.watch:focus-visible{text-decoration:underline}
+ul.cues{grid-column:1/-1;margin:2px 0 4px;padding-left:16px;font-size:.86rem;color:var(--muted);max-width:none}
+ul.cues li{margin:1px 0}
+.lifttbl table{min-width:640px}
+.lifttbl td.alt{font-size:.82rem;color:var(--muted)}
+.lrow{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:8px 0;border-top:1px solid var(--line);align-items:start}
+.lrow:first-child{border-top:none}
+.lrow .nm{font-weight:600}
+.lrow .alt{grid-column:1/-1;font-size:.8rem;color:var(--muted)}
+.lrow .sets{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lrow input{grid-column:1/-1;font:inherit;font-family:var(--mono);padding:6px 8px;border:1px solid var(--line);border-radius:4px;background:var(--bg);color:var(--ink);width:100%}
+.lrow .last{grid-column:1/-1;font-size:.8rem;color:var(--muted);font-family:var(--mono)}
+.checks{display:flex;flex-wrap:wrap;gap:8px 14px;margin:6px 0}
+.checks label{display:flex;gap:6px;align-items:center;cursor:pointer;font-size:.95rem}
+.checks input{width:20px;height:20px;accent-color:var(--accent);margin:0}
+.review{background:var(--panel);border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:6px;padding:10px 12px;margin:10px 0}
+.review b{font-family:var(--display);font-size:1.15rem}
+@media (prefers-reduced-motion:no-preference){nav.tabs a{transition:background .15s,color .15s}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <span class="eyebrow" id="eyebrow">Fat-loss planner · lifting + running + meals + tracking</span>
+  <h1>Stockbuild Cut Planner</h1>
+  <p class="sub" id="subline">Build a 45, 60, 90 or 120-day plan from your own numbers. Everything saves on this device.</p>
+  <div class="actions" style="margin-top:6px"><button type="button" class="btn ghost" id="editProfile">Edit my setup</button></div>
+</header>
+
+<section id="setup" class="block" style="margin-top:8px">
+<h2 style="margin-top:0">Set up your plan</h2>
+<p class="small muted">Takes two minutes. Everything can be changed later with "Edit my setup"; your log is kept.</p>
+<form class="ci" id="setupForm">
+  <label>Start date <input type="date" id="suStart" required></label>
+  <label>Plan length <select id="suDays"><option value="45">45 days</option><option value="60">60 days</option><option value="90">90 days</option><option value="120" selected>120 days</option></select></label>
+  <label>Sex (for the calorie estimate) <select id="suSex"><option value="m">Male</option><option value="f">Female</option></select></label>
+  <label>Age <input type="number" id="suAge" min="16" max="80" required placeholder="27"></label>
+  <label>Height (in) <input type="number" id="suHeight" min="55" max="84" step="0.5" required placeholder="73"></label>
+  <label>Weight (lb) <input type="number" id="suWeight" min="90" max="450" step="0.1" required placeholder="269"></label>
+  <label>Body fat % (optional) <input type="number" id="suBf" min="4" max="60" step="0.1" placeholder="scale or estimate"></label>
+  <label>Pace <select id="suPace"><option value="agg">Aggressive · ~1% of bodyweight a week</option><option value="std" selected>Steady · ~0.75% a week</option><option value="gen">Gentle · ~0.5% a week</option></select></label>
+  <label>Equipment <select id="suEquip"><option value="full">Full gym (barbells, machines)</option><option value="machines">Machines and dumbbells only</option><option value="home">Dumbbells only (home)</option></select></label>
+  <label>Running <select id="suRun"><option value="yes" selected>Yes, build up to 5 miles</option><option value="no">No running (walks instead)</option></select></label>
+  <label>Daily push-ups + crunches <select id="suHabit"><option value="0">No</option><option value="50">50 each</option><option value="100">100 each</option></select></label>
+  <label>People eating these meals <select id="suHouse"><option value="1" selected>Just me</option><option value="1.5">Me + a partner at half portions</option><option value="2">Two full portions</option></select></label>
+  <label>Fixed block 1 (class/work) days <input type="text" id="suB1d" placeholder="Mon,Wed"></label>
+  <label>Block 1 time <input type="text" id="suB1t" placeholder="10:10-11:25"></label>
+  <label>Fixed block 2 days <input type="text" id="suB2d" placeholder="Tue,Thu"></label>
+  <label>Block 2 time <input type="text" id="suB2t" placeholder="14:40-15:55"></label>
+  <div class="actions"><button class="btn" type="submit">Build my plan</button><button class="btn ghost" type="button" id="suCancel" hidden>Cancel</button><span class="status" id="suStatus"></span></div>
+</form>
+<p class="small muted">The plan: 16:8 fasting with training in the morning, carbs cycled high on the two heaviest lift days, ~0.85 g protein per lb, five short lifting sessions a week (upper/lower/upper/lower/full body), a walk-jog progression to 5K and beyond, meal prep twice a week, and a weekly check-in that adjusts your starch portions to your real rate of loss. It is not medical advice; if you have a condition or take medication, talk to a clinician first.</p>
+</section>
+<nav class="tabs" id="tabs">
+  <a href="#today">Today</a>
+  <a href="#overview">Goals</a>
+  <a href="#schedule">Schedule</a>
+  <a href="#meals">Meals</a>
+  <a href="#lifting">Lifting</a>
+  <a href="#running">Running</a>
+  <a href="#groceries">Groceries</a>
+  <a href="#checkin">Check-in</a>
+</nav>
+
+<!-- ============ TODAY ============ -->
+<section class="view" id="v-today">
+<div class="daynav">
+  <button type="button" class="btn ghost" id="dPrev" aria-label="Previous day">‹</button>
+  <input type="date" id="dPick" aria-label="Pick a date">
+  <button type="button" class="btn ghost" id="dNext" aria-label="Next day">›</button>
+  <button type="button" class="btn ghost" id="dToday">Today</button>
+</div>
+<p class="small muted" id="syncNote">Everything saves on this device as you type. Use Back up log to move it to another device.</p>
+<p class="small muted" id="diag" style="font-family:var(--mono);font-size:.78rem"></p>
+<div class="actions" style="margin:4px 0 10px"><button type="button" class="btn ghost" id="bkExport">Back up log (file)</button><label class="btn ghost" style="cursor:pointer">Restore from file<input type="file" id="bkImport" accept="application/json" hidden></label><span class="status" id="bkStatus"></span></div>
+<div id="dayView"></div>
+<div class="block" id="dailyLogBlock">
+<h3>Morning log</h3>
+<p class="small muted">After the bathroom, before the drink, same scale, same spot. Weight is the only required field; the rest match your scale's report screen top to bottom. The Sunday check-in reads the week's average from here.</p>
+<form class="ci" id="dlForm" style="margin:6px 0">
+  <label>Weight (lb) <input type="number" step="0.1" id="dlWeight" inputmode="decimal" required></label>
+  <label>BMI <input type="number" step="0.1" id="dlBmi" inputmode="decimal"></label>
+  <label>Body fat % <input type="number" step="0.1" id="dlBf" inputmode="decimal"></label>
+  <label>Body fat mass (lb) <input type="number" step="0.1" id="dlFatLb" inputmode="decimal"></label>
+  <label>Subcutaneous fat % <input type="number" step="0.1" id="dlSub" inputmode="decimal"></label>
+  <label>Visceral fat level <input type="number" step="0.5" id="dlVisc" inputmode="decimal"></label>
+  <label>Muscle % <input type="number" step="0.1" id="dlMusPct" inputmode="decimal"></label>
+  <label>Muscle mass (lb) <input type="number" step="0.1" id="dlMus" inputmode="decimal"></label>
+  <label>Skeletal muscle % <input type="number" step="0.1" id="dlSmmPct" inputmode="decimal"></label>
+  <label>Skeletal muscle (lb) <input type="number" step="0.1" id="dlSmm" inputmode="decimal"></label>
+  <label>Bone % <input type="number" step="0.1" id="dlBonePct" inputmode="decimal"></label>
+  <label>Bone mass (lb) <input type="number" step="0.1" id="dlBone" inputmode="decimal"></label>
+  <label>Body water % <input type="number" step="0.1" id="dlWater" inputmode="decimal"></label>
+  <label>BMR (kcal) <input type="number" step="1" id="dlBmr" inputmode="numeric"></label>
+  <label>Waist (in) <input type="number" step="0.1" id="dlWaist" inputmode="decimal"></label>
+  <label>Sleep (h) <input type="number" step="0.25" id="dlSleep" inputmode="decimal"></label>
+  <label>Notes <input type="text" id="dlNote" maxlength="120" placeholder="energy, lifts, hunger"></label>
+  <div class="actions"><button class="btn" type="submit">Save this day</button><button class="btn ghost" type="button" id="dlClear">Clear this day</button><span class="status" id="dlStatus"></span></div>
+</form>
+<div id="dlSummary"></div>
+</div>
+
+</section>
+
+<!-- ============ OVERVIEW ============ -->
+<section class="view" id="v-overview">
+<h2>Where this plan takes you</h2>
+<p id="deficitLine"></p>
+
+<div class="tiles" id="goalTiles"></div>
+
+<h3>Milestone targets</h3>
+<div class="tblwrap"><table id="milestones">
+<thead><tr><th>Checkpoint</th><th class="n">Date</th><th class="n">Weight</th><th class="n">Total lost</th><th class="n">Body fat (your start)</th><th class="n">If your start reads 3 low</th></tr></thead>
+<tbody></tbody></table></div>
+
+<h3>How the scale will actually move</h3>
+<ul>
+<li><b>Days 1–14: water first.</b> Dropping carbs and starting fasting empties glycogen, and each gram of glycogen holds ~3 g of water. Expect 6–9 lb down in two weeks; about 5 lb of that is water you don't get credit for as fat. The plan subtracts it from every target.</li>
+<li><b>Weeks 3–12: fat.</b> 2.0–2.4 lb a week. The scale will stall for a few days after high-carb days and after Saturday runs (muscle repair holds water). Judge by the weekly average, not Monday morning.</li>
+<li><b>Weeks 13–17: slower, deliberately.</b> As you get lighter, maintenance drops and loss slows to ~1.8 lb a week. The check-in tab tightens macros only if you fall below the target band two weeks running.</li>
+<li><b>Muscle.</b> With ~0.85 g protein per lb, five lifting days and this rate, expect roughly 85–90% of non-water loss to be fat. Log skeletal muscle from a smart scale if you have one; a falling 7-day average for two weeks is the signal to add carbs.</li>
+</ul>
+
+<div class="note warn"><b>On loose skin.</b> No diet can promise none. What's within your control: a loss rate of about 1%/week (this plan), high protein, resistance training so muscle fills the space fat leaves, hydration, sleep and not smoking. Age, genetics and how long you've carried the weight do the rest. Most people under 40 losing 10–20% of bodyweight at this rate see skin tighten over the following 6–12 months rather than hang.</div>
+
+<h3>Hormones and recovery while cutting</h3>
+<p>A hard deficit lowers testosterone (and, in women, can disrupt cycles) temporarily; that is physiology, not a flaw in the plan. The things that offset it are already built in, and a few more are worth adding. In order of how much they matter:</p>
+<ul>
+<li><b>Losing the fat is the biggest lever.</b> Body fat converts testosterone to estrogen. Dropping 8–10 points of body fat is worth more than every supplement combined; most men see total T climb meaningfully within 6–12 months of a loss like this.</li>
+<li><b>Sleep 7.5+ hours.</b> One week at 5 hours drops T by 10–15%. The 21:30 lights-out is a testosterone rule as much as a recovery rule.</li>
+<li><b>Don't starve fat.</b> The meals keep dietary fat at 60–85 g a day (never below ~0.35 g per lb of lean mass); the eggs, beef, steak and olive oil are there for hormones, not just calories. The auto-adjust only ever trims starch, never fat or protein.</li>
+<li><b>Heavy compound lifts</b> (leg press, RDL, press, row) and the planned refeed (day 60) and deloads blunt the hormonal dip of dieting. Running stays easy-pace; piles of hard cardio on a deficit push the wrong way.</li>
+<li><b>Micronutrients that actually matter:</b> vitamin D3 2,000–4,000 IU daily Nov–Mar (you'll get almost none from the sun this time of year in the Northeast), zinc from the beef and yogurt (a 15 mg zinc supplement only if you drop the beef), magnesium 200–400 mg glycinate at night if sleep is poor. Fish oil 2–3 g is a reasonable extra.</li>
+<li><b>Alcohol</b> is the one thing that undoes all of the above. Keep it to ≤2 drinks a week during the plan, ideally zero.</li>
+<li><b>Skip the "T-booster" aisle.</b> Tribulus, fenugreek, D-aspartic acid and the like show no reliable effect in men with normal levels. Ashwagandha (600 mg KSM-66) has modest evidence for stress and a small T effect; it's the only herbal worth considering.</li>
+<li><b>Get a baseline lab.</b> Morning (07:00–09:00) total testosterone, free T, SHBG, estradiol, vitamin D, fasting glucose, lipids, TSH. Repeat at the end of the plan. Low values at baseline, or a missed cycle during the plan, are a conversation with a doctor, not something to diet through.</li>
+</ul>
+
+<h3>Weekly rhythm</h3>
+<div class="week">
+  <div class="day"><b>Mon</b><span class="pill hi">High carb</span><small>Upper A 06:00</small></div>
+  <div class="day"><b>Tue</b><span class="pill mod">Moderate</span><small>Lower A 06:00 · Run 18:00</small></div>
+  <div class="day"><b>Wed</b><span class="pill mod">Moderate</span><small>Upper B 06:00</small></div>
+  <div class="day"><b>Thu</b><span class="pill hi">High carb</span><small>Lower B 06:00 · Run 18:00 (wk 7+)</small></div>
+  <div class="day"><b>Fri</b><span class="pill mod">Moderate</span><small>Full body 06:00</small></div>
+  <div class="day"><b>Sat</b><span class="pill mod">Moderate</span><small>Long run 08:00</small></div>
+  <div class="day"><b>Sun</b><span class="pill lo">Low carb</span><small>Rest · walk · steak · check-in</small></div>
+</div>
+
+<div class="tiles">
+  <div class="tile"><div class="k">High-carb day</div><div class="v" id="kcalH"></div><div class="d">Mon · Thu (Upper A / Lower B)</div></div>
+  <div class="tile"><div class="k">Moderate day</div><div class="v" id="kcalM"></div><div class="d">Tue · Wed · Fri · Sat</div></div>
+  <div class="tile"><div class="k">Low-carb day</div><div class="v" id="kcalL"></div><div class="d">Sunday rest</div></div>
+  <div class="tile"><div class="k">Weekly average</div><div class="v" id="kcalAvg"></div><div class="d">per day · protein fixed ~200 g</div></div>
+</div>
+<p class="small muted" id="tdeeNote">Starting maintenance is an estimate from your setup. Your weekly check-ins replace the estimate with real data; that is what the auto-adjust uses.</p>
+</section>
+
+<!-- ============ SCHEDULE ============ -->
+<section class="view" id="v-schedule">
+<h2>The clock</h2>
+<p>Every day keeps the same skeleton: wake 05:15, train 06:00, eat 11:00–19:00, fast 19:00–11:00. If you entered fixed blocks (class or work) in setup, the Today tab moves any meal that collides with them; the fast stays 16 hours or more. Day 1 is Thursday Nov 5: Lower B, high carbs, and the first fasted morning. Wednesday night Nov 4, eat your last meal by 19:00 so the first fast starts on time.</p>
+<div class="seg" id="daySeg">
+  <button data-d="lift" class="on">Lift day (Mon·Wed·Fri)</button>
+  <button data-d="liftrun">Lift + run (Tue·Thu)</button>
+  <button data-d="sat">Saturday</button>
+  <button data-d="sun">Sunday</button>
+</div>
+<ul class="timeline" id="timeline"></ul>
+
+<h3>Fasting rules</h3>
+<ul>
+<li><b>Window:</b> 11:00–19:00 (16:8). Everything with calories lands in those eight hours. Black coffee, plain tea, water, salt/electrolytes are fine outside it.</li>
+<li><b>Training fasted at 06:00:</b> at 05:30 drink 500 ml water with 1 scoop of your Dr. Berg electrolyte powder (1,000 mg potassium, 120 mg magnesium) plus ½ tsp regular salt, because the powder has almost no sodium. It prevents the light-headedness most people blame on fasting. When the tub runs out, ¼ tsp Morton Lite Salt + ½ tsp salt does the same job for pennies.</li>
+<li><b>Muscle-first option:</b> if strength falls two weeks in a row, move Meal 1 (yogurt + whey) to 07:15 right after lifting and close the window at 15:15. Same food, same macros, same 16 hours fasted.</li>
+<li><b>Sleep:</b> lights out 21:30. A 05:15 alarm on 6 hours of sleep is the fastest way to lose muscle on a cut.</li>
+</ul>
+
+<h3>Phase map</h3>
+<div class="tblwrap"><table>
+<thead><tr><th>Phase</th><th>Days</th><th>Lifting focus</th><th>Running</th><th>Diet</th></tr></thead>
+<tbody>
+<tr><td>1 · Base</td><td class="n">first 37%</td><td>Learn the lifts, sets of 5–6 and 8–12, add 5 lb a week when every rep is clean. Deload week 6 (on plans of 60+ days).</td><td>Walk/jog intervals, 2×/week</td><td>Plan as written. Expect the water drop.</td></tr>
+<tr><td>2 · Strength</td><td class="n">to 75%</td><td>Main lifts to 4×5–6, accessories 8–12. Deload week 12 (90+ days).</td><td>3×/week, intervals lengthen to continuous 20 min; 5K by day 90</td><td>Check-in adjusts carbs. One 2,600 kcal refeed day allowed on day 60 (double the starch).</td></tr>
+<tr><td>3 · Harden</td><td class="n">last 25%</td><td>Add a heavy top set on bench, leg press and hack squat, then back-off sets. Deload week 17 (120 days).</td><td>Continuous runs 25–40 min, 3.5–4 mi long run</td><td>Protein ~200 g, calories trimmed by check-in only if needed. Day 120 photos + measurements.</td></tr>
+</tbody></table></div>
+<p class="small">After the plan: hold calories at the final level for 2 weeks (a maintenance break), then decide whether to cut again or build. If you keep running, the Saturday run grows 0.5 mi a week toward 5 miles.</p>
+</section>
+
+<!-- ============ MEALS ============ -->
+<section class="view" id="v-meals">
+<h2>Standard meals</h2>
+<p>Four meals, the same every day of the plan. Amounts are in cups, tablespoons and ounces; meat is raw weight in ounces. Portions are scaled to your calorie target from the setup. The protein is identical every day; only the starch (oats, rice, potato) and a little fat change with the day type. Built for cost: the protein comes from the cheapest sources per gram (yogurt, chicken, eggs, cottage cheese, a beef-and-thigh mix) with no whey, and nothing is cheaper per nutrient without going to beans. Season freely: salt, pepper, garlic powder, paprika, cumin, hot sauce, salsa, mustard, vinegar, cinnamon are all free.</p>
+<div class="seg" id="mealSeg">
+  <button data-t="H" class="on">High carb · Mon Thu</button>
+  <button data-t="M">Moderate · Tue Wed Fri Sat</button>
+  <button data-t="L">Low carb · Sun</button>
+</div>
+<div id="adjBanner" class="note" hidden></div>
+
+<div id="mealTables"></div>
+
+<h3>Meal prep · what gets cooked when</h3>
+<p>Two sessions a week keep everything inside the 3–4 day fridge window. Sunday is the big cook; Wednesday night is a 25-minute re-up. Nothing in the plan is assembled from scratch on a weekday; every weekday meal is open a container, microwave, eat.</p>
+<div class="tblwrap"><table>
+<thead><tr><th>When</th><th>Cook</th><th>Yields</th><th>Store</th></tr></thead>
+<tbody>
+<tr><td rowspan="6"><b>Sunday 16:00</b><br><span class="muted small">~90 min, mostly oven time</span></td><td>Chicken breast: salt, pepper, garlic powder, paprika. Sheet pans, 400°F, 22–25 min to 160°F, rest 5 min, slice.</td><td>8 portions × 12 oz raw (Sun–Wed for both)</td><td>Fridge, 4 containers of 2 portions</td></tr>
+<tr><td>Beef + diced chicken thigh, half and half: brown with onion, garlic, cumin, salt. Drain the pan but not fully.</td><td>4 nights × 10.6 oz raw mix (Mon–Thu)</td><td>Fridge, 4 containers</td></tr>
+<tr><td>Rice: 2¾ cups dry in the rice cooker.</td><td>Mon/Tue/Wed/Thu bowls (½ cup and ⅓ cup dry for you)</td><td>Fridge, portioned by day label</td></tr>
+<tr><td>Potatoes: wash, poke, 400°F 55 min alongside the chicken (or microwave 8 min each).</td><td>Mon–Thu plates (1 large / 1 medium for you, half that for her)</td><td>Fridge, whole; reheat 2 min</td></tr>
+<tr><td>Oats: weigh into bags or jars. Optional: overnight oats for Mon/Tue (oats + yogurt + whey + cinnamon, stir, fridge).</td><td>7 bags (⅔ cup ×2, ½ cup ×4, your Sunday none)</td><td>Pantry; overnight jars in fridge</td></tr>
+<tr><td>Egg-free; steak night is cooked fresh at 18:15.</td><td>—</td><td>—</td></tr>
+<tr><td rowspan="3"><b>Wednesday 19:15</b><br><span class="muted small">~25 min, after Meal 4</span></td><td>Chicken: second sheet pan.</td><td>6 portions (Thu–Sat)</td><td>Fridge</td></tr>
+<tr><td>Beef + thigh mix: second batch.</td><td>2 nights (Fri, Sat)</td><td>Fridge</td></tr>
+<tr><td>Rice + potatoes for Fri/Sat; pull Saturday's steak to the fridge to thaw.</td><td>Fri/Sat</td><td>Fridge</td></tr>
+<tr><td><b>Daily, 60 seconds</b></td><td>Yogurt bowl (yogurt + whey + oats + PB), cottage cheese cup. Frozen veg goes in the microwave straight from the bag, 4 min.</td><td>—</td><td>Assemble the morning of, or the night before in a jar</td></tr>
+</tbody></table></div>
+<ul>
+<li><b>Containers:</b> 12 glass or BPA-free 3-cup containers with lids covers a full week for two with Wednesday turnover. Label the lid with a strip of masking tape: day + meal (e.g. "Tue M2"). Walmart has a 10-pack for about $15.</li>
+<li><b>Food safety:</b> cooked chicken and beef 4 days in the fridge, cooked rice 4 days (cool it within an hour, fridge uncovered first 20 min). Anything you won't eat in 4 days goes in the freezer the day it's cooked.</li>
+<li><b>Reheating:</b> chicken and beef 90 s with a splash of water or salsa so it doesn't dry out; rice 90 s covered; potato 2 min. The yogurt bowl and cottage cheese are cold.</li>
+<li><b>Take-out versions:</b> Meal 1 travels in a jar. Meal 2 travels in its container; most campus buildings have a microwave, and chicken-rice-veg is fine at room temperature for 3 hours if they don't. Meal 3 is the one you eat at home.</li>
+
+</ul>
+
+<h3>Eating for study energy</h3>
+<p>Fasting plus lower carbs is good for morning focus and bad for the 15:00–17:00 slump if you get the timing wrong. Rules:</p>
+<ul>
+<li><b>Fasted mornings are your sharpest hours.</b> Most people find focus is best 07:45–10:30 before the first meal, once the first week of adaptation is done. That block is before class on Mon/Wed and is your longest free stretch on Tue/Thu/Fri: put the hardest material there. Coffee at 05:30 and a second at 09:00 at the latest; none after noon or the 21:30 bedtime won't hold.</li>
+<li><b>Meal 1 at 11:00 is built to not knock you out:</b> protein and yogurt first, oats second, and it's under 750 kcal even on high-carb days. The crash people get after lunch comes from 1,200-kcal starch bombs, not from this.</li>
+<li><b>Meal 2 at 14:30 is the study-session fuel.</b> If you have a long afternoon or evening study block, this is the meal to move, not skip: eat it 60–90 minutes before you sit down. On exam-heavy weeks, swap Meal 2's and Meal 3's starch portions so the bigger carb load lands before the study block instead of before bed.</li>
+<li><b>Low-carb Sunday is a bad heavy-study day.</b> If Sunday is a big study day for you, swap it with Saturday (Saturday low, Sunday moderate). Calories for the week don't change; the Meals tab day-types are just labels.</li>
+<li><b>Brain fog that lasts past week 2</b> is the signal fasting isn't fitting your schedule. Fix: move the eating window, not the calories. The muscle-first 07:15–15:15 window on the Schedule tab works for people who study in the morning and lift at 06:00; a 12:00–20:00 window works for people who study evenings. Same food, same macros.</li>
+<li><b>Hydration and salt</b> cause more "I can't focus" on a cut than carbs do. 3–4 L of water a day, the 05:30 electrolyte drink, and a pinch of salt in a glass of water (or a half scoop of the powder) mid-afternoon if you feel foggy.</li>
+<li><b>Creatine monohydrate, 5 g a day, every day</b> (stirred into the Meal 1 yogurt). About $0.10 a day. It helps keep strength and muscle during the deficit and has decent evidence for working memory and mental fatigue, especially when sleep-deprived. The one supplement on this list with strong evidence for both goals; added to the Walmart list.</li>
+<li><b>Optional:</b> 200 mg L-theanine with the morning coffee smooths the caffeine; a 10-minute walk between study blocks does more for the next hour than any snack.</li>
+</ul>
+<h3>Swaps that keep the macros</h3>
+<ul>
+<li>Chicken breast ↔ 93/7 ground turkey (same weight) ↔ 1 drained can of Kirkland chunk chicken breast (7 oz drained; −7 g protein, −60 kcal vs the raw 8 oz; no prep, keeps 3 years) ↔ canned tuna (2 cans).</li>
+<li>The beef-thigh mix ↔ all beef or all thigh at the same raw weight (±2 g protein, ±4 g fat). All-thigh is the cheapest; all-beef has the most iron.</li>
+<li>Potato ↔ rice ↔ oats: 1 large potato ≈ ½ cup dry rice ≈ ⅔ cup oats.</li>
+<li>Greek yogurt ↔ cottage cheese 1:1. If you want whey back for convenience, 1 scoop replaces ⅔ cup of yogurt at the same protein for about $0.35 more per day.</li>
+<li>Sirloin ↔ any lean steak (flank, round, top sirloin). NY strip adds ~12 g fat and ribeye/chuck ~15 g per 10 oz: trim the cap and skip the olive oil that night. No steak in the house: 8 oz chicken (or 1 can) + 2 whole eggs + 3 cups veg + the salad with 2 tsp oil matches it within a few grams.</li>
+</ul>
+<p class="small muted">Nutrients: the veg is 4–5 cups a day (fiber, vitamin C/K, folate), potatoes carry potassium, eggs and beef carry iron, B12, choline, yogurt carries calcium. Add a basic multivitamin and 2–3 g fish oil if budget allows; neither is required for the plan to work.</p>
+</section>
+
+<!-- ============ LIFTING ============ -->
+<section class="view" id="v-lifting">
+<h2>Lifting · 06:00 Mon–Fri · 55 minutes</h2>
+<p>Upper / Lower / Upper / Lower / Full body, Mon–Fri. Every muscle twice a week with basic lifts, machines welcome. Pick a starting weight you could do for 2 more reps than written. When you hit every rep in every set with clean form, add 5 lb (10 lb on squat and deadlift) the next week. If you miss reps two sessions in a row, drop 10% and build back. Rest 2–3 min on the main lift, 60–90 s on everything else.</p>
+
+<div id="liftTable"></div>
+<p class="small">Every exercise has a Watch link (opens a YouTube demo in a new tab). No back squats, deadlifts off the floor, hanging work or hip thrusts: leg press and hack squat carry the squat pattern, RDLs carry the hinge, pulldowns carry the pull-up. Every exercise has three swaps for a crowded gym or a missing machine; the Today tab shows them next to each lift. Pick one swap and stick with it for a phase so the log stays comparable.</p>
+<h3>Rules that matter more than the exercise list</h3>
+<ul>
+<li><b>Daily 100 push-ups + 100 crunches:</b> 4 × 25 spread across the day, never right before an upper-body session. Hands on a bench for the push-ups if 25 straight isn't clean yet; the count matters less than full range. Tick both on the Today tab.</li>
+<li><b>Deload weeks 6, 12 and 17:</b> same exercises, 60% of the weight, 2 sets each. These line up with days 36–42, 78–84 and 113–119 so you arrive at each milestone recovered.</li>
+<li><b>Strength is the muscle-loss alarm.</b> Log every lift on the Today tab (weight × reps). If the first lift of the day falls for two weeks straight, the check-in adds carbs automatically; if it happens again, take the muscle-first fasting option on the Schedule tab.</li>
+<li><b>Fasted lifting:</b> the first week feels flat. By week 2 your body adapts. Salt water at 05:30, caffeine if you use it, and the high-carb day the day before the heaviest sessions are what make it work.</li>
+<li><b>Warm-up (8 min):</b> 3 min incline walk, then empty bar × 10, 50% × 5, 70% × 3 on the first lift. Don't skip it.</li>
+<li><b>Conditioning:</b> comes from the runs plus Friday's carries and the 10–15 min incline walk after any lift where you have time. No separate circuit day.</li>
+</ul>
+</section>
+
+<!-- ============ RUNNING ============ -->
+<section class="view" id="v-running">
+<h2>Running · from zero to five miles</h2>
+<p>Each running stride loads your joints with about 3× bodyweight, so the first six weeks are mostly walking on purpose. Two runs a week until week 7, then three. Tuesday and Thursday runs are at 18:00 (not the morning you lifted lower body); Saturday is the long one at 08:00 after coffee and salt water, still fasted. Every run: 5 min walk before, 5 min walk after.</p>
+<p><b>Pace rule:</b> every jog interval is at a pace where you could speak a full sentence. If you can't, you're running too fast, not too weak. Speed comes from dropping weight, not from pushing.</p>
+
+<div class="tblwrap"><table>
+<thead><tr><th>Weeks</th><th>Days</th><th>Tue (18:00)</th><th>Thu (18:00)</th><th>Sat (08:00)</th><th class="n">Sat distance</th></tr></thead>
+<tbody>
+<tr><td class="n">1–3</td><td class="n">1–21</td><td>Jog 1 min / walk 2 min × 8 (24 min)</td><td class="muted">—</td><td>Jog 1 / walk 2 × 10 (30 min)</td><td class="n">~1.8 mi</td></tr>
+<tr><td class="n">4–6</td><td class="n">22–42</td><td>Jog 2 / walk 2 × 7 (28 min)</td><td class="muted">— (wk 6 deload: walk 30 min)</td><td>Jog 2 / walk 1 × 10 (30 min)</td><td class="n">~2.1 mi</td></tr>
+<tr><td class="n">7–9</td><td class="n">43–63</td><td>Jog 3 / walk 1 × 6 (24 min)</td><td>Jog 3 / walk 1 × 5 (20 min)</td><td>Jog 4 / walk 1 × 6 (30 min)</td><td class="n">~2.4 mi</td></tr>
+<tr><td class="n">10–12</td><td class="n">64–84</td><td>Jog 5 / walk 1 × 5 (30 min)</td><td>Jog 5 / walk 1 × 4 (24 min)</td><td>Jog 8 / walk 1 × 4 (36 min)</td><td class="n">~2.9 mi</td></tr>
+<tr><td class="n">13–15</td><td class="n">85–105</td><td>Run 15 / walk 2 × 2 (34 min)</td><td>Run 20 continuous</td><td>Run 25–28 min continuous</td><td class="n">~3.1 mi · 5K</td></tr>
+<tr><td class="n">16–17</td><td class="n">106–120</td><td>Run 25 continuous</td><td>Run 20 easy (wk 17: walk)</td><td>Run 35–40 min continuous</td><td class="n">~3.6–4 mi</td></tr>
+<tr><td class="n">18–24</td><td class="n">after plan</td><td>Run 25–30</td><td>Run 20–25</td><td>+0.5 mi per week on the long run</td><td class="n">5 mi by wk ~23</td></tr>
+</tbody></table></div>
+
+<ul>
+<li><b>Shoes:</b> a cushioned neutral trainer from a running store, replaced around 350 miles. At your weight this is the one non-food purchase that pays for itself.</li>
+<li><b>Surface:</b> track, grass, packed trail or treadmill at 1% incline for the first 9 weeks. Sidewalks after.</li>
+<li><b>Pain rule:</b> sharp or joint pain = stop, swap that session for a 30-min incline walk, and repeat the week instead of advancing. Muscle soreness is fine.</li>
+<li><b>Repeat before you advance:</b> if a week felt hard, repeat it. The schedule has slack: finishing the progression two weeks late still puts a 5K inside the plan.</li>
+<li><b>Fuel:</b> Saturday long runs sit on a moderate-carb Friday. If you bonk, move Saturday to a high-carb day and Thursday to moderate; calories stay the same.</li>
+</ul>
+</section>
+
+<!-- ============ GROCERIES ============ -->
+<section class="view" id="v-groceries">
+<h2>Groceries</h2>
+<p>Computed from your meals: one full week (2 high, 4 moderate, 1 low-carb day) times the people eating. Buy meat and frozen veg monthly in bulk, dairy and produce every two weeks. Cheapest protein per gram, in order: eggs, chicken breast, Greek yogurt, cottage cheese, chicken thigh, ground beef, steak.</p>
+<div id="grocTable"></div>
+<h3>Pantry (restock when low)</h3>
+<ul><li>Olive oil, peanut butter, salsa, hot sauce, mustard, vinegar, salt + lite salt (or electrolyte powder), garlic powder, cumin, smoked paprika, cinnamon, black pepper, coffee.</li><li>Optional: creatine monohydrate 5 g/day, vitamin D3 in winter, fish oil, magnesium glycinate at night.</li><li>Gear: food scale, 12 three-cup containers, freezer bags, masking tape.</li></ul>
+<h3>Meal prep rhythm</h3>
+<ul><li><b>Sunday 16:00 (~75–90 min):</b> bake the week's chicken, brown the beef-thigh mix with onion and garlic, cook rice, bake potatoes, bag the oats. Covers Mon–Wed.</li><li><b>Wednesday 19:15 (~25 min):</b> second batch of chicken, beef-thigh, rice and potatoes for Thu–Sat.</li><li><b>Daily, 60 seconds:</b> yogurt bowl and cottage cheese are scooped day-of; frozen veg goes from the bag to the microwave.</li><li>Cooked meat and rice keep 4 days in the fridge; freeze anything beyond that the day it's cooked.</li></ul>
+</section>
+
+<!-- ============ CHECK-IN ============ -->
+<section class="view" id="v-checkin">
+<h2>Sunday check-in</h2>
+<p>Every Sunday at 07:00, before coffee, after the bathroom: weigh in, measure waist at the navel and neck just below the Adam's apple, and rate the week. If you've been filling the morning log on the Today tab, weight and waist prefill with the 7-day average, which is the number the adjustment should use. Save it and the plan recalculates your body-fat estimate, compares your rate of loss against target, and shifts the starch portions on the Meals tab if needed. Protein never changes.</p>
+
+<div id="ciReview"></div>
+<form class="ci" id="ciForm">
+  <label>Date <input type="date" id="ciDate" required></label>
+  <label>Weight (lb) <input type="number" step="0.1" id="ciWeight" inputmode="decimal" required placeholder="e.g. 266.4"></label>
+  <label>Waist at navel (in) <input type="number" step="0.1" id="ciWaist" inputmode="decimal" placeholder="e.g. 46.5"></label>
+  <label>Neck (in) <input type="number" step="0.1" id="ciNeck" inputmode="decimal" placeholder="e.g. 17.5"></label>
+  <label>Diet adherence <select id="ciAdh"><option value="100">All 7 days on plan</option><option value="90">6 of 7</option><option value="75">5 of 7</option><option value="50">Half or less</option></select></label>
+  <label>Lifts this week <select id="ciLifts"><option value="5">5</option><option value="4">4</option><option value="3">3</option><option value="2">2 or fewer</option></select></label>
+  <label>Main-lift strength <select id="ciStr"><option value="up">Up</option><option value="same">Same</option><option value="down">Down</option></select></label>
+  <label>Energy / hunger <select id="ciEnergy"><option value="ok">Fine</option><option value="low">Dragging</option><option value="hungry">Very hungry</option></select></label>
+  <div class="actions">
+    <button class="btn" type="submit">Save week</button>
+    <button class="btn ghost" type="button" id="undoBtn">Remove last entry</button>
+    <span class="status" id="saveStatus"></span>
+  </div>
+</form>
+
+<div id="verdict"></div>
+
+<h3>Weight · plan vs. you</h3>
+<div class="chartbox"><svg class="chart" id="wchart" viewBox="0 0 720 300" role="img" aria-label="Projected and actual weight by week"></svg>
+<div class="leg"><span><i style="background:var(--line)"></i>Projected</span><span><i style="background:var(--accent)"></i>Actual</span></div></div>
+
+<h3>Log</h3>
+<div class="actions" style="margin:6px 0"><button type="button" class="btn ghost" id="exportBtn">Copy all logs as text</button><span class="status" id="exportStatus"></span></div>
+<div class="tblwrap"><table id="logTbl">
+<thead><tr><th class="n">Wk</th><th>Date</th><th class="n">Weight</th><th class="n">Δ wk</th><th class="n">%/wk</th><th class="n">Waist</th><th class="n">BF est.</th><th>Adjust</th></tr></thead>
+<tbody></tbody></table></div>
+
+<h3>How the auto-adjust decides</h3>
+<ul>
+<li><b>Weeks 1–2:</b> no changes. Water weight is leaving; nothing you see yet is fat rate.</li>
+<li><b>Target band:</b> 0.7–1.3% of bodyweight per week, judged on the average of the last two weeks (that smooths one bad weigh-in).</li>
+<li><b>Below 0.7% with adherence ≥ 85%:</b> one step down (−150 kcal, taken from oats/rice/potato on the high and moderate days). Below 85% adherence: no change, fix the week first.</li>
+<li><b>Above 1.5%, or strength down two weeks straight:</b> one step up (+150 kcal of starch). Losing faster than that costs muscle.</li>
+<li><b>Floor:</b> three steps down (≈ 1,700 kcal average) is the floor. If you're there and still stalled, the fix is a 7-day maintenance break at ~2,700 kcal, not less food.</li>
+<li><b>Protein:</b> stays at ~200 g until you're under 240 lb, then 190 g (drop the Sunday eggs and 25 g of chicken). It is never cut to make calories fit.</li>
+</ul>
+<p class="small muted" id="storeNote">Your entries save to this page's private store and reload on any device where you open it.</p>
+</section>
+</div>
+
+<script>
+(function(){
+"use strict";
+/* ---------- constants ---------- */
+const PK="stockbuild-profile-v1";
+let PROF=null;try{PROF=JSON.parse(localStorage.getItem(PK)||"null");}catch(e){}
+const START={date:"2026-01-05",weight:200,height:70,bfHi:30,bfLo:25,age:30,sex:"m"};
+let DUR=120,PACE=0.0075,WEEKLY_PLAN=[],MAINT=2800,DEF=750,EQUIP="full",RUNNING=true,HABIT=0,HOUSE=1,BLOCKS=[];
+function applyProfile(){
+ if(!PROF)return;
+ START.date=PROF.start;START.weight=PROF.weight;START.height=PROF.height;START.age=PROF.age;START.sex=PROF.sex;
+ START.bfHi=PROF.bf||(PROF.sex==="m"?28:36);START.bfLo=Math.max(5,START.bfHi-5);
+ DUR=PROF.days;PACE={agg:0.01,std:0.0075,gen:0.005}[PROF.pace]||0.0075;EQUIP=PROF.equip;RUNNING=PROF.run!=="no";HABIT=parseInt(PROF.habit||0,10);HOUSE=parseFloat(PROF.house||1);BLOCKS=PROF.blocks||[];
+ const kg=PROF.weight*0.4536,cm=PROF.height*2.54;
+ let bmr;if(PROF.bf){const lean=kg*(1-PROF.bf/100);bmr=370+21.6*lean;}else{bmr=10*kg+6.25*cm-5*PROF.age+(PROF.sex==="m"?5:-161);}
+ MAINT=Math.round(bmr*1.5);
+ DEF={agg:1000,std:750,gen:500}[PROF.pace]||750;
+ const minIntake=PROF.sex==="m"?1600:1300;if(MAINT-DEF<minIntake)DEF=Math.max(300,MAINT-minIntake);
+ WEEKLY_PLAN=[];const w0=PROF.weight;for(let w=0;w<Math.ceil(DUR/7)+1;w++){const base=w0*PACE*(1-0.05*Math.floor(w/4));WEEKLY_PLAN.push(w===0?w0*0.022:w===1?w0*0.013:base);}
+}
+applyProfile();
+function WATERLB(){return Math.round(START.weight*0.018);}
+const LEAN_FRAC=0.12;   // share of non-water loss assumed lean
+
+/* foods per 100 g: protein, carbs, fat */
+const F={
+ gy:{n:"Nonfat Greek yogurt",p:10,c:3.6,f:0.4},
+ whey:{n:"Whey protein (1 scoop = 30 g)",p:80,c:10,f:5},
+ oats:{n:"Rolled oats, dry",p:13,c:67,f:7},
+ pb:{n:"Peanut butter",p:22,c:22,f:50},
+ banana:{n:"Banana",p:1.1,c:23,f:0.3},
+ chx:{n:"Chicken breast, raw",p:23,c:0,f:2.6},
+ rice:{n:"White rice, dry",p:7,c:80,f:1},
+ veg:{n:"Frozen broccoli / green beans",p:2.5,c:6,f:0.3},
+ oil:{n:"Olive oil",p:0,c:0,f:100},
+ beef:{n:"Ground beef 90/10, raw",p:20,c:0,f:10},
+ thigh:{n:"Chicken thigh, boneless skinless, raw",p:19,c:0,f:8},
+ canchx:{n:"Kirkland canned chicken breast, drained",p:23,c:0,f:1.8},
+ pot:{n:"Potato, raw",p:2,c:17,f:0},
+ cc:{n:"Cottage cheese 2% (4%: +3 g fat, +30 kcal)",p:11,c:4,f:2.5},
+ sir:{n:"Sirloin steak, raw",p:21.5,c:0,f:8},
+ egg:{n:"Whole eggs (2 large = 100 g)",p:12.6,c:0,f:10},
+ salad:{n:"Salad: greens, cucumber, tomato",p:1.5,c:3,f:0.2}
+};
+/* starch items scale with the adjustment level; others are fixed */
+const STARCH=new Set(["oats","rice","pot","banana"]);
+const DAYS={
+ H:{label:"High carb",cls:"hi",meals:[
+   {t:"11:00",name:"Meal 1 · Yogurt power bowl",items:[["gy",450],["oats",60],["pb",16],["banana",118]],how:"Yogurt, oats (dry or soaked overnight), sliced banana, peanut butter, cinnamon, 5 g (1 tsp) creatine stirred in. No whey: 1¾ cups of yogurt carries the protein for a third of the price."},
+   {t:"14:30",name:"Meal 2 · Chicken rice bowl",items:[["chx",225],["rice",90],["veg",200],["oil",10]],how:"Prepped chicken over rice, veg microwaved, oil + salsa or hot sauce over the top."},
+   {t:"18:30",name:"Meal 3 · Beef & thigh plate",items:[["beef",100],["thigh",100],["pot",300],["veg",200],["oil",10]],how:"Beef and diced chicken thigh browned together with onion and garlic (half-and-half cuts the cost, keeps the iron), baked potato with the oil and salt, veg. Mustard and hot sauce are free."},
+   {t:"18:50",name:"Meal 4 · Night protein",items:[["cc",200]],how:"Cottage cheese, pepper or cinnamon. Window closes 19:00."}]},
+ M:{label:"Moderate",cls:"mod",meals:[
+   {t:"11:00",name:"Meal 1 · Yogurt power bowl",items:[["gy",450],["oats",40],["pb",16]],how:"Same bowl, smaller oats, no banana."},
+   {t:"14:30",name:"Meal 2 · Chicken rice bowl",items:[["chx",225],["rice",60],["veg",200],["oil",14]],how:"Smaller rice portion, a full tablespoon of oil."},
+   {t:"18:30",name:"Meal 3 · Beef & thigh plate",items:[["beef",100],["thigh",100],["pot",200],["veg",200],["oil",14]],how:"7.1 oz potato instead of 300."},
+   {t:"18:50",name:"Meal 4 · Night protein",items:[["cc",200]],how:"Cottage cheese. Window closes 19:00."}]},
+ L:{label:"Low carb",cls:"lo",meals:[
+   {t:"11:00",name:"Meal 1 · Yogurt & peanut butter",items:[["gy",450],["pb",24]],how:"No oats. Extra peanut butter, cinnamon."},
+   {t:"14:30",name:"Meal 2 · Chicken, eggs & greens",items:[["chx",225],["egg",100],["veg",300],["oil",14]],how:"Chicken and two fried or scrambled eggs over a big pile of veg."},
+   {t:"18:30",name:"Meal 3 · Steak night",items:[["sir",280],["salad",250],["veg",150],["oil",10]],how:"10 oz strip or sirloin, big salad with the oil and vinegar, veg on the side. The weekly treat, earned."},
+   {t:"18:50",name:"Meal 4 · Night protein",items:[["cc",200]],how:"Cottage cheese. Window closes 19:00."}]}
+};
+const SCHED={
+ lift:[["05:15","Wake. 500 ml water with 1 scoop Dr. Berg electrolyte powder + ½ tsp salt. Black coffee if you want it. Vitamin D3 with Meal 1 later (it needs fat)."],["05:40","Leave for the gym. Fasted."],["06:00","Lift (55 min incl. warm-up). Log the main lift."],["07:15","Shower. Second coffee by 09:00 at the latest."],["07:45","Focus block 1, fasted."],["11:00","Meal 1 · yogurt power bowl + 5 g creatine. Window opens."],["14:30","Meal 2 · chicken rice bowl. Eat it 60–90 min before any long afternoon/evening study block."],["18:30","Meal 3 · beef & potato plate."],["18:50","Meal 4 · cottage cheese. Window closes 19:00."],["19:15","Wednesday only: 25-min re-prep (chicken, beef, rice for Thu–Sat)."],["20:30","Phone down. Prep tomorrow's gym bag and portions."],["21:00","Magnesium if you're using it. Room cool and dark."],["21:30","Lights out. 7.5 h minimum."]],
+ liftrun:[["05:15","Wake. Salt water, coffee."],["06:00","Lower-body lift (55 min)."],["07:45","Focus block 1, fasted."],["11:00","Meal 1. Window opens."],["14:30","Meal 2, the fuel for the run."],["17:45","Change, 5-min walk warm-up."],["18:00","Run session (see Running tab, 20–34 min). Thursday runs start week 7."],["18:40","Meal 3 right after the run."],["18:55","Meal 4. Window closes 19:00."],["21:30","Lights out."]],
+ sat:[["06:30","Wake (one hour of grace). Salt water, coffee."],["08:00","Long run, fasted. Walk 5 min first."],["09:00","Stretch 10 min, shower."],["11:00","Meal 1."],["14:30","Meal 2."],["16:00","Optional 30-min walk."],["18:30","Meal 3."],["18:50","Meal 4. Window closes 19:00."],["22:00","Lights out (half-hour later is fine)."]],
+ sun:[["07:00","Weigh-in, waist, neck. Save the check-in on this page."],["09:00","45–60 min easy walk. Nothing harder: this is the only full rest day."],["11:00","Meal 1 · yogurt & peanut butter."],["14:30","Meal 2 · chicken, eggs & greens."],["16:00","Meal prep (90 min): chicken, beef, rice, potatoes, oat bags. See the Meals tab table."],["18:30","Meal 3 · steak night."],["18:50","Meal 4. Window closes 19:00."],["21:30","Lights out. Monday is squat day."]]
+};
+
+/* ---------- helpers ---------- */
+const $=s=>document.querySelector(s);
+const r1=x=>Math.round(x*10)/10;
+const OZ=28.35;
+function frac(x){const w=Math.floor(x),f=x-w;const F=[[0,""],[.25,"¼"],[.33,"⅓"],[.5,"½"],[.67,"⅔"],[.75,"¾"],[1,""]];let best=F[0],d=9;for(const p of F){const dd=Math.abs(p[0]-f);if(dd<d){d=dd;best=p;}}let W=w+(best[0]===1?1:0);const fr=best[0]===1?"":best[1];return (W?W:"")+(W&&fr?" ":"")+fr||"0";}
+const CUP={gy:245,cc:226,oats:80,rice:185,veg:100,salad:60};
+function amt(r){const k=r.key,g=r.g;
+ if(k==="oil")return g>=14?frac(g/14)+" tbsp":frac(g/4.7)+" tsp";
+ if(k==="pb")return frac(g/16)+" tbsp";
+ if(k==="egg")return Math.round(g/50)+" large";
+ if(k==="banana")return "1 medium";
+ if(k==="pot")return g>=280?"1 large ("+(g/OZ).toFixed(0)+" oz)":"1 medium ("+(g/OZ).toFixed(0)+" oz)";
+ if(CUP[k])return frac(g/CUP[k])+" cup"+(g/CUP[k]>1.1?"s":"");
+ return (g/OZ).toFixed(1).replace(/\.0$/,"")+" oz";}
+function targetKcal(t){const avg=MAINT-DEF;return t==="H"?avg*1.12:t==="L"?avg*0.89:avg*0.97;}
+const BASEK={H:2327,M:2022,L:1850};
+function kscale(t){return targetKcal(t)/BASEK[t];}
+let CUR_T="M";
+function macros(items,adj){let p=0,c=0,f=0;const rows=[];for(const [k,g0] of items){const ks=kscale(CUR_T);const g=STARCH.has(k)?Math.round(g0*ks*(1+0.12*adj)/5)*5:Math.round(g0*ks/5)*5;const o=F[k];const pp=o.p*g/100,cc=o.c*g/100,ff=o.f*g/100;p+=pp;c+=cc;f+=ff;rows.push({key:k,name:o.n,g,p:pp,c:cc,f:ff,kcal:pp*4+cc*4+ff*9});}return{rows,p,c,f,kcal:p*4+c*4+f*9};}
+function dayTotals(t,adj){CUR_T=t;let p=0,c=0,f=0;for(const m of DAYS[t].meals){const x=macros(m.items,adj);p+=x.p;c+=x.c;f+=x.f;}return{p,c,f,kcal:p*4+c*4+f*9};}
+function weekAvg(adj){const H=dayTotals("H",adj).kcal,M=dayTotals("M",adj).kcal,L=dayTotals("L",adj).kcal;return (2*H+4*M+L)/7;}
+function navyBF(waist,neck,h){if(!(waist>neck)||!h)return null;const v=86.010*Math.log10(waist-neck)-70.041*Math.log10(h)+36.76;return v>2&&v<70?v:null;}
+function addDays(iso,n){const d=new Date(iso+"T12:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
+function fmtDate(iso){const d=new Date(iso+"T12:00:00");return d.toLocaleDateString(undefined,{month:"short",day:"numeric"});}
+function projectedAt(week){let w=START.weight;for(let i=0;i<week;i++)w-=WEEKLY_PLAN[Math.min(i,WEEKLY_PLAN.length-1)];const frac=week-Math.floor(week);if(frac>0)w-=frac*WEEKLY_PLAN[Math.min(Math.floor(week),WEEKLY_PLAN.length-1)];return w;}
+function bfAfter(startBF,weightNow){const lost=START.weight-weightNow;const nonWater=Math.max(0,lost-WATERLB());const fatLost=nonWater*(1-LEAN_FRAC);const fat0=START.weight*startBF/100;return Math.max(3,(fat0-fatLost)/weightNow*100);}
+
+/* ---------- state ---------- */
+let state={entries:[],adj:0};
+let db=null,docRef=null,saving=false;
+const LS="stockbuild-cut-v1";
+function lsLoad(){try{const s=localStorage.getItem(LS);if(s){const o=JSON.parse(s);if(o&&Array.isArray(o.entries))return o;}}catch(e){}return null;}
+function lsSave(){try{localStorage.setItem(LS,JSON.stringify(state));}catch(e){}}
+
+/* ---------- renderers ---------- */
+function renderOverview(){
+ const tiles=$("#goalTiles");
+ const D1=Math.round(DUR*0.375),D2=Math.round(DUR*0.75);const W45=projectedAt(D1/7),W90=projectedAt(D2/7),W120=projectedAt(DUR/7);
+ tiles.innerHTML=[
+  ["Day 1",`${START.weight} lb`,`${PROF&&PROF.bf?PROF.bf+"% body fat":"~"+START.bfHi+"% body fat (est.)"} · ${fmtDate(START.date)}`],
+  [`Day ${D1}`,`${Math.round(W45)} lb`,`~${r1(bfAfter(START.bfHi,W45))}% BF · ${fmtDate(addDays(START.date,D1))}`],
+  [`Day ${D2}`,`${Math.round(W90)} lb`,`~${r1(bfAfter(START.bfHi,W90))}% BF · ${fmtDate(addDays(START.date,D2))}`],
+  [`Day ${DUR}`,`${Math.round(W120)} lb`,`~${r1(bfAfter(START.bfHi,W120))}% BF · ${fmtDate(addDays(START.date,DUR))}`]
+ ].map(([k,v,d])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join("");
+ const tb=$("#milestones tbody");
+ tb.innerHTML=[[14,"Day 14 · water gone"],[D1,`Day ${D1} · end of base`],[Math.round(DUR/2),`Day ${Math.round(DUR/2)} · ${DUR>=90?"refeed day":"halfway"}`],[D2,`Day ${D2} · ${RUNNING?"5K":"end of phase 2"}`],[DUR,`Day ${DUR} · plan end`]].map(([d,lab])=>{const w=projectedAt(d/7);return `<tr><td>${lab}</td><td class="n">${fmtDate(addDays(START.date,d))}</td><td class="n">${Math.round(w)} lb</td><td class="n">−${Math.round(START.weight-w)} lb${d===14?" (≈"+WATERLB()+" water)":""}</td><td class="n">${r1(bfAfter(START.bfHi,w))}%</td><td class="n">${r1(bfAfter(START.bfHi+3,w))}%</td></tr>`;}).join("");
+ const a=state.adj;
+ $("#kcalH").textContent=Math.round(dayTotals("H",a).kcal)+" kcal";
+ $("#kcalM").textContent=Math.round(dayTotals("M",a).kcal)+" kcal";
+ $("#kcalL").textContent=Math.round(dayTotals("L",a).kcal)+" kcal";
+ $("#kcalAvg").textContent=Math.round(weekAvg(a))+" kcal";
+ const eb=$("#eyebrow");if(eb&&PROF)eb.textContent=`${DUR}-day cut · starts ${fmtDate(START.date)} · lift Mon–Fri · 16:8 fasting · carb cycling`;const sl=$("#subline");if(sl&&PROF)sl.textContent=`${START.weight} lb → ~${Math.round(projectedAt(DUR/7))} lb by ${fmtDate(addDays(START.date,DUR))}. Open the Today tab each morning.`;
+ $("#deficitLine").textContent=`Estimated maintenance ${MAINT.toLocaleString()} kcal a day (${PROF&&PROF.bf?"Katch-McArdle from your body fat":"Mifflin-St Jeor"}, activity ×1.5). The plan eats about ${DEF} kcal under that, targeting roughly ${r1(START.weight*PACE)} lb a week after the first two weeks of water loss. Faster than ~1% of bodyweight a week is where strength drops and loose-skin risk climbs; slower keeps more muscle but takes longer.`;
+ const T=(typeof tdeeEstimate==="function")?tdeeEstimate():null;if(T)$("#tdeeNote").textContent=`Measured maintenance from your own logs: ~${T.tdee} kcal/day over ${T.days} days (${T.dW} lb). The plan assumed ${MAINT}; the check-in adjusts to the real number.`;
+}
+let curDayType="H";
+function renderMeals(){
+ const a=state.adj,d=DAYS[curDayType];CUR_T=curDayType;
+ const b=$("#adjBanner");
+ if(a!==0){b.hidden=false;b.innerHTML=`<b>Auto-adjust is at ${a>0?"+":""}${a} step${Math.abs(a)===1?"":"s"}</b> (${a>0?"+":"−"}${Math.abs(a)*150} kcal/day of starch). Portions below already include it.`;}else b.hidden=true;
+ let html="";let tp=0,tc=0,tf=0;
+ for(const m of d.meals){const x=macros(m.items,a);tp+=x.p;tc+=x.c;tf+=x.f;
+  html+=`<h3><span class="pill ${d.cls}">${d.label}</span> &nbsp;<span style="font-family:var(--mono);font-size:1rem">${m.t}</span> &nbsp;${m.name}</h3><p class="small muted">${m.how}</p>
+  <div class="tblwrap"><table><thead><tr><th>Food</th><th class="n">Amount</th><th class="n">Protein</th><th class="n">Carbs</th><th class="n">Fat</th><th class="n">kcal</th></tr></thead><tbody>`;
+  for(const r of x.rows)html+=`<tr><td>${r.name}</td><td class="n">${amt(r)}</td><td class="n">${Math.round(r.p)}</td><td class="n">${Math.round(r.c)}</td><td class="n">${Math.round(r.f)}</td><td class="n">${Math.round(r.kcal)}</td></tr>`;
+  html+=`<tr class="sum"><td>Meal total</td><td class="n"></td><td class="n">${Math.round(x.p)} g</td><td class="n">${Math.round(x.c)} g</td><td class="n">${Math.round(x.f)} g</td><td class="n">${Math.round(x.kcal)}</td></tr></tbody></table></div>`;}
+ html+=`<div class="tiles"><div class="tile"><div class="k">Day total</div><div class="v">${Math.round(tp*4+tc*4+tf*9)} kcal</div></div><div class="tile"><div class="k">Protein</div><div class="v">${Math.round(tp)} g</div></div><div class="tile"><div class="k">Carbs</div><div class="v">${Math.round(tc)} g</div></div><div class="tile"><div class="k">Fat</div><div class="v">${Math.round(tf)} g</div></div></div>`;
+ $("#mealTables").innerHTML=html;
+}
+function renderSchedule(k){$("#timeline").innerHTML=SCHED[k].map(([t,x])=>`<li><span class="t">${t}</span>${x}</li>`).join("");}
+
+/* ---------- check-in logic ---------- */
+function weekIndex(iso){const days=(new Date(iso+"T12:00:00")-new Date(START.date+"T12:00:00"))/86400000;return Math.max(0,Math.floor((days+3)/7));}
+function analyze(entries){
+ /* returns rows with deltas and the recommended adjustment delta for the latest entry */
+ const rows=[];let prev={weight:START.weight,date:START.date};
+ for(const e of entries){const wk=weekIndex(e.date);const dW=e.weight-prev.weight;const weeks=Math.max(1,(new Date(e.date+"T12:00:00")-new Date(prev.date+"T12:00:00"))/604800000);const pct=-dW/weeks/prev.weight*100;rows.push({...e,wk,dW,pct,bf:navyBF(e.waist,e.neck,START.height)});prev=e;}
+ return rows;
+}
+function decide(rows){
+ const n=rows.length;if(n===0)return{delta:0,cls:"",title:"Baseline saved",text:"Log week 1 next Sunday."};
+ const last=rows[n-1];
+ if(last.wk<=2)return{delta:0,cls:"",title:`Week ${last.wk}: no change yet`,text:`Down ${r1(-last.dW)} lb this week (${r1(last.pct)}%). Most of this is water; the auto-adjust starts judging at week 3.`};
+ const two=rows.slice(-2);const avg=two.reduce((s,r)=>s+r.pct,0)/two.length;
+ const adhOK=last.adh>=85;const strDown=two.length===2&&two.every(r=>r.str==="down");
+ if(strDown&&state.adj<3)return{delta:+1,cls:"down",title:"Strength down two weeks: +150 kcal starch",text:`Average loss ${r1(avg)}%/wk. You are losing too much performance. Oats, rice and potato portions go up one step.`};
+ if(avg>1.5&&state.adj<3)return{delta:+1,cls:"down",title:`Losing ${r1(avg)}%/wk: too fast, +150 kcal`,text:"Above 1.5% a week risks muscle. Starch portions go up one step."};
+ if(avg<0.7&&adhOK&&state.adj>-3)return{delta:-1,cls:"down",title:`Only ${r1(avg)}%/wk: −150 kcal starch`,text:"Two-week average is under the 0.7% floor with good adherence. Oats, rice and potato portions come down one step. Add a 20-min walk at lunch too."};
+ if(avg<0.7&&!adhOK)return{delta:0,cls:"down",title:"Slow week, but adherence was the cause",text:`${r1(avg)}%/wk with ${last.adh}% adherence. Macros stay; make the next 7 days clean before anything changes.`};
+ if(avg<0.7&&state.adj<=-3)return{delta:0,cls:"down",title:"At the calorie floor",text:"Three steps down and still slow. Take a 7-day maintenance break at ~2,700 kcal (double the starch), then resume at the current level."};
+ return{delta:0,cls:"up",title:`On target: ${r1(avg)}%/wk`,text:`Down ${r1(-last.dW)} lb this week. Inside the 0.7–1.3% band. No changes.`};
+}
+function renderLog(){
+ const rows=analyze(state.entries);const tb=$("#logTbl tbody");
+ tb.innerHTML=`<tr><td class="n">0</td><td>${fmtDate(START.date)}</td><td class="n">${START.weight}</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">${START.bfHi}%</td><td class="muted">baseline</td></tr>`+rows.map(r=>`<tr><td class="n">${r.wk}</td><td>${fmtDate(r.date)}</td><td class="n">${r1(r.weight)}</td><td class="n">${r.dW>0?"+":""}${r1(r.dW)}</td><td class="n">${r1(r.pct)}%</td><td class="n">${r.waist?r1(r.waist)+'"':"—"}</td><td class="n">${r.bf?r1(r.bf)+"%":"—"}</td><td>${r.adjNote||""}</td></tr>`).join("");
+ const v=$("#verdict");
+ if(rows.length){const last=rows[rows.length-1];const proj=projectedAt(last.wk);const diff=last.weight-proj;
+  v.innerHTML=`<div class="verdict ${last.vcls||""}"><b>${last.vtitle||"Saved"}</b><p>${last.vtext||""}</p><p class="small muted">Plan projected ${Math.round(proj)} lb for week ${last.wk}; you're ${Math.abs(r1(diff))} lb ${diff<=0?"ahead":"behind"}. ${last.bf?`Navy-method body fat estimate: ${r1(last.bf)}% (±3%).`:"Add waist and neck for a body-fat estimate."} Current macro level: ${state.adj>0?"+":""}${state.adj}.</p></div>`;}
+ else v.innerHTML=`<div class="verdict"><b>Baseline: ${START.weight} lb on ${fmtDate(START.date)}</b><p>First check-in is the first Sunday after you start. Expect a fast first drop; most of it is water, and the plan knows that.</p></div>`;
+ renderChart(rows);
+}
+function renderChart(rows){
+ const svg=$("#wchart");const W=720,H=300,L=52,R=16,T=16,B=36;
+ const weeks=Math.ceil(DUR/7);const ys=[];for(let w=0;w<=weeks;w++)ys.push(projectedAt(w));
+ const allW=ys.concat(rows.map(r=>r.weight),[START.weight]);
+ const ymin=Math.floor((Math.min(...allW)-5)/10)*10,ymax=Math.ceil((Math.max(...allW)+3)/10)*10;
+ const x=w=>L+(W-L-R)*w/weeks,y=v=>T+(H-T-B)*(ymax-v)/(ymax-ymin);
+ let s=`<g font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--muted)">`;
+ for(let v=ymin;v<=ymax;v+=10)s+=`<line x1="${L}" x2="${W-R}" y1="${y(v)}" y2="${y(v)}" stroke="var(--line)" stroke-width="1"/><text x="${L-6}" y="${y(v)+4}" text-anchor="end">${v}</text>`;
+ for(let w=0;w<=weeks;w+=weeks>10?2:1)s+=`<text x="${x(w)}" y="${H-12}" text-anchor="middle">wk ${w}</text>`;
+ s+=`</g>`;
+ [Math.round(DUR*0.375),Math.round(DUR*0.75),DUR].forEach(d=>{const xx=x(d/7);s+=`<line x1="${xx}" x2="${xx}" y1="${T}" y2="${H-B}" stroke="var(--line)" stroke-dasharray="3 4"/><text x="${xx+3}" y="${T+10}" font-size="10" fill="var(--muted)" font-family="IBM Plex Mono,monospace">d${d}</text>`;});
+ s+=`<polyline fill="none" stroke="var(--line)" stroke-width="3" points="${ys.map((v,w)=>x(w)+","+y(v)).join(" ")}"/>`;
+ const pts=[[0,START.weight]].concat(rows.map(r=>[r.wk,r.weight]));
+ s+=`<polyline fill="none" stroke="var(--accent)" stroke-width="2.5" points="${pts.map(p=>x(p[0])+","+y(p[1])).join(" ")}"/>`;
+ pts.forEach(p=>{s+=`<circle cx="${x(p[0])}" cy="${y(p[1])}" r="4" fill="var(--accent)"/>`;});
+ const lp=pts[pts.length-1];s+=`<text x="${Math.min(x(lp[0])+7,W-40)}" y="${y(lp[1])-8}" font-size="12" font-weight="600" fill="var(--ink)" font-family="IBM Plex Mono,monospace">${r1(lp[1])}</text>`;
+ svg.innerHTML=s;
+}
+function renderAll(){renderOverview();renderMeals();renderLog();renderDay(curOff);renderGroceries();}
+
+/* ---------- persistence ---------- */
+async function persist(){
+ lsSave();
+ const st=$("#saveStatus");
+ if(db&&docRef){saving=true;st.textContent="Saving…";try{await docRef.set(state);st.textContent="Saved to your plan store.";}catch(e){st.textContent="Saved on this device only (store rejected the write).";}saving=false;}
+ else st.textContent="Saved on this device.";
+}
+async function initStore(){
+ dlLoadLocal();
+ const local=lsLoad();if(local){state=local;}
+ renderAll();
+ const sn=t=>{$("#storeNote").textContent=t;const e=$("#syncNote");if(e)e.textContent=t;};
+ sn("Offline app: everything saves on this device as you type. Use Back up log to move it to another device.");
+ if(true){DIAG.bridge="offline";diagRender();return;}
+ DIAG.bridge=(window.claude&&window.claude.use)?"yes":"no";diagRender();
+ if(!(window.claude&&window.claude.use)){sn("Saving on this device only (no store connection). Open the link in Safari while signed in to claude.ai, then re-add to Home Screen.");return;}
+ try{db=await window.claude.use("db");}catch(e){db=null;DIAG.lastErr=String(e&&e.code||e);}
+ DIAG.db=db?"granted":"null";diagRender();
+ if(!db){sn("Saving on this device only (store declined: not signed in). Open the link in Safari while signed in to claude.ai, then re-add to Home Screen.");return;}
+ docRef=db.doc("plan/log");dailyRef=db.doc("plan/daily");
+ dailyRef.onSnapshot(snap=>{if(dailySaving)return;if(snap.exists){const d=snap.data();if(d&&d.days&&typeof d.days==="object"){daily=d.days;dlSaveLocal();const ae=document.activeElement;if(!(ae&&ae.tagName==="INPUT"&&ae.closest("#v-today")))renderDay(curOff);}}else if(Object.keys(daily).length){dailyRef.set({days:daily}).catch(()=>{});}},()=>{});
+ let timer=setTimeout(()=>{sn("Store not reachable yet; showing what's saved on this device.");},10000);
+ docRef.onSnapshot(snap=>{
+  if(!snap.metadata.fromCache){clearTimeout(timer);sn("Synced to your account. Everything you type is saved automatically.");}
+  if(saving)return;
+  if(snap.exists){const d=snap.data();if(d&&Array.isArray(d.entries)){state={entries:d.entries,adj:typeof d.adj==="number"?d.adj:0};lsSave();renderAll();}}
+  else if(state.entries.length){docRef.set(state).catch(()=>{});}
+ },err=>{clearTimeout(timer);$("#storeNote").textContent="Store unavailable this visit; entries save on this device.";});
+}
+
+/* ---------- events ---------- */
+$("#ciForm").addEventListener("submit",async ev=>{
+ ev.preventDefault();
+ const e={date:$("#ciDate").value,weight:parseFloat($("#ciWeight").value),waist:parseFloat($("#ciWaist").value)||null,neck:parseFloat($("#ciNeck").value)||null,adh:parseInt($("#ciAdh").value,10),lifts:parseInt($("#ciLifts").value,10),str:$("#ciStr").value,energy:$("#ciEnergy").value};
+ if(!e.date||!(e.weight>100&&e.weight<400)){$("#saveStatus").textContent="Enter a date and a weight between 100 and 400 lb.";return;}
+ const entries=state.entries.filter(x=>x.date!==e.date).concat([e]).sort((a,b)=>a.date<b.date?-1:1);
+ const rows=analyze(entries);const d=decide(rows);
+ state.entries=entries;state.adj=Math.max(-3,Math.min(3,state.adj+d.delta));
+ const last=state.entries[state.entries.length-1];last.vtitle=d.title;last.vtext=d.text;last.vcls=d.cls;last.adjNote=d.delta===0?"no change":(d.delta>0?"+1 step":"−1 step")+" → level "+(state.adj>0?"+":"")+state.adj;
+ renderAll();await persist();
+ $("#ciForm").reset();$("#ciDate").value=addDays(last.date,7);
+});
+$("#undoBtn").addEventListener("click",async()=>{
+ if(!state.entries.length)return;
+ const last=state.entries.pop();
+ if(last.adjNote&&last.adjNote.startsWith("+1"))state.adj-=1;else if(last.adjNote&&last.adjNote.startsWith("−1"))state.adj+=1;
+ renderAll();await persist();
+});
+$("#daySeg").addEventListener("click",ev=>{const b=ev.target.closest("button");if(!b)return;[...$("#daySeg").children].forEach(x=>x.classList.toggle("on",x===b));renderSchedule(b.dataset.d);});
+$("#mealSeg").addEventListener("click",ev=>{const b=ev.target.closest("button");if(!b)return;[...$("#mealSeg").children].forEach(x=>x.classList.toggle("on",x===b));curDayType=b.dataset.t;renderMeals();});
+
+
+/* ---------- day-by-day ---------- */
+function ytLink(name){const q=encodeURIComponent(name.replace(/\(.*?\)/g,"").replace(/,.*$/,"").trim()+" form");return "https://www.youtube.com/results?search_query="+q;}
+const LIFT={
+ 1:{name:"Upper A",ex:[
+  ["Barbell bench press",["4 × 6","4 × 5","1 × 4 heavy + 3 × 6"],["DB bench press","Machine chest press","Smith bench"]],
+  ["Barbell row",["4 × 8","4 × 6","4 × 6"],["Chest-supported row","Seated cable row","Single-arm DB row"]],
+  ["Standing overhead press",["3 × 8","3 × 6","3 × 6"],["Seated DB shoulder press","Machine shoulder press","Landmine press"]],
+  ["Lat pulldown",["3 × 10","3 × 10","3 × 12"],["Assisted pull-up machine","Machine high row","Straight-arm pulldown"]],
+  ["Barbell or EZ-bar curl",["3 × 10","3 × 10","3 × 12"],["DB curl","Cable curl","Hammer curl"]]]},
+ 2:{name:"Lower A",ex:[
+  ["Leg press",["4 × 8","4 × 6","1 × 5 heavy + 3 × 8"],["Hack squat","Smith squat","Heavy goblet squat"]],
+  ["Romanian deadlift (barbell or DBs)",["3 × 8","3 × 8","3 × 8"],["Trap-bar RDL","Single-leg DB RDL","Cable pull-through"]],
+  ["Leg extension",["3 × 12","3 × 12","3 × 15"],["Sissy squat","Split squat","Step-ups"]],
+  ["Lying or seated hamstring curl",["3 × 12","3 × 12","3 × 15"],["Nordic curl (band)","Stability-ball curl","Cable pull-through"]],
+  ["Standing calf raise",["3 × 15","3 × 15","4 × 15"],["Seated calf raise","Leg-press calf raise","Single-leg calf raise"]]]},
+ 3:{name:"Upper B",ex:[
+  ["Incline dumbbell press",["4 × 8","4 × 6","4 × 6"],["Incline machine press","Incline Smith press","Incline barbell press"]],
+  ["Seated cable row",["4 × 10","4 × 8","4 × 8"],["Machine row","Chest-supported DB row","T-bar row"]],
+  ["Seated DB shoulder press",["3 × 10","3 × 8","3 × 8"],["Machine shoulder press","Arnold press","Standing DB press"]],
+  ["Neutral-grip pulldown",["3 × 10","3 × 10","3 × 12"],["Assisted pull-up machine","Single-arm cable pulldown","Machine high row"]],
+  ["Rope pushdown + lateral raise",["3 × 12","3 × 12","3 × 15"],["Overhead cable extension + machine lateral","Dips (bench) + DB lateral","Skull crusher + cable lateral"]]]},
+ 4:{name:"Lower B",ex:[
+  ["Hack squat or leg press (feet high)",["4 × 8","4 × 6","1 × 5 heavy + 3 × 8"],["Leg press","Smith squat","Heavy goblet squat"]],
+  ["Bulgarian split squat (DBs)",["3 × 8/leg","3 × 8","3 × 10"],["DB walking lunge","Step-ups","Split squat (Smith)"]],
+  ["Weighted back extension (45°)",["3 × 10","3 × 10","3 × 12"],["Reverse hyper","Good morning, light","Sumo DB RDL"]],
+  ["Seated or lying hamstring curl",["3 × 12","3 × 12","3 × 15"],["Nordic curl (band)","Stability-ball curl","Single-leg curl"]],
+  ["Decline sit-up (hold a plate)",["3 × 12","3 × 12","3 × 15"],["Ab wheel rollout","Machine crunch","Lying leg raise"]]]},
+ 5:{name:"Full body",ex:[
+  ["Leg press (lighter, fast)",["3 × 10","3 × 10","3 × 12"],["Goblet squat","Hack squat","Smith squat"]],
+  ["Dumbbell bench press",["3 × 10","3 × 8","3 × 8"],["Machine chest press","Push-ups","Barbell bench, light"]],
+  ["Chest-supported or machine row",["3 × 10","3 × 10","3 × 12"],["Seated cable row","Lat pulldown","Single-arm DB row"]],
+  ["Lateral raise + face pulls",["3 × 15","3 × 15","3 × 20"],["Rear-delt fly + lateral machine","Band pull-aparts","Cable laterals"]],
+  ["Farmer carry 40 m + plank 45 s",["4 rounds","5 rounds","6 rounds"],["Suitcase carry + dead bug","Trap-bar carry + plank","Heavy DB hold + side plank"]]]}
+};
+function runFor(wk,dow){ // dow 2=Tue 4=Thu 6=Sat
+ const W=wk;
+ const t=(a,b,c)=>({2:a,4:b,6:c})[dow];
+ if(W<=3)return t("Walk 5 · jog 1 / walk 2 × 8 · walk 5 (34 min)",null,"Walk 5 · jog 1 / walk 2 × 10 · walk 5 (40 min, ~1.8 mi)");
+ if(W<=6)return t("Walk 5 · jog 2 / walk 2 × 7 · walk 5 (38 min)",W===6?"Deload: walk 30 min":null,"Walk 5 · jog 2 / walk 1 × 10 · walk 5 (40 min, ~2.1 mi)");
+ if(W<=9)return t("Jog 3 / walk 1 × 6 (24 min + 10 walk)","Jog 3 / walk 1 × 5 (20 min + 10 walk)","Jog 4 / walk 1 × 6 (30 min + 10 walk, ~2.4 mi)");
+ if(W<=12)return t("Jog 5 / walk 1 × 5 (30 min + 10 walk)",W===12?"Deload: walk 30 min":"Jog 5 / walk 1 × 4 (24 min + 10 walk)","Jog 8 / walk 1 × 4 (36 min + 10 walk, ~2.9 mi)");
+ if(W<=15)return t("Run 15 / walk 2 × 2 (34 min)","Run 20 min continuous","Run 25–28 min continuous (~3.1 mi, 5K)");
+ if(W<=17)return t("Run 25 min continuous",W===17?"Deload: walk 30 min":"Run 20 min easy","Run 35–40 min continuous (~3.6–4 mi)");
+ return t("Run 25–30 min","Run 20–25 min","Long run, +0.5 mi on last week");
+}
+const DOWN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const WEEK1_END=4; // offsets 0-4 are the first short week (Wed–Sun)
+function dayPlan(off){
+ const iso=addDays(START.date,off);const d=new Date(iso+"T12:00:00");const dow=d.getDay();
+ const dayN=off+1;
+ const wk=Math.floor((off+3)/7)+1; // training week, Mon-based; Thu Nov 5 = week 1
+ const phase=dayN<=Math.round(DUR*0.375)?1:dayN<=Math.round(DUR*0.75)?2:3;
+ const type=(dow===1||dow===4)?"H":dow===0?"L":"M";
+ const deload=[6,12,17].includes(wk);
+ const md=iso.slice(5);const holiday=(d.getMonth()===10&&dow===4&&d.getDate()>=22&&d.getDate()<=28)?"Thanksgiving":md==="12-25"?"Christmas":md==="01-01"?"New Year":null;
+ const refeed=DUR>=90&&dayN===Math.round(DUR/2);
+ const a=state.adj;
+ const kcal=Math.round(dayTotals(type,a).kcal);
+ const tt=dayTotals(type,a);
+ // training
+ let train=null,run=null;
+ if(dow>=1&&dow<=5){const L=LIFT[dow];train={name:L.name,rows:L.ex.map(e=>{let nm=e[0],alts=e[2];if(EQUIP!=="full"&&/barbell|EZ-bar|hack|cable|machine|lat pulldown|leg press|extension|curl machine|row/i.test(nm)){const pick=alts.find(a=>EQUIP==="home"?/DB|dumbbell|band|bodyweight|push|goblet|lunge|step|split|plank|dead bug|Nordic|ball/i.test(a):/machine|DB|dumbbell|cable|Smith|hack|leg press|goblet|lunge|split|step|band/i.test(a));if(pick){alts=[nm].concat(alts.filter(a=>a!==pick));nm=pick;}}return[nm,e[1][phase-1],alts];})};}
+ if(RUNNING&&(dow===2||dow===6||(dow===4&&wk>=6)))run=runFor(wk,dow);
+ if(!RUNNING&&(dow===2||dow===6))run=dow===6?"45–60 min brisk walk, hills if you have them":"30 min brisk walk";
+ if(dow===4&&wk<6&&!run)run=null;
+ // tasks
+ const tasks=[];
+ if(dayN===1)tasks.push("Day 1. Weigh in after the bathroom, before any drink, and enter it in the morning log. Photos today: front, side, back, same spot and light every 30 days.");
+ if(off<=2)tasks.push("Shop for the first two weeks from the Groceries tab before your first Sunday prep.");
+ if(dow===0)tasks.push("07:00 weigh-in + waist + neck in the morning log, then open the Check-in tab: it's prefilled from this week's logs and recalculates your macros.");
+ if(dow===0)tasks.push("16:00 big prep (~90 min): 8 chicken portions, beef-thigh batch, rice, potatoes, oat bags. Pull Monday's gym bag.");
+ if(dow===3&&dayN>1)tasks.push("19:15 re-prep (25 min): chicken, beef-thigh, rice and potatoes for Thu–Sat. Move Saturday's steak to the fridge.");
+ if(dow===6&&(wk%2===0))tasks.push("Top-up shopping: Kirkland yogurt 2 × 32 oz ×5, cottage cheese ×4, frozen veg ~13 lb, salad ×2, onions, garlic, bananas.");
+ if(dow===6&&d.getDate()<=7&&off>0)tasks.push("First Saturday of the month: Costco run (chicken breast, thigh, ground beef, steaks, yogurt) + Walmart (veg, potatoes, oil, PB, eggs, pantry).");
+ if(deload)tasks.push("DELOAD WEEK: same exercises at 60% of last week's weight, 2 sets each. Runs stay easy. This is planned, not optional.");
+ if(refeed)tasks.push("Refeed day: double every oats, rice and potato portion today (≈2,600 kcal). Protein and fat unchanged. Back to plan tomorrow.");
+ if(holiday==="Thanksgiving"||holiday==="Christmas")tasks.push(holiday+": treat today as a high-carb day. Eat the meal inside 11:00–19:00 if you can, don't log it as a failure, resume tomorrow. Swap the nearest high day to moderate.");
+ if(dayN===14)tasks.push("Two weeks in: the water weight is gone. From here, every pound is real. The weekly adjustment starts judging at the next check-in.");
+ if(dayN===Math.round(DUR*0.375))tasks.push("End of Phase 1. Photos, waist, weight. Phase 2 starts tomorrow: main lifts get heavier, running goes to 3 days.");
+ if(dayN===Math.round(DUR*0.75))tasks.push("End of Phase 2. Phase 3 adds a heavy top set on the main lifts.");
+ if(dayN===DUR)tasks.push(`Day ${DUR}: the end of the plan. Photos, measurements. Hold calories here for 2 weeks (maintenance break) before deciding what's next.`);
+ if(dow===4&&wk<7)tasks.push("No run tonight: Thursday runs start week 7. Evening is free; 20-min walk if you want it.");
+ if(dow===6&&wk<=6)tasks.push("Long run at 08:00 fasted: electrolyte drink + coffee first, 5-min walk to start. Sentence-pace or slower.");
+ // meals: week-1 canned chicken note
+ CUR_T=type;const meals=DAYS[type].meals.map(m=>{const x=macros(m.items,a);return{t:m.t,name:m.name,items:x.rows.map(r=>amt(r)+" "+r.name.replace(/,.*$/,"").replace(" (1 scoop = 30 g)","").toLowerCase()),p:Math.round(x.p),c:Math.round(x.c),f:Math.round(x.f),kcal:Math.round(x.kcal)};});
+
+ if(dow===0)meals[2].note="Any lean steak works (sirloin, flank, strip with the cap trimmed). Fattier cuts: skip the oil that night.";
+
+ // classes: Mon/Wed 10:10–11:25, Tue/Thu 14:40–15:55. Shift meals around them.
+ const cls=BLOCKS.find(b=>b.days.includes(dow))||null;
+ const tmin=t=>{const[h,m]=t.split(":").map(Number);return h*60+m;};const tstr=m=>String(Math.floor(m/60)).padStart(2,"0")+":"+String(m%60).padStart(2,"0");
+ if(cls){const bs=tmin(cls.t),be=tmin(cls.e);
+  const m1=tmin(meals[0].t);if(m1>=bs-20&&m1<=be)meals[0].t=tstr(be+5);
+  const m2=tmin(meals[1].t);if(m2>=bs-20&&m2<=be)meals[1].t=tstr(Math.max(tmin(meals[0].t)+150,bs-55));
+  const m3=tmin(meals[2].t);if(m3>=bs-20&&m3<=be)meals[2].t=tstr(be+5);}
+ // timeline
+ const tl=[];
+ const drink="500 ml water with ½ tsp salt + ¼ tsp lite salt (or an electrolyte powder plus the salt). Coffee if you want it.";
+ if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);}
+ else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);tl.push(["09:00","45–60 min easy walk. Only rest day: nothing harder."]);}
+ else{tl.push(["05:15","Wake. "+drink]);tl.push(["06:00",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
+  tl.push(["07:45","Focus block 1 (fasted, sharpest hours). Second coffee by 09:00, none after noon."]);
+  if(cls)tl.push([cls.t,"Fixed block "+cls.t+"–"+cls.e+"."]);
+  tl.push(["15:30","Focus block 2. Walk 10 min at the end of it."]);}
+ tl.push([meals[0].t,"Meal 1 · "+meals[0].name.split("· ")[1]+" + 1 tsp creatine + vitamin D3. Window opens."]);
+ tl.push([meals[1].t,"Meal 2 · "+meals[1].name.split("· ")[1]+(run&&dow!==6?". Eat 60–90 min before any long study block.":"")]);
+ if(dow===0)tl.push(["16:00","Meal prep, ~90 min."]);
+ if(run&&(dow===2||dow===4)){tl.push(["17:45","Change, 5-min walk."]);tl.push(["18:00",run]);tl.push(["18:40","Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push(["18:55","Meal 4 · cottage cheese. Window closes 19:00."]);}
+ else{tl.push([meals[2].t,"Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push([meals[3].t,"Meal 4 · cottage cheese. Window closes 19:00."]);}
+ if(dow===3&&dayN>1)tl.push(["19:15","Re-prep, 25 min."]);
+ if(HABIT)tl.push([dow===0?"10:30":dow===6?"09:30":"10:00",`Push-ups + crunches, set 1 of 4 (${Math.ceil(HABIT/4)} each). Sets 2–4 between meals; done by 18:00.`]);
+ if(dow>=1&&dow<=5)tl.push(["19:30","Wind down 19:30–20:30. Nothing hard."]);
+ if(dow!==6)tl.push(["21:00","Magnesium if using. Screens down 20:30."]);
+ tl.push([dow===6?"22:00":"21:30","Lights out."]);
+ tl.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
+ return{iso,d,dow,dayN,wk,phase,type,kcal,tt,train,run,tasks,meals,tl,deload,holiday,cls};
+}
+let curOff=0;
+function renderDay(off){
+ off=Math.max(0,Math.min(DUR-1,off));curOff=off;
+ const P=dayPlan(off);const T=DAYS[P.type];
+ $("#dPick").value=P.iso;
+ let h=`<div class="dayhead"><h2>${DOWN[P.dow]} ${P.d.toLocaleDateString(undefined,{month:"long",day:"numeric"})}</h2><span class="pill ${T.cls}">${T.label}</span>${P.deload?'<span class="pill rest">Deload</span>':''}${P.holiday?'<span class="pill hi">'+P.holiday+'</span>':''}</div>
+ <p class="daymeta">Day ${P.dayN} of ${DUR} · Week ${P.wk} · Phase ${P.phase} · ${P.kcal} kcal · P ${Math.round(P.tt.p)} g · C ${Math.round(P.tt.c)} g · F ${Math.round(P.tt.f)} g${state.adj?` · macro level ${state.adj>0?"+":""}${state.adj}`:""}</p>`;
+ if(P.tasks.length)h+=`<div class="block alert"><h3>Today's tasks</h3><ul>${P.tasks.map(t=>`<li>${t}</li>`).join("")}</ul></div>`;
+ h+=`<div class="block"><h3>The clock</h3><ul class="timeline">${P.tl.map(([t,x])=>`<li><span class="t">${t}</span>${x}</li>`).join("")}</ul></div>`;
+ const E=daily[P.iso]||{};
+ if(P.train){h+=`<div class="block"><h3>06:00 · ${P.train.name}${P.deload?" (deload: 60%, 2 sets)":""}</h3><div id="liftLog">`;
+  P.train.rows.forEach((r,i)=>{const last=lastLift(P.iso,P.dow,i);const v=(E.lifts&&E.lifts[i])||"";
+   h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off">${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}</div>`;});
+  h+=`</div><div class="actions" style="margin-top:8px"><button type="button" class="btn" id="saveLift">Save workout</button><span class="status" id="liftStatus"></span></div><p class="small muted">Warm-up: 3 min incline walk, bar × 10, 50% × 5, 70% × 3. Rest 2–3 min on the first lift, 60–90 s after. Beat last session by a rep or 5 lb; if you can't two sessions running, drop 10%.</p></div>`;}
+ if(P.run)h+=`<div class="block"><h3>${P.dow===6?"08:00":"18:00"} · Run</h3><p>${P.run}</p><div class="checks"><label>Minutes <input type="number" id="runMin" step="1" inputmode="numeric" style="width:5em" value="${E.runT||""}"></label><label>Miles <input type="number" id="runMi" step="0.01" inputmode="decimal" style="width:5em" value="${E.runD||""}"></label><label>Avg HR <input type="number" id="runHr" step="1" inputmode="numeric" style="width:5em" value="${E.runHr||""}"></label><button type="button" class="btn ghost" id="saveRun">Save run</button><span class="status" id="runStatus"></span></div>${lastRun(P.iso)?`<p class="small muted">Last run: ${lastRun(P.iso)}</p>`:""}<p class="small muted">Sentence pace. Sharp or joint pain = stop and walk. Repeat the week if it felt hard.</p></div>`;
+ h+=`<div class="block"><h3>Done today</h3><div class="checks" id="doneChecks">
+  <label><input type="checkbox" id="ck_m1" ${E.m1?"checked":""}> Meal 1</label><label><input type="checkbox" id="ck_m2" ${E.m2?"checked":""}> Meal 2</label><label><input type="checkbox" id="ck_m3" ${E.m3?"checked":""}> Meal 3</label><label><input type="checkbox" id="ck_m4" ${E.m4?"checked":""}> Meal 4</label>
+  <label><input type="checkbox" id="ck_fast" ${E.fast?"checked":""}> Fast held (19:00–11:00)</label>
+  ${HABIT?`<label><input type="checkbox" id="ck_pu" ${E.pu?"checked":""}> ${HABIT} push-ups</label><label><input type="checkbox" id="ck_cr" ${E.cr?"checked":""}> ${HABIT} crunches</label>`:""}
+  ${P.train?`<label><input type="checkbox" id="ck_lift" ${E.lift?"checked":""}> Lifted</label>`:""}${P.run?`<label><input type="checkbox" id="ck_run" ${E.run?"checked":""}> Ran</label>`:""}
+  ${P.dow===0?`<label><input type="checkbox" id="ck_prep" ${E.prep?"checked":""}> Prepped</label>`:""}
+ </div><div class="actions"><button type="button" class="btn ghost" id="roughBtn">Rough day?</button><span class="status" id="ckStatus"></span></div><div id="roughBox" hidden class="note"></div></div>`;
+ if(P.dow===0)h+=weeklyReviewHTML(P.iso);
+ h+=`<div class="block"><h3>Meals (your portions${HOUSE>1?"; multiply shopping, not plates":""})</h3>`;
+ for(const m of P.meals){h+=`<div class="mealrow"><span class="t">${m.t}</span><div><b>${m.name.split("· ")[1]}</b><br>${m.items.join(" · ")}<div class="m">${m.p} g protein · ${m.c} g carbs · ${m.f} g fat · ${m.kcal} kcal${m.note?"<br>"+m.note:""}</div></div></div>`;}
+ h+=`<div class="mealrow" style="background:var(--bg);margin:6px -12px -10px;padding:10px 12px;border-radius:0 0 6px 6px"><span class="t">Day</span><div><b>Expected by end of day</b><div class="m" style="color:var(--ink);font-family:var(--mono)">${Math.round(P.tt.p)} g protein · ${Math.round(P.tt.c)} g carbs · ${Math.round(P.tt.f)} g fat · ${P.kcal} kcal</div><div class="m">${T.label} day target; the weekly average is ${Math.round(weekAvg(state.adj))} kcal and that is what drives the loss.</div></div></div></div>`;
+ $("#dayView").innerHTML=h;
+ dlFill(P.iso);dlSummary(P.iso);wireDay(P.iso);
+}
+function todayOff(){const t=new Date();t.setHours(12,0,0,0);return Math.round((t-new Date(START.date+"T12:00:00"))/86400000);}
+$("#dPrev").addEventListener("click",()=>renderDay(curOff-1));
+$("#dNext").addEventListener("click",()=>renderDay(curOff+1));
+$("#dToday").addEventListener("click",()=>renderDay(todayOff()));
+$("#dPick").addEventListener("change",()=>{const v=$("#dPick").value;if(!v)return;const o=Math.round((new Date(v+"T12:00:00")-new Date(START.date+"T12:00:00"))/86400000);renderDay(o);});
+
+
+
+/* ---------- diagnostics ---------- */
+const DIAG={storage:"?",bridge:"?",db:"?",lastWrite:"none yet",lastErr:""};
+function diagRender(){const el=$("#diag");if(!el)return;el.textContent=`storage: ${DIAG.storage} · bridge: ${DIAG.bridge} · store: ${DIAG.db} · last save: ${DIAG.lastWrite}${DIAG.lastErr?" · error: "+DIAG.lastErr:""}`;}
+try{localStorage.setItem("__t","1");localStorage.removeItem("__t");DIAG.storage="ok";}catch(e){DIAG.storage="blocked";}
+diagRender();
+/* ---------- daily log ---------- */
+let daily={};          // iso -> {w,bf,smm,water,visc,bmr,waist,sleep,note}
+let dailyRef=null,dailySaving=false;
+const LSD="stockbuild-daily-v1";
+function dlLoadLocal(){try{const o=JSON.parse(localStorage.getItem(LSD)||"{}");if(o&&typeof o==="object")daily=o;}catch(e){}}
+function dlSaveLocal(){try{localStorage.setItem(LSD,JSON.stringify(daily));}catch(e){DIAG.storage="blocked";diagRender();}}
+function dlFill(iso){const e=daily[iso]||{};const f=(id,v)=>{$("#"+id).value=(v===undefined||v===null)?"":v;};
+ f("dlWeight",e.w);f("dlBmi",e.bmi);f("dlBf",e.bf);f("dlFatLb",e.fatLb);f("dlSub",e.sub);f("dlVisc",e.visc);f("dlMusPct",e.musPct);f("dlMus",e.mus);f("dlSmmPct",e.smmPct);f("dlSmm",e.smm);f("dlBonePct",e.bonePct);f("dlBone",e.bone);f("dlWater",e.water);f("dlBmr",e.bmr);f("dlWaist",e.waist);f("dlSleep",e.sleep);f("dlNote",e.note);$("#dlStatus").textContent=e.w?"Logged.":"";}
+function dlDays(){return Object.keys(daily).filter(k=>daily[k]&&daily[k].w).sort();}
+function dlAvg(upToIso,n){const ks=dlDays().filter(k=>k<=upToIso).slice(-n);if(!ks.length)return null;const a=f=>{const v=ks.map(k=>daily[k][f]).filter(x=>typeof x==="number");return v.length?v.reduce((p,c)=>p+c,0)/v.length:null;};return{n:ks.length,w:a("w"),bf:a("bf"),smm:a("smm"),waist:a("waist"),fatLb:a("fatLb"),visc:a("visc"),mus:a("mus")};}
+function dlSummary(iso){
+ const ks=dlDays();const box=$("#dlSummary");
+ if(!ks.length){box.innerHTML="";return;}
+ const cur=dlAvg(iso,7);const prevIso=addDays(iso,-7);const prev=dlAvg(prevIso,7);
+ const first=daily[ks[0]];const last=daily[ks[ks.length-1]];
+ let h=`<div class="tiles">`;
+ h+=`<div class="tile"><div class="k">7-day avg weight</div><div class="v">${cur&&cur.w?r1(cur.w):"—"}</div><div class="d">${prev&&prev.w&&cur&&cur.w?(cur.w-prev.w>0?"+":"")+r1(cur.w-prev.w)+" lb vs prior week":"needs a prior week"}</div></div>`;
+ h+=`<div class="tile"><div class="k">Since day 1</div><div class="v">${first.w&&last.w?(last.w-first.w>0?"+":"")+r1(last.w-first.w):"—"} lb</div><div class="d">${ks[0]===START.date?"":"from first log "+fmtDate(ks[0])}</div></div>`;
+ if(cur&&cur.bf)h+=`<div class="tile"><div class="k">7-day avg body fat</div><div class="v">${r1(cur.bf)}%</div><div class="d">${first.bf?"started "+r1(first.bf)+"%":""}</div></div>`;
+ if(cur&&cur.fatLb)h+=`<div class="tile"><div class="k">7-day avg fat mass</div><div class="v">${r1(cur.fatLb)} lb</div><div class="d">${first.fatLb?(cur.fatLb-first.fatLb>0?"+":"")+r1(cur.fatLb-first.fatLb)+" lb since start":""}</div></div>`;
+ if(cur&&cur.smm)h+=`<div class="tile"><div class="k">7-day avg skeletal muscle</div><div class="v">${r1(cur.smm)} lb</div><div class="d">${first.smm?(cur.smm-first.smm>0?"+":"")+r1(cur.smm-first.smm)+" lb since start":""}</div></div>`;
+ if(cur&&cur.visc)h+=`<div class="tile"><div class="k">7-day avg visceral fat</div><div class="v">${r1(cur.visc)}</div><div class="d">${first.visc?"started "+first.visc+" · target <12":""}</div></div>`;
+ h+=`</div><p class="small muted">Smart-scale body fat swings 2–3 points with hydration; trust the 7-day average and the waist tape over any single reading. A falling 7-day muscle number for two straight weeks is a signal to add carbs, same as a strength drop.</p>`;
+ box.innerHTML=h;
+}
+async function dlPersist(){
+ dlSaveLocal();const st=$("#dlStatus");
+ const now=new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});
+ if(db&&dailyRef){dailySaving=true;st.textContent="Saving…";try{await dailyRef.set({days:daily});DIAG.lastWrite="synced "+now;DIAG.lastErr="";diagRender();st.textContent="Synced "+now+".";const e=$("#syncNote");if(e)e.textContent="Synced to your account at "+now+". Everything you type is saved automatically.";}catch(e){DIAG.lastWrite="failed "+now;DIAG.lastErr=String(e&&e.code||e);diagRender();st.textContent="On this device only; store said: "+(e&&e.code||"error")+".";const n=$("#syncNote");if(n)n.textContent="Store rejected the save ("+(e&&e.code||"error")+"). Entries are kept on this device.";}dailySaving=false;}
+ else {DIAG.lastWrite="device only "+now;diagRender();st.textContent="Saved on this device "+now+".";}
+}
+$("#dlForm").addEventListener("submit",async ev=>{ev.preventDefault();
+ const iso=$("#dPick").value;const num=id=>{const v=parseFloat($("#"+id).value);return isNaN(v)?null:v;};
+ const prev=daily[iso]||{};const e={...prev,w:num("dlWeight"),bmi:num("dlBmi"),bf:num("dlBf"),fatLb:num("dlFatLb"),sub:num("dlSub"),visc:num("dlVisc"),musPct:num("dlMusPct"),mus:num("dlMus"),smmPct:num("dlSmmPct"),smm:num("dlSmm"),bonePct:num("dlBonePct"),bone:num("dlBone"),water:num("dlWater"),bmr:num("dlBmr"),waist:num("dlWaist"),sleep:num("dlSleep"),note:$("#dlNote").value.trim()||null};
+ if(!(e.w>100&&e.w<400)){$("#dlStatus").textContent="Weight between 100 and 400 lb.";return;}
+ Object.keys(e).forEach(k=>{if(e[k]===null)delete e[k];});daily[iso]=e;dlSummary(iso);await dlPersist();});
+$("#dlClear").addEventListener("click",async()=>{const iso=$("#dPick").value;delete daily[iso];dlFill(iso);dlSummary(iso);await dlPersist();});
+
+/* ---------- logs, review, estimate ---------- */
+function lastLift(iso,dow,i){const ks=Object.keys(daily).filter(k=>k<iso).sort().reverse();for(const k of ks){const e=daily[k];if(e&&e.lifts&&e.lifts[i]&&new Date(k+"T12:00:00").getDay()===dow)return{v:e.lifts[i],iso:k};}return null;}
+function lastRun(iso){const ks=Object.keys(daily).filter(k=>k<iso&&daily[k]&&daily[k].runT).sort();if(!ks.length)return null;const e=daily[ks[ks.length-1]];return `${e.runT} min${e.runD?", "+e.runD+" mi ("+(e.runT/e.runD).toFixed(1)+" min/mi)":""}${e.runHr?", "+e.runHr+" bpm":""} on ${fmtDate(ks[ks.length-1])}`;}
+function topW(str){if(!str)return null;const m=str.match(/(\d+(?:\.\d+)?)\s*[x×]/i)||str.match(/(\d+(?:\.\d+)?)/);return m?parseFloat(m[1]):null;}
+function weekStats(endIso){ // 7 days ending endIso inclusive
+ const days=[];for(let i=6;i>=0;i--)days.push(addDays(endIso,-i));
+ let meals=0,mealsPossible=0,fasts=0,lifts=0,runs=0,logged=0;const strength=[];
+ for(const k of days){const e=daily[k];if(!e)continue;const any=e.m1||e.m2||e.m3||e.m4||e.lift||e.run||e.w;if(!any)continue;logged++;
+  mealsPossible+=4;meals+=["m1","m2","m3","m4"].filter(m=>e[m]).length;if(e.fast)fasts++;if(e.lift)lifts++;if(e.run)runs++;
+  const dow=new Date(k+"T12:00:00").getDay();if(e.lifts&&e.lifts[0]&&dow!==3){const prev=lastLift(k,dow,0);const a=topW(e.lifts[0]),b=prev?topW(prev.v):null;if(a!==null&&b!==null)strength.push(a>b?1:a<b?-1:0);}}
+ const cur=dlAvg(endIso,7),prev=dlAvg(addDays(endIso,-7),7);
+ const str=strength.length?(strength.reduce((p,c)=>p+c,0)>0?"up":strength.reduce((p,c)=>p+c,0)<0?"down":"same"):null;
+ return{logged,adh:mealsPossible?Math.round(100*meals/mealsPossible):null,fasts,lifts,runs,str,cur,prev,strengthN:strength.length};
+}
+function weeklyReviewHTML(iso){
+ const W=weekStats(iso);if(!W.logged)return `<div class="review"><b>Week in review</b><p>No daily logs yet this week. Tick meals and lifts on each day and this writes itself.</p></div>`;
+ const parts=[];
+ if(W.cur&&W.cur.w)parts.push(`7-day average weight ${r1(W.cur.w)} lb`+(W.prev&&W.prev.w?` (${W.cur.w-W.prev.w<=0?"":"+"}${r1(W.cur.w-W.prev.w)} lb vs last week, ${r1(-(W.cur.w-W.prev.w)/W.prev.w*100)}%)`:""));
+ if(W.adh!==null)parts.push(`meals on plan ${W.adh}%`);
+ parts.push(`${W.lifts} lift${W.lifts===1?"":"s"}, ${W.runs} run${W.runs===1?"":"s"}, fast held ${W.fasts}/${W.logged} days`);
+ if(W.str)parts.push(`first lift of the day ${W.str} vs last week (${W.strengthN} sessions compared)`);
+ if(W.cur&&W.cur.waist)parts.push(`waist ${r1(W.cur.waist)}"`);
+ let call="";
+ if(W.adh!==null&&W.adh<85)call="Adherence under 85%: the fix this week is the food, not the macros.";
+ else if(W.str==="down")call="Strength slipped: if it happens again next week the check-in adds starch.";
+ else if(W.cur&&W.prev&&W.cur.w&&W.prev.w){const pct=-(W.cur.w-W.prev.w)/W.prev.w*100;call=pct>1.5?"Losing faster than 1.5%/week; expect the check-in to add carbs.":pct<0.7?"Under 0.7%/week; if adherence was good the check-in trims starch.":"Inside the 0.7–1.3% band. Nothing to change.";}
+ const T=tdeeEstimate();
+ return `<div class="review"><b>Week in review</b><p>${parts.join("; ")}.</p>${call?`<p>${call}</p>`:""}${T?`<p class="small muted">Measured maintenance so far: ~${T.tdee} kcal/day over ${T.days} days (plan assumed ${MAINT}).</p>`:""}<p class="small muted">Open the Check-in tab now; it's prefilled from this.</p></div>`;
+}
+function tdeeEstimate(){
+ const ks=dlDays();if(ks.length<14)return null;const first=ks[0],last=ks[ks.length-1];
+ const days=Math.round((new Date(last+"T12:00:00")-new Date(first+"T12:00:00"))/86400000);if(days<14)return null;
+ const a0=dlAvg(addDays(first,6),7),a1=dlAvg(last,7);if(!a0||!a1||!a0.w||!a1.w)return null;
+ const dW=a1.w-a0.w;const span=Math.max(7,days-6);
+ const intake=weekAvg(state.adj);const tdee=Math.round(intake-(dW*3500/span));
+ return{tdee,days:span,dW:r1(dW)};
+}
+function wireDay(iso){
+ const P=dayPlan(curOff);
+ const sv=async(msg,id)=>{dlSummary(iso);await dlPersist();if(id)$("#"+id).textContent=msg;};
+ const ensure=()=>{if(!daily[iso])daily[iso]={};return daily[iso];};
+ const sl=$("#saveLift");if(sl)sl.addEventListener("click",async()=>{const e=ensure();e.lifts={};P.train.rows.forEach((r,i)=>{const v=$("#lift"+i).value.trim();if(v)e.lifts[i]=v;});e.lift=true;const c=$("#ck_lift");if(c)c.checked=true;await sv("Workout saved.","liftStatus");});
+ const sr=$("#saveRun");if(sr)sr.addEventListener("click",async()=>{const e=ensure();const n=id=>{const v=parseFloat($("#"+id).value);return isNaN(v)?null:v;};e.runT=n("runMin");e.runD=n("runMi");e.runHr=n("runHr");if(e.runT)e.run=true;const c=$("#ck_run");if(c)c.checked=true;await sv("Run saved.","runStatus");});
+ const dc=$("#doneChecks");if(dc)dc.addEventListener("change",async ev=>{const id=ev.target.id;if(!id||!id.startsWith("ck_"))return;const e=ensure();e[id.slice(3)]=ev.target.checked;await sv("Saved.","ckStatus");});
+ const rb=$("#roughBtn");if(rb)rb.addEventListener("click",()=>{const box=$("#roughBox");box.hidden=!box.hidden;if(!box.hidden)box.innerHTML=`<b>Rough day protocol.</b> Whatever happened, tomorrow is a normal day: same meals, same lift, no "making up" calories and no extra cardio. Missed the lift? Do it tomorrow in place of what's scheduled and skip the day you missed; don't double up. Ate off plan? Tick what you did eat, hold the 19:00 close tonight, and the two-week average absorbs it. Slept badly? Lift at 60% tomorrow, treat it as a bonus deload, and get to bed by 21:30. Two rough days in a row is the only version that matters; log it and the Sunday check-in will account for it.`;});
+}
+function renderLiftTable(){
+ const el=$("#liftTable");if(!el)return;let h=`<div class="tblwrap"><table class="lifttbl"><thead><tr><th>Day</th><th>Exercise</th><th class="n">Phase 1</th><th class="n">Phase 2</th><th class="n">Phase 3</th><th>Swaps</th></tr></thead><tbody>`;
+ const cls={1:"hi",2:"mod",3:"mod",4:"hi",5:"mod"};
+ for(const d of [1,2,3,4,5]){const L=LIFT[d];L.ex.forEach((e,i)=>{h+=`<tr>${i===0?`<td rowspan="${L.ex.length}"><b>${DOWN[d]}</b><br><span class="pill ${cls[d]}">${L.name}</span></td>`:""}<td><b>${e[0]}</b> <a class="watch" href="${ytLink(e[0])}" target="_blank" rel="noopener">Watch ↗</a></td><td class="n">${e[1][0]}</td><td class="n">${e[1][1]}</td><td class="n">${e[1][2]}</td><td class="alt">${e[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join("<br>")}</td></tr>`;});}
+ el.innerHTML=h+`</tbody></table></div>`;
+}
+
+/* ---------- autosave ---------- */
+let autoT=null;
+function autosave(fn,statusId){clearTimeout(autoT);autoT=setTimeout(async()=>{fn();dlSaveLocal();if(statusId)$("#"+statusId).textContent="Saving…";await dlPersist();if(statusId)$("#"+statusId).textContent=$("#dlStatus").textContent;},700);}
+function collectLog(iso){const num=id=>{const el=$("#"+id);if(!el)return null;const v=parseFloat(el.value);return isNaN(v)?null:v;};const prev=daily[iso]||{};
+ const e={...prev,w:num("dlWeight"),bmi:num("dlBmi"),bf:num("dlBf"),fatLb:num("dlFatLb"),sub:num("dlSub"),visc:num("dlVisc"),musPct:num("dlMusPct"),mus:num("dlMus"),smmPct:num("dlSmmPct"),smm:num("dlSmm"),bonePct:num("dlBonePct"),bone:num("dlBone"),water:num("dlWater"),bmr:num("dlBmr"),waist:num("dlWaist"),sleep:num("dlSleep"),note:($("#dlNote").value||"").trim()||null};
+ Object.keys(e).forEach(k=>{if(e[k]===null||e[k]===undefined)delete e[k];});daily[iso]=e;}
+document.addEventListener("input",ev=>{const t=ev.target;if(!(t instanceof HTMLInputElement))return;const iso=$("#dPick").value;if(!iso)return;
+ if(t.id&&t.id.startsWith("lift")&&t.closest("#liftLog")){autosave(()=>{const P=dayPlan(curOff);const e=daily[iso]||(daily[iso]={});e.lifts=e.lifts||{};P.train.rows.forEach((r,i)=>{const el=$("#lift"+i);if(!el)return;const v=el.value.trim();if(v)e.lifts[i]=v;else delete e.lifts[i];});if(Object.keys(e.lifts).length)e.lift=true;},"liftStatus");return;}
+ if(["runMin","runMi","runHr"].includes(t.id)){autosave(()=>{const e=daily[iso]||(daily[iso]={});const n=id=>{const v=parseFloat($("#"+id).value);return isNaN(v)?null:v;};e.runT=n("runMin");e.runD=n("runMi");e.runHr=n("runHr");if(e.runT)e.run=true;},"runStatus");return;}
+ if(t.closest("#dlForm")){const w=parseFloat($("#dlWeight").value);if(!(w>100&&w<400))return;autosave(()=>collectLog(iso),"dlStatus");return;}
+});
+
+$("#exportBtn").addEventListener("click",async()=>{
+ const lines=["date,weight,bmi,bf%,fat_lb,sub%,visceral,muscle%,muscle_lb,skel%,skel_lb,bone%,bone_lb,water%,bmr,waist,sleep,m1,m2,m3,m4,fast,lift,run,pushups,crunches,run_min,run_mi,run_hr,lifts,note"];
+ for(const k of Object.keys(daily).sort()){const e=daily[k];const b=x=>x?1:0;lines.push([k,e.w,e.bmi,e.bf,e.fatLb,e.sub,e.visc,e.musPct,e.mus,e.smmPct,e.smm,e.bonePct,e.bone,e.water,e.bmr,e.waist,e.sleep,b(e.m1),b(e.m2),b(e.m3),b(e.m4),b(e.fast),b(e.lift),b(e.run),b(e.pu),b(e.cr),e.runT,e.runD,e.runHr,e.lifts?JSON.stringify(e.lifts).replace(/,/g,";"):"",(e.note||"").replace(/,/g,";")].map(v=>v===undefined||v===null?"":v).join(","));}
+ lines.push("","checkins:");for(const c of state.entries)lines.push(JSON.stringify(c));
+ const txt=lines.join("\n");
+ try{await navigator.clipboard.writeText(txt);$("#exportStatus").textContent="Copied. Paste into Notes, Sheets or a message.";}
+ catch(e){const ta=document.createElement("textarea");ta.value=txt;ta.style.width="100%";ta.rows=8;$("#exportStatus").after(ta);ta.select();$("#exportStatus").textContent="Select-all and copy from the box.";}
+});
+
+/* ---------- backup / restore ---------- */
+$("#bkExport").addEventListener("click",()=>{const data={exported:new Date().toISOString(),daily,state};const blob=new Blob([JSON.stringify(data,null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="cut-plan-log-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);$("#bkStatus").textContent="Backup file created; save it to Files or iCloud.";});
+$("#bkImport").addEventListener("change",ev=>{const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(rd.result);if(d.daily&&typeof d.daily==="object"){for(const k of Object.keys(d.daily)){daily[k]=Object.assign({},daily[k]||{},d.daily[k]);}}if(d.state&&Array.isArray(d.state.entries)){state=d.state;}dlSaveLocal();lsSave();renderAll();$("#bkStatus").textContent="Restored "+Object.keys(d.daily||{}).length+" days.";}catch(e){$("#bkStatus").textContent="That file isn't a plan backup.";}};rd.readAsText(f);});
+if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
+
+function renderGroceries(){
+ const el=$("#grocTable");if(!el)return;
+ const weekly={};const counts={H:2,M:4,L:1};
+ for(const t of ["H","M","L"]){CUR_T=t;for(const m of DAYS[t].meals){const x=macros(m.items,state.adj);for(const r of x.rows){weekly[r.key]=(weekly[r.key]||0)+r.g*counts[t];}}}
+ const unit={gy:["oz",1/28.35],cc:["oz",1/28.35],oats:["oz",1/28.35],rice:["oz dry",1/28.35],pb:["oz",1/28.35],oil:["fl oz",1/28.35],veg:["lb",1/453.6],chx:["lb",1/453.6],thigh:["lb",1/453.6],beef:["lb",1/453.6],sir:["lb",1/453.6],pot:["lb",1/453.6],banana:["each",1/118],egg:["eggs",1/50],salad:["servings",1/250]};
+ const order=["chx","thigh","beef","sir","egg","gy","cc","oats","rice","pot","veg","banana","pb","oil","salad"];
+ let h=`<div class="tblwrap"><table><thead><tr><th>Ingredient</th><th class="n">Per week</th><th class="n">Two weeks</th><th class="n">Month</th><th>Buy</th></tr></thead><tbody>`;
+ const buy={chx:"bulk fresh family pack, freeze in portions",thigh:"bulk, freeze",beef:"bulk 88/12 or 90/10, freeze flat",sir:"family pack, freeze; any lean cut",egg:"",gy:"large tubs, 2–3 week fridge life",cc:"",oats:"large box",rice:"20 lb bag",pot:"10 lb bags",veg:"frozen single-vegetable bags",banana:"",pb:"large jar",oil:"large bottle",salad:"greens, cucumber, tomato for Sundays"};
+ for(const k of order){if(!weekly[k])continue;const [u,f]=unit[k];const w=weekly[k]*f*HOUSE;const fmt=v=>u==="each"||u==="eggs"?Math.ceil(v):(v>=10?Math.round(v):Math.round(v*10)/10);h+=`<tr><td>${F[k].n.replace(/,.*$/,"")}</td><td class="n">${fmt(w)} ${u}</td><td class="n">${fmt(w*2)} ${u}</td><td class="n">${fmt(w*4.3)} ${u}</td><td>${buy[k]}</td></tr>`;}
+ el.innerHTML=h+`</tbody></table></div>`;
+}
+
+/* ---------- setup ---------- */
+function parseDays(str){const map={sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};return (str||"").toLowerCase().split(/[ ,/]+/).map(x=>map[x.slice(0,3)]).filter(x=>x!==undefined);}
+function parseBlock(d,t){const days=parseDays(d);const m=(t||"").match(/(\d{1,2}:\d{2})\s*[-–]\s*(\d{1,2}:\d{2})/);if(!days.length||!m)return null;const pad=x=>x.length===4?"0"+x:x;return{days,t:pad(m[1]),e:pad(m[2])};}
+function showSetup(on){$("#setup").hidden=!on;$("#tabs").hidden=on;document.querySelectorAll("section.view").forEach(v=>{if(on)v.classList.remove("on");});if(!on)route();}
+function fillSetup(){if(!PROF)return;const f=(id,v)=>{$("#"+id).value=v===undefined||v===null?"":v;};f("suStart",PROF.start);f("suDays",PROF.days);f("suSex",PROF.sex);f("suAge",PROF.age);f("suHeight",PROF.height);f("suWeight",PROF.weight);f("suBf",PROF.bf||"");f("suPace",PROF.pace);f("suEquip",PROF.equip);f("suRun",PROF.run);f("suHabit",PROF.habit);f("suHouse",PROF.house);
+ const b=PROF.blocks||[];const dn=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];if(b[0]){f("suB1d",b[0].days.map(x=>dn[x]).join(","));f("suB1t",b[0].t+"-"+b[0].e);}if(b[1]){f("suB2d",b[1].days.map(x=>dn[x]).join(","));f("suB2t",b[1].t+"-"+b[1].e);}}
+$("#setupForm").addEventListener("submit",ev=>{ev.preventDefault();
+ const v=id=>$("#"+id).value;const n=id=>{const x=parseFloat(v(id));return isNaN(x)?null:x;};
+ const p={start:v("suStart"),days:parseInt(v("suDays"),10),sex:v("suSex"),age:n("suAge"),height:n("suHeight"),weight:n("suWeight"),bf:n("suBf"),pace:v("suPace"),equip:v("suEquip"),run:v("suRun"),habit:v("suHabit"),house:v("suHouse"),blocks:[parseBlock(v("suB1d"),v("suB1t")),parseBlock(v("suB2d"),v("suB2t"))].filter(Boolean)};
+ if(!p.start||!p.age||!p.height||!p.weight){$("#suStatus").textContent="Start date, age, height and weight are required.";return;}
+ PROF=p;try{localStorage.setItem(PK,JSON.stringify(p));}catch(e){}
+ applyProfile();curOff=Math.max(0,Math.min(DUR-1,todayOff()));renderLiftTable();renderAll();showSetup(false);location.hash="#today";});
+$("#editProfile").addEventListener("click",()=>{fillSetup();$("#suCancel").hidden=false;showSetup(true);window.scrollTo(0,0);});
+$("#suCancel").addEventListener("click",()=>showSetup(false));
+/* tabs via hash */
+const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
+function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
+ VIEWS.forEach(v=>{document.getElementById("v-"+v).classList.toggle("on",v===h);});
+ [...document.querySelectorAll("#tabs a")].forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+h));
+ try{document.querySelector("#tabs a.on").scrollIntoView({block:"nearest",inline:"nearest"});}catch(e){}}
+window.addEventListener("hashchange",route);
+
+/* ---------- boot ---------- */
+curOff=Math.max(0,Math.min(DUR-1,todayOff()));
+renderSchedule("lift");
+const nextSun=(()=>{const d=new Date();const day=d.getDay();const add=(7-day)%7;d.setDate(d.getDate()+(add===0?0:add));return d.toISOString().slice(0,10);})();
+$("#ciDate").value=nextSun;
+function ciPrefill(){const iso=$("#ciDate").value;if(!iso)return;const a=dlAvg(iso,7);if(a&&a.w&&!$("#ciWeight").value)$("#ciWeight").value=r1(a.w);if(a&&a.waist&&!$("#ciWaist").value)$("#ciWaist").value=r1(a.waist);const W=weekStats(iso);if(W.adh!==null)$("#ciAdh").value=W.adh>=97?"100":W.adh>=85?"90":W.adh>=70?"75":"50";if(W.logged)$("#ciLifts").value=String(Math.min(5,Math.max(2,W.lifts)));if(W.str)$("#ciStr").value=W.str;$("#ciReview").innerHTML=weeklyReviewHTML(iso);}
+$("#ciDate").addEventListener("change",ciPrefill);
+document.querySelector('a[href="#checkin"]').addEventListener("click",()=>setTimeout(ciPrefill,0));
+renderLiftTable();renderAll();if(PROF){showSetup(false);route();}else{showSetup(true);$("#suStart").value=new Date().toISOString().slice(0,10);}initStore();
+})();
+</script>
+
+</body></html>
+</body>
+</html>
