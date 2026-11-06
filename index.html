@@ -801,7 +801,7 @@ async function persist(){
  else st.textContent="Saved on this device.";
 }
 async function initStore(){
- dlLoadLocal();
+ dlLoadLocal();applySeed();
  const local=lsLoad();if(local){state=local;}
  renderAll();
  const sn=t=>{$("#storeNote").textContent=t;const e=$("#syncNote");if(e)e.textContent=t;};
@@ -1011,6 +1011,9 @@ diagRender();
 let daily={};          // iso -> {w,bf,smm,water,visc,bmr,waist,sleep,note}
 let dailyRef=null,dailySaving=false;
 const LSD="stockbuild-daily-v1";
+const SEED={"2026-11-05":{w:269,bmi:34.5,bf:35.1,fatLb:94.4,sub:25,visc:18,musPct:60.6,mus:163,smmPct:37.5,smm:100.8,bonePct:4.3,bone:11.6,water:47.6,waist:47,sleep:4},
+"2026-11-06":{w:267.8,bmi:34.4,bf:34.9,fatLb:93.4,sub:24.9,visc:18,musPct:60.7,mus:162.6,smmPct:37.6,smm:100.8,bonePct:4.4,bone:11.6}};
+function applySeed(){let changed=false;for(const k of Object.keys(SEED)){const e=daily[k]||{};for(const f of Object.keys(SEED[k])){if(e[f]===undefined||e[f]===null){e[f]=SEED[k][f];changed=true;}}daily[k]=e;}if(changed)dlSaveLocal();}
 function dlLoadLocal(){try{const o=JSON.parse(localStorage.getItem(LSD)||"{}");if(o&&typeof o==="object")daily=o;}catch(e){}}
 function dlSaveLocal(){try{localStorage.setItem(LSD,JSON.stringify(daily));}catch(e){DIAG.storage="blocked";diagRender();}}
 function dlFill(iso){const e=daily[iso]||{};const f=(id,v)=>{$("#"+id).value=(v===undefined||v===null)?"":v;};
