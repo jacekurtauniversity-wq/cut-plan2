@@ -892,6 +892,8 @@ function runFor(wk,dow){ // dow 2=Tue 4=Thu 6=Sat
 }
 const DOWN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const WEEK1_END=4; // offsets 0-4 are the first short week (Wed–Sun)
+const OVERRIDES={"2026-11-06":{task:"Today only: lifting at 13:30 (Dodge is quiet 1:30–3:30 on Fridays). Meals shifted to fuel it; the fast still runs 19:00–11:00.",meals:["11:00","12:00","15:45","18:45"],tl:[
+ ["07:00","Wake. Weighed in (267.8). Coffee, water."],["08:00","Focus block 1, fasted. Second coffee by 09:00, none after noon."],["11:00","Meal 1 · yogurt bowl + 1 tsp creatine + vitamin D3. Window opens."],["12:00","Meal 2 · canned chicken, 1 cup rice, 2 cups veg, 1 tbsp oil, salsa. Done by 12:15."],["13:00","Electrolyte drink + ½ tsp salt, 500 ml. Walk to Dodge."],["13:30","Full body (55 min). Log each lift, use the rest timers."],["15:45","Meal 3 · beef-thigh container, medium potato, 2 cups veg, 1 tbsp oil."],["16:30","Push-ups + crunches, 2 sets of 25. Focus block 2."],["18:45","Meal 4 · cottage cheese. Window closes 19:00."],["19:30","Push-ups + crunches, 2 sets of 25. Wind down."],["20:30","Magnesium. Screens down."],["21:30","Lights out."]]}};
 function dayPlan(off){
  const iso=addDays(START.date,off);const d=new Date(iso+"T12:00:00");const dow=d.getDay();
  const dayN=off+1;
@@ -960,6 +962,7 @@ function dayPlan(off){
  if(dow>=1&&dow<=5)tl.push(["19:30","Light review / reading 19:30–20:30. Nothing new, nothing hard."]);
  if(dow!==6)tl.push(["21:00","Magnesium if using. Screens down 20:30."]);
  tl.push([dow===6?"22:00":"21:30","Lights out."]);
+ if(OVERRIDES[iso]){const o=OVERRIDES[iso];tl.length=0;for(const x of o.tl)tl.push(x);if(o.meals)o.meals.forEach((t,i)=>{meals[i].t=t;});if(o.task)tasks.unshift(o.task);}
  tl.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
  return{iso,d,dow,dayN,wk,phase,type,kcal,tt,train,run,tasks,meals,tl,deload,holiday,cls};
 }
