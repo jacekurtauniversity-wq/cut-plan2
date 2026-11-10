@@ -426,6 +426,8 @@ h2{font-size:1.7rem}
 
 <div id="liftTable"></div>
 <p class="small">Every exercise has a Watch link (opens a YouTube demo in a new tab). No back squats, deadlifts off the floor, hanging work or hip thrusts: leg press and hack squat carry the squat pattern, RDLs carry the hinge, pulldowns carry the pull-up. Every exercise has three swaps for a crowded gym or a missing machine; the Today tab shows them next to each lift. Pick one swap and stick with it for a phase so the log stays comparable.</p>
+<h3>Where your lifts are heading</h3>
+<div id="strengthProj"></div>
 <h3>Rules that matter more than the exercise list</h3>
 <ul>
 <li><b>Daily 100 push-ups + 100 crunches:</b> 4 × 25 spread across the day, never right before an upper-body session. Hands on a bench for the push-ups if 25 straight isn't clean yet; the count matters less than full range. Tick both on the Today tab.</li>
@@ -790,7 +792,7 @@ function renderChart(rows){
  svg.innerHTML=s;
 }
 function renderFlavors(){const tb=$("#flavorRows");if(!tb)return;tb.innerHTML=FLAVORS.map((f,i)=>`<tr><td><b>${f.n}</b><br><span class="small muted">days ${i+1}, ${i+8}, ${i+15}…</span></td><td>${f.chx}</td><td>${f.beef}</td><td>${f.veg}</td><td>${f.bowl}</td></tr>`).join("");}
-function renderAll(){renderFlavors();renderRecipes();renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
+function renderAll(){renderFlavors();strengthProjection();renderRecipes();renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
 
 /* ---------- persistence ---------- */
 async function persist(){
@@ -976,7 +978,7 @@ function renderDay(off){
  const E=daily[P.iso]||{};
  if(P.train){h+=`<div class="block"><h3>06:00 · ${P.train.name}${P.deload?" (deload: 60%, 2 sets)":""}</h3><div id="liftLog">`;
   P.train.rows.forEach((r,i)=>{const last=lastLift(P.iso,P.dow,i);const v=(E.lifts&&E.lifts[i])||"";
-   h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off"><span class="restbtns"><button type="button" class="rest" data-s="${i===0?150:90}" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest ${i===0?"2:30":"1:30"}</button><button type="button" class="rest" data-s="60" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest 1:00</button></span>${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}</div>`;});
+   const nt=nextTarget(r[0],r[1],P.iso);h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off"><span class="restbtns"><button type="button" class="rest" data-s="${i===0?150:90}" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest ${i===0?"2:30":"1:30"}</button><button type="button" class="rest" data-s="60" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest 1:00</button></span>${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}<span class="last" style="color:var(--accent);font-family:var(--body)">${nt.text}</span></div>`;});
   h+=`</div><div class="actions" style="margin-top:8px"><button type="button" class="btn" id="saveLift">Save workout</button><span class="status" id="liftStatus"></span></div><p class="small muted">Warm-up: 3 min incline walk, bar × 10, 50% × 5, 70% × 3. Rest 2–3 min on the first lift, 60–90 s after. Beat last session by a rep or 5 lb; if you can't two sessions running, drop 10%.</p></div>`;}
  if(P.run)h+=`<div class="block"><h3>${P.dow===6?"08:00":"18:00"} · Run</h3><p>${P.run}</p><div class="checks"><label>Minutes <input type="number" id="runMin" step="1" inputmode="numeric" style="width:5em" value="${E.runT||""}"></label><label>Miles <input type="number" id="runMi" step="0.01" inputmode="decimal" style="width:5em" value="${E.runD||""}"></label><label>Avg HR <input type="number" id="runHr" step="1" inputmode="numeric" style="width:5em" value="${E.runHr||""}"></label><button type="button" class="btn ghost" id="saveRun">Save run</button><span class="status" id="runStatus"></span></div>${lastRun(P.iso)?`<p class="small muted">Last run: ${lastRun(P.iso)}</p>`:""}<p class="small muted">Sentence pace. Sharp or joint pain = stop and walk. Repeat the week if it felt hard.</p></div>`;
  h+=`<div class="block"><h3>Done today</h3><div class="checks" id="doneChecks">
@@ -1255,6 +1257,33 @@ const RECIPES=[
 function renderRecipes(){const el=$("#recipeList");if(!el)return;const diet=(typeof DIET!=="undefined")?DIET:"all";const names=["Meal 1 · 11:00","Meal 2 · 14:30","Meal 3 · 18:30","Meal 4 · 18:50"];let h="";
  for(let m=0;m<4;m++){const rs=RECIPES.filter(r=>r.m===m&&r.d.includes(diet));if(!rs.length)continue;h+=`<h3>${names[m]}</h3>`;for(const r of rs){h+=`<details class="block" style="padding:8px 12px;margin:6px 0"><summary style="cursor:pointer;font-weight:600">${r.n} <span class="small muted">· ${r.t}</span></summary><p class="small"><b>You need:</b> ${r.i}</p><ol class="small" style="margin:4px 0;padding-left:18px">${r.s.map(x=>`<li>${x}</li>`).join("")}</ol></details>`;}}
  el.innerHTML=h;}
+
+/* ---------- auto-progression ---------- */
+function parseSets(str){if(!str)return[];return str.split(/[,;]+/).map(x=>x.trim()).filter(Boolean).map(x=>{const m=x.match(/(\d+(?:\.\d+)?)\s*[x×]\s*(\d+)/i);return m?{w:parseFloat(m[1]),r:parseInt(m[2],10)}:null;}).filter(Boolean);}
+function targetOf(spec){const m=String(spec).match(/(\d+)\s*×\s*(\d+)(?!\/)/g);if(!m)return null;const last=m[m.length-1].match(/(\d+)\s*×\s*(\d+)/);return{sets:parseInt(last[1],10),reps:parseInt(last[2],10)};}
+function incFor(name){if(/leg press|hack|squat/i.test(name))return 10;if(/curl|raise|pushdown|extension|calf|sit-up|crunch|face pull|plank|carry/i.test(name))return 2.5;return 5;}
+function e1rm(sets){let best=0;for(const s of sets){const v=s.w*(1+s.r/30);if(v>best)best=v;}return best;}
+function histFor(name,beforeIso){const out=[];for(const k of Object.keys(daily).sort()){if(k>=beforeIso)continue;const e=daily[k];if(!e||!e.lifts)continue;const dow=new Date(k+"T12:00:00").getDay();if(dow<1||dow>5)continue;const L=LIFT[dow];L.ex.forEach((ex,i)=>{if(ex[0]===name&&e.lifts[i]){const sets=parseSets(e.lifts[i]);if(sets.length)out.push({iso:k,sets,raw:e.lifts[i]});}});}return out;}
+function nextTarget(name,spec,iso){const t=targetOf(spec);const h=histFor(name,iso);if(!h.length)return{text:"First time: pick a weight you could do for 2 more reps than written, log it, and the app sets the next target.",w:null};
+ const last=h[h.length-1];const topW=Math.max(...last.sets.map(s=>s.w));if(!t)return{text:`Last: ${last.raw}. Aim to beat it by a rep or a round.`,w:topW};
+ const hit=last.sets.filter(s=>s.w>=topW-0.01&&s.r>=t.reps).length>=t.sets;
+ const prev=h.length>1?h[h.length-2]:null;const prevTop=prev?Math.max(...prev.sets.map(s=>s.w)):null;const prevHit=prev?prev.sets.filter(s=>s.w>=prevTop-0.01&&s.r>=t.reps).length>=t.sets:true;
+ let w,why;const inc=incFor(name);
+ if(hit){w=topW+inc;why=`You hit all ${t.sets}×${t.reps} at ${topW} last time: +${inc}.`;}
+ else if(!prevHit&&prev&&prevTop>=topW){w=Math.round(topW*0.9/2.5)*2.5;why=`Missed reps two sessions running at ${topW}: back off 10% and rebuild.`;}
+ else{w=topW;why=`Missed reps at ${topW} last time: same weight, get all ${t.sets}×${t.reps}.`;}
+ return{text:`Target today: ${w} × ${t.sets}×${t.reps}. ${why}`,w};
+}
+function strengthProjection(){
+ const el=$("#strengthProj");if(!el)return;const mains=["Barbell bench press","Leg press","Incline dumbbell press","Hack squat or leg press","Romanian deadlift (barbell or DBs)"];
+ const today=new Date().toISOString().slice(0,10);let h="";
+ for(const name of mains){const hist=histFor(name,"9999-12-31");if(hist.length<3)continue;const pts=hist.map(x=>[(new Date(x.iso+"T12:00:00")-new Date(START.date+"T12:00:00"))/86400000,e1rm(x.sets)]);
+  const n=pts.length,mx=pts.reduce((a,p)=>a+p[0],0)/n,my=pts.reduce((a,p)=>a+p[1],0)/n;let num=0,den=0;for(const p of pts){num+=(p[0]-mx)*(p[1]-my);den+=(p[0]-mx)**2;}const slope=den?num/den:0;const b=my-slope*mx;
+  const proj=d=>Math.round((b+slope*Math.min(d,DUR_DAYS))/5)*5;const cur=Math.round(pts[n-1][1]);
+  h+=`<tr><td>${name}</td><td class="n">${cur}</td><td class="n">${proj(45)}</td><td class="n">${proj(90)}</td><td class="n">${proj(120)}</td><td class="n">${(slope*7).toFixed(1)}/wk</td></tr>`;}
+ el.innerHTML=h?`<div class="tblwrap"><table><thead><tr><th>Lift</th><th class="n">Est. 1RM now</th><th class="n">Day 45</th><th class="n">Day 90</th><th class="n">Day 120</th><th class="n">Trend</th></tr></thead><tbody>${h}</tbody></table></div><p class="small muted">Estimated one-rep max from your logged sets (Epley), with a straight-line trend; needs 3+ logged sessions per lift. On a cut, flat-to-slightly-up is the win; a falling trend for two weeks triggers the carb adjustment.</p>`:`<p class="small muted">Projections appear after three logged sessions of a lift (about two weeks).</p>`;
+}
+const DUR_DAYS=120;
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
@@ -1271,6 +1300,7 @@ $("#ciDate").value=nextSun;
 function ciPrefill(){const iso=$("#ciDate").value;if(!iso)return;const a=dlAvg(iso,7);if(a&&a.w&&!$("#ciWeight").value)$("#ciWeight").value=r1(a.w);if(a&&a.waist&&!$("#ciWaist").value)$("#ciWaist").value=r1(a.waist);const W=weekStats(iso);if(W.adh!==null)$("#ciAdh").value=W.adh>=97?"100":W.adh>=85?"90":W.adh>=70?"75":"50";if(W.logged)$("#ciLifts").value=String(Math.min(5,Math.max(2,W.lifts)));if(W.str)$("#ciStr").value=W.str;$("#ciReview").innerHTML=weeklyReviewHTML(iso);}
 $("#ciDate").addEventListener("change",ciPrefill);
 document.querySelector('a[href="#checkin"]').addEventListener("click",()=>setTimeout(ciPrefill,0));
+document.querySelector('a[href="#lifting"]').addEventListener("click",()=>setTimeout(strengthProjection,0));
 renderLiftTable();renderAll();route();initStore();
 })();
 </script>
