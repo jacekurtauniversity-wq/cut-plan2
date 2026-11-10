@@ -1338,18 +1338,33 @@ const M1MENU={1:"Yogurt power bowl (base)",2:"Overnight oats jar",3:"Protein pan
 function recipeByName(n){return RECIPES.find(r=>r.n===n);}
 function menuHTML(P){const [m2,m3]=MENU[P.dow];const m1=M1MENU[P.dow];const items=[[m1,"Meal 1"],[m2,"Meal 2"],[m3,"Meal 3"]];
  return `<div class="block"><h3>Today's plates</h3><p class="small muted">Same portions as the Meals block below, cooked a different way each day so the week never repeats. Everything comes from the Sunday cook; today you reheat and finish.</p>${items.map(([n,lab])=>{const r=recipeByName(n);if(!r)return `<p><b>${lab}:</b> ${n}</p>`;return `<details style="margin:6px 0"><summary style="cursor:pointer"><b>${lab}:</b> ${r.n} <span class="small muted">· ${r.t}</span></summary><p class="small"><b>You need:</b> ${r.i}</p><ol class="small" style="margin:4px 0;padding-left:18px">${r.s.map(x=>`<li>${x}</li>`).join("")}</ol></details>`;}).join("")}</div>`;}
-function sundayCookHTML(){return `<div class="block"><h3>Sunday cook-all (about 2 hours, 16:00–18:00)</h3><p class="small muted">One session covers Mon–Sat for both of you. Cook plain, season per plate at reheat; Thu–Sat portions go straight to the freezer and move to the fridge Wednesday night.</p>
-<ol class="small" style="padding-left:18px">
-<li><b>Oven 400°F. Potatoes first:</b> 6 for you (2 large for Mon/Thu, 4 medium) + 6 small for her. 55–60 min. Then broil 5 min for crisp skins.</li>
-<li><b>Rice cooker:</b> 2½ cups dry (your 6 days + hers). Cool on a sheet pan.</li>
-<li><b>Chicken, two ways, same pan:</b> thaw one 36-oz bag. Half gets Mexican rub (cumin, chili, paprika, garlic) for Mon/Thu/Sat; half gets lemon-oregano-garlic for Tue/Wed/Fri. Sheet pan 400°F 22–25 min to 160°F, rest, slice. 6 portions × 12 oz (8 you + 4 her).</li>
-<li><b>Beef-thigh batch, plain:</b> 16 oz beef + 16 oz diced thigh, onion, garlic, salt, pepper only. Brown, drain. Split: 2 portions stay plain (Thu plate, Fri), 2 get chili spices + 1 cup canned tomatoes simmered 10 min (Mon, Sat chili), 1 gets Worcestershire + thyme (Tue shepherd), 1 gets curry powder + tomato + yogurt stirred in at reheat (Wed curry).</li>
-<li><b>Fried-rice base (Sat):</b> set aside 1 cup of cooked rice in its own container with peas and scallion; egg whites and canned chicken are added day-of.</li>
-<li><b>Breakfasts:</b> 2 overnight-oats jars (Tue, Thu backup), pancake batter dry mix bagged for Wed/Sat (oats measured; add yogurt + egg day-of). Oat bags for the rest.</li>
-<li><b>Steak night tonight:</b> the thawed pair from the freezer; pat dry, salt, hot pan 3–4 min a side, rest 5.</li>
-<li><b>Pack:</b> 12 containers labeled by day and meal; Thu/Fri/Sat to the freezer. Yogurt, cottage cheese and frozen veg stay as-is and are portioned day-of.</li>
-</ol>
-<p class="small muted">Food safety: cooked chicken and beef 4 days in the fridge, so Mon–Wed fridge, Thu–Sat freezer. Rice: cool within an hour, 4 days.</p></div>`;}
+function sundayCookHTML(){return `<div class="block"><h3>Sunday cook-all run sheet · 16:00–18:00</h3><p class="small muted">Ordered so the oven, the rice cooker and the Ninja pot run at the same time and you're never waiting. Saturday night: move one 36-oz chicken bag and 16 oz each of beef and thigh to the fridge to thaw, and the Sunday steak pair.</p>
+<ul class="timeline">
+<li><span class="t">16:00</span><b>Oven to 400°F.</b> Scrub 12 potatoes (6 yours: 2 large, 4 medium; 6 small hers), poke, salt the skins, straight on the top rack. Timer 60 min.</li>
+<li><span class="t">16:05</span><b>Rice cooker on:</b> 2½ cups dry, rinsed, pinch of salt, water to the line. It runs itself (~25 min).</li>
+<li><span class="t">16:08</span><b>Chicken:</b> pat dry. Two bowls: half the bag tossed in Mexican rub (1 tsp each cumin, chili powder, smoked paprika, garlic powder, ½ tsp salt), half in lemon-oregano (zest + juice of 1 lemon, 1 tsp oregano, 1 tsp garlic powder, ½ tsp salt). One sheet pan, foil-lined, the two halves kept to their own sides. Into the oven on the lower rack. Timer 24 min.</li>
+<li><span class="t">16:15</span><b>Ninja pot, sauté high:</b> dice 1 onion, mince 3 garlic. Onion in dry 2 min, then 16 oz beef + 16 oz diced thigh, spread out, leave 4 min, break up, salt and pepper only. Cook ~12 min to no pink, stirring now and then.</li>
+<li><span class="t">16:30</span><b>Rice done:</b> spread on a sheet pan to cool. Scoop 1 cup into a container with ½ cup frozen peas and a sliced scallion: that's Saturday's fried-rice base.</li>
+<li><span class="t">16:32</span><b>Chicken out</b> (160°F at the thickest part). Rest 5 min on the pan.</li>
+<li><span class="t">16:35</span><b>Beef-thigh done.</b> Tilt, spoon off fat. Weigh into 6 piles (10.5 oz raw-weight equivalent each: 7 you + 3.5 her). Season the piles in the pot one at a time or in bowls: <b>2 × chili</b> (1 tsp chili powder, ½ tsp cumin, ½ cup canned tomatoes each, simmer 5 min: Mon and Sat), <b>1 × shepherd</b> (1 tbsp Worcestershire, ½ tsp thyme: Tue), <b>1 × curry</b> (1 tsp curry powder, ¼ cup canned tomatoes; yogurt goes in at reheat: Wed), <b>2 × plain</b> (Thu plate, Fri's lemon chicken night doesn't use it, so the second plain one is a spare).</li>
+<li><span class="t">16:45</span><b>Slice the chicken</b> and weigh into 6 containers of 12 oz (8 you + 4 her): Mexican halves for Mon (fajita), Thu (Cajun: add ½ tsp cayenne-paprika at reheat), Sat (fried rice); lemon-oregano for Tue (teriyaki sauce at reheat), Wed (Greek), Fri (garlic-lemon plate).</li>
+<li><span class="t">17:00</span><b>Potatoes out.</b> Broil 5 min for crisp skins. For Tuesday's shepherd skillet, mash one medium potato with 2 tbsp Greek yogurt, salt, pepper now; box it. Cut Friday's into wedges. The rest stay whole.</li>
+<li><span class="t">17:05</span><b>Breakfasts:</b> two overnight-oats jars (½ cup oats, 1¾ cups yogurt, 2 tbsp water, cinnamon: Tue + a backup). Two pancake bags (½ cup oats + cinnamon each: Wed, Sat; add ¾ cup yogurt + 1 egg day-of). Oat bags for Mon (½ cup), Thu (⅔ cup), Fri (½ cup, for the savory bowl, toast day-of).</li>
+<li><span class="t">17:15</span><b>Assemble and label</b> 12 containers: each Meal 2 = chicken + rice (1 cup cooked; Thu 1½) ; each Meal 3 = beef-thigh + potato. Veg goes in frozen day-of. Mon/Tue/Wed to the fridge, Thu/Fri/Sat to the freezer. Tape the lids: "Tue M3 shepherd".</li>
+<li><span class="t">17:30</span><b>Clean up.</b> One pan, one pot, one cooker, one cutting board.</li>
+<li><span class="t">17:45</span><b>Steak:</b> pat dry, salt, pepper; pan screaming hot, 3–4 min a side, rest 5 min. Salad with vinegar and mustard, veg microwaved, no oil with strip. Eat 18:30.</li>
+</ul>
+<h3>What's left to do on the day (2–10 min)</h3>
+<ul class="small">
+<li><b>Mon</b> fajita: sear a handful of sliced pepper + onion 4 min in the day's oil, toss in the chicken 2 min, over rice, lime + salsa. Chili: reheat 4 min, over the split potato.</li>
+<li><b>Tue</b> teriyaki: mix 2 tbsp soy, 1 tsp honey, 1 tsp rice vinegar, grated ginger; warm the chicken in it 2 min. Shepherd: beef in a bowl, mash on top, broil 3 min.</li>
+<li><b>Wed</b> Greek: chicken warm, rice, chopped cucumber-tomato, tzatziki (¼ cup yogurt + grated cucumber + garlic + lemon). Curry: reheat, stir in 2 tbsp yogurt off the heat, over the potato.</li>
+<li><b>Thu</b> Cajun bowl: reheat with the extra spice and hot sauce. BBQ plate: reheat the plain beef-thigh with 1 tbsp sugar-free BBQ sauce + mustard.</li>
+<li><b>Fri</b> poke bowl: canned chicken or tuna, soy, rice vinegar, cucumber, over rice. Lemon chicken: wedges 10 min in a hot pan or air-crisp 8 min, chicken warm, lemon over all.</li>
+<li><b>Sat</b> fried rice: hot pan, scramble 3 egg whites, add the rice base and chicken, soy, scallion, 3 min. Italian chili: reheat with ½ tsp oregano + basil and a spoon of marinara.</li>
+<li><b>Sun</b> steak night, cooked fresh at 17:45 during the next cook-all.</li>
+</ul>
+<p class="small muted">Food safety: fridge 4 days for cooked chicken, beef and rice; freezer for the rest, moved to the fridge Wednesday night.</p></div>`;}
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
