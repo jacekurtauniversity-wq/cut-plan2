@@ -940,15 +940,15 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  // timeline
  const tl=[];
  const drink="500 ml water + 1 scoop electrolyte powder + ½ tsp salt. Coffee if you want it.";
- if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);}
- else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);tl.push(["09:00","45–60 min easy walk. Only rest day: nothing harder."]);}
+ if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);tl.push(["12:00","One study block, 12:00–14:00. Then the day is free."]);}
+ else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);tl.push(["09:00","45–60 min easy walk. Only rest day: nothing harder."]);tl.push(["14:00","45-min review of the week's notes. Otherwise off."]);}
  else{tl.push(["05:15","Wake. "+drink]);tl.push(["06:00",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
   tl.push(["07:45",(dow===1||dow===3)?"Study block 1 (fasted, sharpest): 07:45–09:45. Second coffee by 09:00.":"Study block 1 (fasted, sharpest): 07:45–10:30. Second coffee by 09:00, none after noon."]);
   if(cls)tl.push([cls.t,"Class "+cls.t+"–"+cls.e+"."]);
   if(dow===1||dow===3)tl.push(["12:00","Study block 2: 12:00–14:15, fed. Break at 14:15."]);
   if(dow===2||dow===4)tl.push(["11:45","Study block 2: 11:45–13:30. Meal 2 at 13:45 is the fuel for class and the evening."]);
   if(dow===2||dow===4)tl.push(["16:15",(dow===4&&wk<7)?"Study block 3: 16:15–18:00. No run yet on Thursdays (starts week 7).":"Study block 3: 16:15–17:30, then change for the run."]);
-  if(dow===1||dow===3||dow===5)tl.push(["15:30","Study block 3: 15:30–17:30. Walk 10 min at 17:30."]);
+  if(dow===1||dow===3||dow===5)tl.push(["15:30","Study block 3: 15:30–17:30 (lighter: review, problem sets). Push-ups/crunches + 10-min walk at 17:30."]);
   if(dow===5)tl.push(["10:15","Study block 2: 10:15–13:00 (no class Fridays)."]);}
  tl.push([meals[0].t,"Meal 1 · "+meals[0].name.split("· ")[1]+" + 1 tsp creatine + vitamin D3. Window opens."]);
  tl.push([meals[1].t,"Meal 2 · "+meals[1].name.split("· ")[1]+(run&&dow!==6?". Eat 60–90 min before any long study block.":"")]);
@@ -957,8 +957,8 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  else{tl.push([meals[2].t,"Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push([meals[3].t,"Meal 4 · cottage cheese. Window closes 19:00."]);}
  if(dow===3&&dayN>1)tl.push(["19:15","Re-prep, 25 min."]);
  tl.push([dow===0?"10:30":dow===6?"09:30":"10:00","Push-ups + crunches, set 1 of 4 (25 each). Sets 2–4 at the end of each study block or between meals; done by 18:00."]);
- if(dow>=1&&dow<=5)tl.push(["19:30","Light review / reading 19:30–20:30. Nothing new, nothing hard."]);
- if(dow!==6)tl.push(["21:00","Magnesium if using. Screens down 20:30."]);
+ if(dow>=1&&dow<=5)tl.push(["19:30",dow===5?"Evening is yours. Lights out can slide to 22:00.":"Yours until 21:00: games, a show, friends. Earned by the three study blocks; if one got skipped, this is when it gets made up."]);
+ if(dow!==6)tl.push(["21:00","Magnesium. Screens dim, bag and containers set out for tomorrow."]);
  tl.push([dow===6?"22:00":"21:30","Lights out."]);
  if(OVERRIDES[iso]){const o=OVERRIDES[iso];tl.length=0;for(const x of o.tl)tl.push(x);if(o.meals)o.meals.forEach((t,i)=>{meals[i].t=t;});if(o.task)tasks.unshift(o.task);}
  tl.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
