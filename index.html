@@ -312,7 +312,7 @@ h2{font-size:1.7rem}
   <div class="tile"><div class="k">High-carb day</div><div class="v" id="kcalH"></div><div class="d">Mon · Thu (Upper A / Lower B)</div></div>
   <div class="tile"><div class="k">Moderate day</div><div class="v" id="kcalM"></div><div class="d">Tue · Wed · Fri · Sat</div></div>
   <div class="tile"><div class="k">Low-carb day</div><div class="v" id="kcalL"></div><div class="d">Sunday rest</div></div>
-  <div class="tile"><div class="k">Weekly average</div><div class="v" id="kcalAvg"></div><div class="d">per day · protein fixed ~200 g</div></div>
+  <div class="tile"><div class="k">Weekly average</div><div class="v" id="kcalAvg"></div><div class="d" id="protNote">per day</div></div>
 </div>
 <p class="small muted" id="tdeeNote">Starting maintenance is an estimate (age 27, Katch-McArdle on 174.6 lb lean mass from the Day 1 scan, activity ×1.5). Your weekly check-ins replace the estimate with real data; that is what the auto-adjust uses.</p>
 </section>
@@ -617,7 +617,7 @@ h2{font-size:1.7rem}
 <li><b>Below 0.7% with adherence ≥ 85%:</b> one step down (−150 kcal, taken from oats/rice/potato on the high and moderate days). Below 85% adherence: no change, fix the week first.</li>
 <li><b>Above 1.5%, or strength down two weeks straight:</b> one step up (+150 kcal of starch). Losing faster than that costs muscle.</li>
 <li><b>Floor:</b> three steps down (≈ 1,700 kcal average) is the floor. If you're there and still stalled, the fix is a 7-day maintenance break at ~2,700 kcal, not less food.</li>
-<li><b>Protein:</b> stays at ~200 g until you're under 240 lb, then 190 g (drop the Sunday eggs and 25 g of chicken). It is never cut to make calories fit.</li>
+<li><b>Macros from your data:</b> each Sunday the targets are rebuilt from the 7-day average weight and, after two weeks of logs, your measured maintenance. Protein = 0.9 g per lb (floor 195 g) and is never cut to make calories fit; fat holds at least 0.35 g/lb; carbs take the remainder, cycled high/moderate/low. The ±150 kcal steps still apply on top. Portions on the Meals and Today tabs change automatically: chicken and beef-thigh carry the protein, oats/rice/potato the carbs, oil and peanut butter the fat; yogurt and cottage cheese stay fixed.</li>
 </ul>
 <p class="small muted" id="storeNote">Your entries save to this page's private store and reload on any device where you open it.</p>
 </section>
@@ -692,8 +692,37 @@ function amt(r){const k=r.key,g=r.g;
  if(k==="pot")return g>=280?"1 large ("+(g/OZ).toFixed(0)+" oz)":"1 medium ("+(g/OZ).toFixed(0)+" oz)";
  if(CUP[k])return frac(g/CUP[k])+" cup"+(g/CUP[k]>1.1?"s":"");
  return (g/OZ).toFixed(1).replace(/\.0$/,"")+" oz";}
-function macros(items,adj){let p=0,c=0,f=0;const rows=[];for(const [k,g0] of items){const g=STARCH.has(k)?Math.round(g0*(1+0.12*adj)/5)*5:g0;const o=F[k];const pp=o.p*g/100,cc=o.c*g/100,ff=o.f*g/100;p+=pp;c+=cc;f+=ff;rows.push({key:k,name:o.n,g,p:pp,c:cc,f:ff,kcal:pp*4+cc*4+ff*9});}return{rows,p,c,f,kcal:p*4+c*4+f*9};}
-function dayTotals(t,adj){let p=0,c=0,f=0;for(const m of DAYS[t].meals){const x=macros(m.items,adj);p+=x.p;c+=x.c;f+=x.f;}return{p,c,f,kcal:p*4+c*4+f*9};}
+/* ---------- data-driven targets ---------- */
+const PROT=new Set(["chx","thigh","beef","sir","egg","canchx","tuna","salmon","tofu","tempeh"]);
+const DAIRY=new Set(["gy","cc"]);
+const FATK=new Set(["oil","pb"]);
+let CUR_T="M";
+function baseTotals(t){let p=0,c=0,f=0;for(const m of DAYS[t].meals){for(const [k,g] of m.items){const o=F[k];p+=o.p*g/100;c+=o.c*g/100;f+=o.f*g/100;}}return{p,c,f,kcal:p*4+c*4+f*9};}
+const BASE={H:null,M:null,L:null};
+function targets(t){
+ if(!BASE.H){BASE.H=baseTotals("H");BASE.M=baseTotals("M");BASE.L=baseTotals("L");}
+ const tg=state.tgt||{};const w=tg.w||START.weight;const tdee=tg.tdee||3100;
+ const adj=state.adj||0;const avg=Math.max(1900,tdee-1000+adj*150);
+ const kcal=t==="H"?avg*1.12:t==="L"?avg*0.89:avg*0.97;
+ const p=Math.max(195,Math.round(0.9*w));
+ const f=Math.round(Math.max(0.28*w,0.25*kcal/9));
+ const c=Math.max(40,Math.round((kcal-4*p-9*f)/4));
+ return{kcal,p,c,f,avg,w,tdee};
+}
+function factors(t){const T=targets(t),B=BASE[t];
+ // dairy fixed; protein foods carry the protein delta; starch carries carbs; oil/pb carry fat
+ const dairyP=DAYS[t].meals.reduce((a,m)=>a+m.items.filter(([k])=>DAIRY.has(k)).reduce((b,[k,g])=>b+F[k].p*g/100,0),0);
+ const baseProtP=B.p-dairyP;const fp=Math.max(.6,Math.min(1.5,(T.p-dairyP)/baseProtP));
+ const starchC=DAYS[t].meals.reduce((a,m)=>a+m.items.filter(([k])=>STARCH.has(k)).reduce((b,[k,g])=>b+F[k].c*g/100,0),0);
+ const otherC=B.c-starchC;const fc=starchC?Math.max(.3,Math.min(2.2,(T.c-otherC)/starchC)):1;
+ const fatK=DAYS[t].meals.reduce((a,m)=>a+m.items.filter(([k])=>FATK.has(k)).reduce((b,[k,g])=>b+F[k].f*g/100,0),0);
+ const protF=DAYS[t].meals.reduce((a,m)=>a+m.items.filter(([k])=>PROT.has(k)).reduce((b,[k,g])=>b+F[k].f*g/100,0),0)*fp;
+ const otherF=B.f-fatK-DAYS[t].meals.reduce((a,m)=>a+m.items.filter(([k])=>PROT.has(k)).reduce((b,[k,g])=>b+F[k].f*g/100,0),0);
+ const ff=fatK?Math.max(.4,Math.min(2,(T.f-otherF-protF)/fatK)):1;
+ return{fp,fc,ff};
+}
+function macros(items,adj){const fx=factors(CUR_T);let p=0,c=0,f=0;const rows=[];for(const [k,g0] of items){let g=g0;if(STARCH.has(k))g=Math.round(g0*fx.fc/5)*5;else if(PROT.has(k))g=Math.round(g0*fx.fp/5)*5;else if(FATK.has(k))g=Math.round(g0*fx.ff/2)*2;const o=F[k];const pp=o.p*g/100,cc=o.c*g/100,ff=o.f*g/100;p+=pp;c+=cc;f+=ff;rows.push({key:k,name:o.n,g,p:pp,c:cc,f:ff,kcal:pp*4+cc*4+ff*9});}return{rows,p,c,f,kcal:p*4+c*4+f*9};}
+function dayTotals(t,adj){CUR_T=t;let p=0,c=0,f=0;for(const m of DAYS[t].meals){const x=macros(m.items,adj);p+=x.p;c+=x.c;f+=x.f;}return{p,c,f,kcal:p*4+c*4+f*9};}
 function weekAvg(adj){const H=dayTotals("H",adj).kcal,M=dayTotals("M",adj).kcal,L=dayTotals("L",adj).kcal;return (2*H+4*M+L)/7;}
 function navyBF(waist,neck,h){if(!(waist>neck)||!h)return null;const v=86.010*Math.log10(waist-neck)-70.041*Math.log10(h)+36.76;return v>2&&v<70?v:null;}
 function addDays(iso,n){const d=new Date(iso+"T12:00:00");d.setDate(d.getDate()+n);return d.toISOString().slice(0,10);}
@@ -725,11 +754,12 @@ function renderOverview(){
  $("#kcalM").textContent=Math.round(dayTotals("M",a).kcal)+" kcal";
  $("#kcalL").textContent=Math.round(dayTotals("L",a).kcal)+" kcal";
  $("#kcalAvg").textContent=Math.round(weekAvg(a))+" kcal";
+ {const T=targets("M");const pn=$("#protNote");if(pn)pn.textContent=`per day · protein ${T.p} g (0.9 g/lb of ${T.w} lb) · fat ${T.f} g · maintenance ${T.tdee}`;}
  const T=(typeof tdeeEstimate==="function")?tdeeEstimate():null;if(T)$("#tdeeNote").textContent=`Measured maintenance from your own logs: ~${T.tdee} kcal/day over ${T.days} days (${T.dW} lb). The plan assumed 3,200; the check-in adjusts to the real number.`;
 }
 let curDayType="H";
 function renderMeals(){
- const a=state.adj,d=DAYS[curDayType];
+ const a=state.adj,d=DAYS[curDayType];CUR_T=curDayType;
  const b=$("#adjBanner");
  if(a!==0){b.hidden=false;b.innerHTML=`<b>Auto-adjust is at ${a>0?"+":""}${a} step${Math.abs(a)===1?"":"s"}</b> (${a>0?"+":"−"}${Math.abs(a)*150} kcal/day of starch). Portions below already include it.`;}else b.hidden=true;
  let html="";let tp=0,tc=0,tf=0;
@@ -832,6 +862,10 @@ $("#ciForm").addEventListener("submit",async ev=>{
  const entries=state.entries.filter(x=>x.date!==e.date).concat([e]).sort((a,b)=>a.date<b.date?-1:1);
  const rows=analyze(entries);const d=decide(rows);
  state.entries=entries;state.adj=Math.max(-3,Math.min(3,state.adj+d.delta));
+ {const a7=dlAvg(e.date,7);const w7=(a7&&a7.w)?a7.w:e.weight;const T=tdeeEstimate();const tdee=T&&T.days>=14?T.tdee:(state.tgt&&state.tgt.tdee)||3100;
+  const prevP=targets("M").p;state.tgt={w:Math.round(w7*10)/10,tdee:Math.max(2200,Math.min(4200,tdee))};const newP=targets("M").p;
+  if(Math.abs(newP-prevP)<5&&state.tgt&&state.tgt.prevP===undefined){}
+  d.text+=` Targets re-set from your data: ${Math.round(targets("M").avg)} kcal average (maintenance ${state.tgt.tdee} ${T&&T.days>=14?"measured":"estimated"}), protein ${newP} g, fat ${targets("M").f} g, carbs ${targets("H").c}/${targets("M").c}/${targets("L").c} g on high/moderate/low days.`;}
  const last=state.entries[state.entries.length-1];last.vtitle=d.title;last.vtext=d.text;last.vcls=d.cls;last.adjNote=d.delta===0?"no change":(d.delta>0?"+1 step":"−1 step")+" → level "+(state.adj>0?"+":"")+state.adj;
  renderAll();await persist();
  $("#ciForm").reset();$("#ciDate").value=addDays(last.date,7);
@@ -931,7 +965,7 @@ function dayPlan(off){
  if(dow===4&&wk<7)tasks.push("No run tonight: Thursday runs start week 7. Evening is free; 20-min walk if you want it.");
  if(dow===6&&wk<=6)tasks.push("Long run at 08:00 fasted: electrolyte drink + coffee first, 5-min walk to start. Sentence-pace or slower.");
  // meals: week-1 canned chicken note
- const meals=DAYS[type].meals.map(m=>{const x=macros(m.items,a);return{t:m.t,name:m.name,items:x.rows.map(r=>amt(r)+" "+r.name.replace(/,.*$/,"").replace(" (1 scoop = 30 g)","").toLowerCase()),p:Math.round(x.p),c:Math.round(x.c),f:Math.round(x.f),kcal:Math.round(x.kcal)};});
+ CUR_T=type;const meals=DAYS[type].meals.map(m=>{const x=macros(m.items,a);return{t:m.t,name:m.name,items:x.rows.map(r=>amt(r)+" "+r.name.replace(/,.*$/,"").replace(" (1 scoop = 30 g)","").toLowerCase()),p:Math.round(x.p),c:Math.round(x.c),f:Math.round(x.f),kcal:Math.round(x.kcal)};});
 if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) replaces the 8 oz raw breast. No added salt on this plate.";
  if(dow===0)meals[2].note="Strip steak: trim the fat cap, skip the oil on the salad (vinegar, mustard, hot sauce instead).";
  if(dow===3)meals[0].note="Wednesday also carries the 19:15 re-prep after Meal 4.";
