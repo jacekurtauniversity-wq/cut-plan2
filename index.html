@@ -396,6 +396,17 @@ h2{font-size:1.7rem}
 <li><b>Creatine monohydrate, 5 g a day, every day</b> (stirred into the Meal 1 yogurt). About $0.10 a day. It helps keep strength and muscle during the deficit and has decent evidence for working memory and mental fatigue, especially when sleep-deprived. The one supplement on this list with strong evidence for both goals; added to the Walmart list.</li>
 <li><b>Optional:</b> 200 mg L-theanine with the morning coffee smooths the caffeine; a 10-minute walk between study blocks does more for the next hour than any snack.</li>
 </ul>
+<h3>The week's plates</h3>
+<p>Same groceries, same portions, a different preparation every day. All of it comes out of the Sunday cook-all; the Today tab shows the recipe for each day.</p>
+<div class="tblwrap"><table><thead><tr><th>Day</th><th>Meal 1</th><th>Meal 2</th><th>Meal 3</th></tr></thead><tbody>
+<tr><td>Mon</td><td>Yogurt power bowl</td><td>Fajita bowl (Mexican chicken, peppers, rice)</td><td>Skillet chili over potato</td></tr>
+<tr><td>Tue</td><td>Overnight oats jar</td><td>Teriyaki-style chicken, broccoli, rice</td><td>Shepherd-style skillet (beef-thigh, mashed potato, veg)</td></tr>
+<tr><td>Wed</td><td>Protein pancakes</td><td>Greek chicken bowl with tzatziki</td><td>Chicken thigh curry over potato</td></tr>
+<tr><td>Thu</td><td>Yogurt power bowl (banana)</td><td>Chicken rice bowl, Cajun</td><td>Beef-thigh plate, BBQ rub</td></tr>
+<tr><td>Fri</td><td>Savory yogurt bowl</td><td>Tuna or canned-chicken poke bowl</td><td>Garlic-lemon chicken and potato wedges</td></tr>
+<tr><td>Sat</td><td>Protein pancakes</td><td>Egg-white fried rice with chicken</td><td>Skillet chili, Italian-spiced</td></tr>
+<tr><td>Sun</td><td>Yogurt & peanut butter</td><td>Chicken, eggs & greens</td><td>Steak night</td></tr>
+</tbody></table></div>
 <h3>Recipes</h3>
 <p>Every recipe uses your plan portions (the amounts in the tables above), so the macros hold; anything extra that counts is marked with its calories. Pick by what you have and how much time there is. Tap a recipe to open it.</p>
 <div id="recipeList"></div>
@@ -950,8 +961,8 @@ function dayPlan(off){
  if(dayN===1)tasks.push("Day 1. Weigh in after the bathroom, before the drink: that's your real starting number. Book a morning lab if you want the baseline testosterone panel.");
  if(off<=2)tasks.push("Shopping before Sunday: fresh chicken 7 lb, cottage cheese ×4, eggs, frozen veg ~12 lb, potatoes 10 lb, rice, peanut butter, olive oil, bananas, Sunday salad, onions + garlic, salsa, creatine, vitamin D3, containers. Full list on the Groceries tab / checklist.");
  if(dow===0)tasks.push("07:00 weigh-in + waist + neck in the morning log, then open the Check-in tab: it's prefilled from this week's logs and recalculates your macros.");
- if(dow===0)tasks.push("16:00 big prep (~90 min): 8 chicken portions, beef-thigh batch, rice, potatoes, oat bags. Pull Monday's gym bag.");
- if(dow===3&&dayN>1)tasks.push("19:15 re-prep (25 min): chicken, beef-thigh, rice and potatoes for Thu–Sat. Move Saturday's steak to the fridge.");
+ if(dow===0)tasks.push("16:00 cook-all (~2 h): the whole week in one session. The step-by-step list is below the clock. Pull Monday's gym bag.");
+ if(dow===3&&dayN>1)tasks.push("Tonight: move Thu–Sat containers from the freezer to the fridge, and Sunday's steaks too.");
  if(dow===6&&(wk%2===0))tasks.push("Top-up shopping: Kirkland yogurt 2 × 32 oz ×5, cottage cheese ×4, frozen veg ~13 lb, salad ×2, onions, garlic, bananas.");
  if(dow===6&&d.getDate()<=7&&off>0)tasks.push("First Saturday of the month: Costco run (chicken breast, thigh, ground beef, steaks, yogurt) + Walmart (veg, potatoes, oil, PB, eggs, pantry).");
  if(deload)tasks.push("DELOAD WEEK: same exercises at 60% of last week's weight, 2 sets each. Runs stay easy. This is planned, not optional.");
@@ -991,7 +1002,7 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  if(dow===0)tl.push(["16:00","Meal prep, ~90 min."]);
  if(run&&(dow===2||dow===4)){tl.push(["17:45","Change, 5-min walk."]);tl.push(["18:00",run]);tl.push(["18:40","Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push(["18:55","Meal 4 · cottage cheese. Window closes 19:00."]);}
  else{tl.push([meals[2].t,"Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push([meals[3].t,"Meal 4 · cottage cheese. Window closes 19:00."]);}
- if(dow===3&&dayN>1)tl.push(["19:15","Re-prep, 25 min."]);
+ if(dow===3&&dayN>1)tl.push(["19:15","Freezer to fridge: Thu–Sat containers and Sunday's steaks."]);
  tl.push([dow===0?"10:30":dow===6?"09:30":"10:00","Push-ups + crunches, set 1 of 4 (25 each). Sets 2–4 at the end of each study block or between meals; done by 18:00."]);
  if(dow>=1&&dow<=5)tl.push(["19:30",dow===5?"Evening is yours. Lights out can slide to 22:00.":"Yours until 21:00: games, a show, friends. Earned by the three study blocks; if one got skipped, this is when it gets made up."]);
  if(dow!==6)tl.push(["21:00","Magnesium. Screens dim, bag and containers set out for tomorrow."]);
@@ -1025,6 +1036,8 @@ function renderDay(off){
  if(P.dow===0)h+=weeklyReviewHTML(P.iso);
  h+=coachHTML(P);
 
+ h+=menuHTML(P);
+ if(P.dow===0)h+=sundayCookHTML();
  h+=`<div class="block"><p class="small" style="margin:0 0 6px"><b>Today's kitchen: ${flavorFor(P.dayN).n}.</b> Meal 2: ${flavorFor(P.dayN).chx}. Meal 3: ${flavorFor(P.dayN).beef}. Veg: ${flavorFor(P.dayN).veg}. Bowl: ${flavorFor(P.dayN).bowl}.</p><p class="small muted" style="margin:0 0 6px">Recipes for each meal (reheat, 10-minute, and full-cook versions) are on the Meals tab.</p><h3>Meals (your portions; hers are half)</h3>`;
  P.meals.forEach((m,i)=>{const sw=(E.swaps||{})[i];h+=`<div class="mealrow"><span class="t">${m.t}</span><div><b>${m.name.split("· ")[1]}</b> <button type="button" class="swapbtn" data-i="${i}" style="font:inherit;font-size:.8rem;padding:2px 7px;border-radius:4px;border:1px solid var(--line);background:var(--panel);color:var(--ink);cursor:pointer">Swap</button><br>${m.items.join(" · ")}<div class="m">${m.p} g protein · ${m.c} g carbs · ${m.f} g fat · ${m.kcal} kcal${m.note?"<br>"+m.note:""}</div>${sw?`<div class="swapbox">Today: ${sw} <button type="button" class="unswap" data-i="${i}">Back to plan</button></div>`:""}<div class="swapbox" id="swap${i}" hidden></div></div></div>`;});
  h+=`<div class="mealrow" style="background:var(--bg);margin:6px -12px -10px;padding:10px 12px;border-radius:0 0 6px 6px"><span class="t">Day</span><div><b>Expected by end of day</b><div class="m" style="color:var(--ink);font-family:var(--mono)">${Math.round(P.tt.p)} g protein · ${Math.round(P.tt.c)} g carbs · ${Math.round(P.tt.f)} g fat · ${P.kcal} kcal</div><div class="m">${T.label} day target; the weekly average is ${Math.round(weekAvg(state.adj))} kcal and that is what drives the loss.</div></div></div></div>`;
@@ -1318,6 +1331,25 @@ function strengthProjection(){
  el.innerHTML=h?`<div class="tblwrap"><table><thead><tr><th>Lift</th><th class="n">Est. 1RM now</th><th class="n">Day 45</th><th class="n">Day 90</th><th class="n">Day 120</th><th class="n">Trend</th></tr></thead><tbody>${h}</tbody></table></div><p class="small muted">Estimated one-rep max from your logged sets (Epley), with a straight-line trend; needs 3+ logged sessions per lift. On a cut, flat-to-slightly-up is the win; a falling trend for two weeks triggers the carb adjustment.</p>`:`<p class="small muted">Projections appear after three logged sessions of a lift (about two weeks).</p>`;
 }
 const DUR_DAYS=120;
+
+/* ---------- weekly menu (same groceries, different plates) ---------- */
+const MENU={1:["Fajita bowl","Skillet chili"],2:["Teriyaki-style chicken","Shepherd-style skillet"],3:["Greek chicken bowl","Chicken thigh curry"],4:["Chicken rice bowl (base)","Beef-thigh plate (base)"],5:["Tuna rice bowl (poke style)","Garlic-lemon chicken and potato"],6:["Egg-white fried rice","Skillet chili"],0:["Chicken, eggs & greens","Sunday steak (base)"]};
+const M1MENU={1:"Yogurt power bowl (base)",2:"Overnight oats jar",3:"Protein pancakes",4:"Yogurt power bowl (base)",5:"Savory yogurt bowl",6:"Protein pancakes",0:"Yogurt & peanut butter"};
+function recipeByName(n){return RECIPES.find(r=>r.n===n);}
+function menuHTML(P){const [m2,m3]=MENU[P.dow];const m1=M1MENU[P.dow];const items=[[m1,"Meal 1"],[m2,"Meal 2"],[m3,"Meal 3"]];
+ return `<div class="block"><h3>Today's plates</h3><p class="small muted">Same portions as the Meals block below, cooked a different way each day so the week never repeats. Everything comes from the Sunday cook; today you reheat and finish.</p>${items.map(([n,lab])=>{const r=recipeByName(n);if(!r)return `<p><b>${lab}:</b> ${n}</p>`;return `<details style="margin:6px 0"><summary style="cursor:pointer"><b>${lab}:</b> ${r.n} <span class="small muted">· ${r.t}</span></summary><p class="small"><b>You need:</b> ${r.i}</p><ol class="small" style="margin:4px 0;padding-left:18px">${r.s.map(x=>`<li>${x}</li>`).join("")}</ol></details>`;}).join("")}</div>`;}
+function sundayCookHTML(){return `<div class="block"><h3>Sunday cook-all (about 2 hours, 16:00–18:00)</h3><p class="small muted">One session covers Mon–Sat for both of you. Cook plain, season per plate at reheat; Thu–Sat portions go straight to the freezer and move to the fridge Wednesday night.</p>
+<ol class="small" style="padding-left:18px">
+<li><b>Oven 400°F. Potatoes first:</b> 6 for you (2 large for Mon/Thu, 4 medium) + 6 small for her. 55–60 min. Then broil 5 min for crisp skins.</li>
+<li><b>Rice cooker:</b> 2½ cups dry (your 6 days + hers). Cool on a sheet pan.</li>
+<li><b>Chicken, two ways, same pan:</b> thaw one 36-oz bag. Half gets Mexican rub (cumin, chili, paprika, garlic) for Mon/Thu/Sat; half gets lemon-oregano-garlic for Tue/Wed/Fri. Sheet pan 400°F 22–25 min to 160°F, rest, slice. 6 portions × 12 oz (8 you + 4 her).</li>
+<li><b>Beef-thigh batch, plain:</b> 16 oz beef + 16 oz diced thigh, onion, garlic, salt, pepper only. Brown, drain. Split: 2 portions stay plain (Thu plate, Fri), 2 get chili spices + 1 cup canned tomatoes simmered 10 min (Mon, Sat chili), 1 gets Worcestershire + thyme (Tue shepherd), 1 gets curry powder + tomato + yogurt stirred in at reheat (Wed curry).</li>
+<li><b>Fried-rice base (Sat):</b> set aside 1 cup of cooked rice in its own container with peas and scallion; egg whites and canned chicken are added day-of.</li>
+<li><b>Breakfasts:</b> 2 overnight-oats jars (Tue, Thu backup), pancake batter dry mix bagged for Wed/Sat (oats measured; add yogurt + egg day-of). Oat bags for the rest.</li>
+<li><b>Steak night tonight:</b> the thawed pair from the freezer; pat dry, salt, hot pan 3–4 min a side, rest 5.</li>
+<li><b>Pack:</b> 12 containers labeled by day and meal; Thu/Fri/Sat to the freezer. Yogurt, cottage cheese and frozen veg stay as-is and are portioned day-of.</li>
+</ol>
+<p class="small muted">Food safety: cooked chicken and beef 4 days in the fridge, so Mon–Wed fridge, Thu–Sat freezer. Rice: cool within an hour, 4 days.</p></div>`;}
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
