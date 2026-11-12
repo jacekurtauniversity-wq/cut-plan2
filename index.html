@@ -299,11 +299,11 @@ h2{font-size:1.7rem}
 
 <h3>Weekly rhythm</h3>
 <div class="week">
-  <div class="day"><b>Mon</b><span class="pill hi">High carb</span><small>Upper A 06:00</small></div>
-  <div class="day"><b>Tue</b><span class="pill mod">Moderate</span><small>Lower A 06:00 · Run 18:00</small></div>
-  <div class="day"><b>Wed</b><span class="pill mod">Moderate</span><small>Upper B 06:00</small></div>
-  <div class="day"><b>Thu</b><span class="pill hi">High carb</span><small>Lower B 06:00 · Run 18:00 (wk 7+)</small></div>
-  <div class="day"><b>Fri</b><span class="pill mod">Moderate</span><small>Full body 06:00</small></div>
+  <div class="day"><b>Mon</b><span class="pill hi">High carb</span><small>Upper A 06:20 · sauna</small></div>
+  <div class="day"><b>Tue</b><span class="pill mod">Moderate</span><small>Lower A 06:20 · Run 18:00</small></div>
+  <div class="day"><b>Wed</b><span class="pill mod">Moderate</span><small>Upper B 06:20 · sauna</small></div>
+  <div class="day"><b>Thu</b><span class="pill hi">High carb</span><small>Lower B 06:20 · Run 18:00 (wk 7+)</small></div>
+  <div class="day"><b>Fri</b><span class="pill mod">Moderate</span><small>Full body 06:20 · sauna</small></div>
   <div class="day"><b>Sat</b><span class="pill mod">Moderate</span><small>Long run 08:00</small></div>
   <div class="day"><b>Sun</b><span class="pill lo">Low carb</span><small>Rest · walk · steak · check-in</small></div>
 </div>
@@ -441,6 +441,7 @@ h2{font-size:1.7rem}
 <div id="strengthProj"></div>
 <h3>Rules that matter more than the exercise list</h3>
 <ul>
+<li><b>Sauna Mon/Wed/Fri, 15–20 min after the lift:</b> for recovery and the heart, not fat loss. Never on an empty tank if you felt faint lifting, never more than 20 min, water with a pinch of salt after. Expect the next morning's weigh-in to read a pound light from water; the 7-day average handles it. Run days skip it so the evening run isn't dehydrated.</li>
 <li><b>Daily 100 push-ups + 100 crunches:</b> 4 × 25 spread across the day, never right before an upper-body session. Hands on a bench for the push-ups if 25 straight isn't clean yet; the count matters less than full range. Tick both on the Today tab.</li>
 <li><b>Deload weeks 6, 12 and 17:</b> same exercises, 60% of the weight, 2 sets each. These line up with days 36–42, 78–84 and 113–119 so you arrive at each milestone recovered.</li>
 <li><b>Strength is the muscle-loss alarm.</b> Log every lift on the Today tab (weight × reps). If the first lift of the day falls for two weeks straight, the check-in adds carbs automatically; if it happens again, take the muscle-first fasting option on the Schedule tab.</li>
@@ -683,7 +684,7 @@ const DAYS={
    {t:"18:50",name:"Meal 4 · Night protein",items:[["cc",200]],how:"Cottage cheese. Window closes 19:00."}]}
 };
 const SCHED={
- lift:[["05:35","Wake. 500 ml water with 1 scoop electrolyte powder + ½ tsp salt. Black coffee if you want it."],["06:00","Leave for the gym. Fasted."],["06:20","Lift (55 min incl. warm-up). Log each lift."],["07:30","Shower. Second coffee by 09:00 at the latest."],["08:00","Study block 1, fasted: 08:00–09:50 (Mon/Wed) or to 10:30 (Fri)."],["10:10","Mon/Wed: class 10:10–11:25."],["11:00","Meal 1 · yogurt power bowl + 5 g creatine. Window opens."],["14:30","Meal 2 · chicken rice bowl. Eat it 60–90 min before any long afternoon/evening study block."],["18:30","Meal 3 · beef & potato plate."],["18:50","Meal 4 · cottage cheese. Window closes 19:00."],["19:15","Wednesday only: 25-min re-prep (chicken, beef, rice for Thu–Sat)."],["20:30","Phone down. Prep tomorrow's gym bag and portions."],["21:00","Magnesium if you're using it. Room cool and dark."],["21:30","Lights out. 7.5 h minimum."]],
+ lift:[["05:35","Wake. 500 ml water with 1 scoop electrolyte powder + ½ tsp salt. Black coffee if you want it."],["06:00","Leave for the gym. Fasted."],["06:20","Lift (55 min incl. warm-up). Log each lift."],["07:15","Sauna 15–20 min (Mon/Wed/Fri), then 500 ml water + pinch of salt."],["07:30","Shower. Second coffee by 09:00 at the latest."],["08:00","Study block 1, fasted: 08:00–09:50 (Mon/Wed) or to 10:30 (Fri)."],["10:10","Mon/Wed: class 10:10–11:25."],["11:00","Meal 1 · yogurt power bowl + 5 g creatine. Window opens."],["14:30","Meal 2 · chicken rice bowl. Eat it 60–90 min before any long afternoon/evening study block."],["18:30","Meal 3 · beef & potato plate."],["18:50","Meal 4 · cottage cheese. Window closes 19:00."],["19:15","Wednesday only: 25-min re-prep (chicken, beef, rice for Thu–Sat)."],["20:30","Phone down. Prep tomorrow's gym bag and portions."],["21:00","Magnesium if you're using it. Room cool and dark."],["21:30","Lights out. 7.5 h minimum."]],
  liftrun:[["05:35","Wake. Electrolyte drink + salt, coffee."],["06:20","Lower-body lift (55 min)."],["08:00","Study block 1, fasted: 08:00–10:30."],["11:00","Meal 1. Window opens."],["11:45","Study block 2: 11:45–13:30."],["13:45","Meal 2, before class."],["14:40","Class 14:40–15:55."],["16:15","Study block 3: 16:15–17:30."],["17:45","Change, 5-min walk warm-up."],["18:00","Run session (see Running tab, 20–34 min). Thursday runs start week 7."],["18:40","Meal 3 right after the run."],["18:55","Meal 4. Window closes 19:00."],["21:30","Lights out."]],
  sat:[["06:30","Wake (one hour of grace). Salt water, coffee."],["08:00","Long run, fasted. Walk 5 min first."],["09:00","Stretch 10 min, shower."],["11:00","Meal 1."],["14:30","Meal 2."],["16:00","Optional 30-min walk."],["18:30","Meal 3."],["18:50","Meal 4. Window closes 19:00."],["22:00","Lights out (half-hour later is fine)."]],
  sun:[["07:00","Weigh-in, waist, neck. Save the check-in on this page."],["09:00","45–60 min easy walk. Nothing harder: this is the only full rest day."],["11:00","Meal 1 · yogurt & peanut butter."],["14:30","Meal 2 · chicken, eggs & greens."],["16:00","Meal prep (90 min): chicken, beef, rice, potatoes, oat bags. See the Meals tab table."],["18:30","Meal 3 · steak night."],["18:50","Meal 4. Window closes 19:00."],["21:30","Lights out. Monday is squat day."]]
@@ -990,6 +991,7 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);tl.push(["12:00","One study block, 12:00–14:00. Then the day is free."]);}
  else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);tl.push(["09:00","45–60 min easy walk. Only rest day: nothing harder."]);tl.push(["14:00","45-min review of the week's notes. Otherwise off."]);}
  else{tl.push(["05:35","Wake. "+drink]);tl.push(["06:20",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
+  if(dow===1||dow===3||dow===5)tl.push(["07:15","Sauna 15–20 min (Mon/Wed/Fri, after the lift). Then 500 ml water with a pinch of salt. Skip it if you felt faint during the session."]);
   tl.push(["08:00",(dow===1||dow===3)?"Study block 1 (fasted, sharpest): 08:00–09:50. Second coffee by 09:00.":"Study block 1 (fasted, sharpest): 08:00–10:30. Second coffee by 09:00, none after noon."]);
   if(cls)tl.push([cls.t,"Class "+cls.t+"–"+cls.e+"."]);
   if(dow===1||dow===3)tl.push(["12:00","Study block 2: 12:00–14:15, fed. Break at 14:15."]);
@@ -1030,7 +1032,7 @@ function renderDay(off){
   <label><input type="checkbox" id="ck_m1" ${E.m1?"checked":""}> Meal 1</label><label><input type="checkbox" id="ck_m2" ${E.m2?"checked":""}> Meal 2</label><label><input type="checkbox" id="ck_m3" ${E.m3?"checked":""}> Meal 3</label><label><input type="checkbox" id="ck_m4" ${E.m4?"checked":""}> Meal 4</label>
   <label><input type="checkbox" id="ck_fast" ${E.fast?"checked":""}> Fast held (19:00–11:00)</label>
   <label><input type="checkbox" id="ck_pu" ${E.pu?"checked":""}> 100 push-ups</label><label><input type="checkbox" id="ck_cr" ${E.cr?"checked":""}> 100 crunches</label>
-  ${P.train?`<label><input type="checkbox" id="ck_lift" ${E.lift?"checked":""}> Lifted</label>`:""}${P.run?`<label><input type="checkbox" id="ck_run" ${E.run?"checked":""}> Ran</label>`:""}
+  ${P.train?`<label><input type="checkbox" id="ck_lift" ${E.lift?"checked":""}> Lifted</label>`:""}${(P.dow===1||P.dow===3||P.dow===5)?`<label><input type="checkbox" id="ck_sauna" ${E.sauna?"checked":""}> Sauna</label>`:""}${P.run?`<label><input type="checkbox" id="ck_run" ${E.run?"checked":""}> Ran</label>`:""}
   ${P.dow===0?`<label><input type="checkbox" id="ck_prep" ${E.prep?"checked":""}> Prepped</label>`:""}
  </div><div class="actions"><button type="button" class="btn ghost" id="roughBtn">Rough day?</button><span class="status" id="ckStatus"></span></div><div id="roughBox" hidden class="note"></div></div>`;
  if(P.dow===0)h+=weeklyReviewHTML(P.iso);
