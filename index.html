@@ -972,7 +972,7 @@ const LIFT={
  4:{name:"Lower B",ex:[
   ["Trap-bar deadlift (AFT event)",["4 × 5","4 × 4","1 × 3 heavy + 3 × 4"],["Rack pull (knee height)","Romanian deadlift, heavy","Hack squat"]],
   ["Bulgarian split squat (DBs)",["3 × 8/leg","3 × 8","3 × 10"],["DB walking lunge","Step-ups","Split squat (Smith)"]],
-  ["Weighted back extension (45°)",["3 × 10","3 × 10","3 × 12"],["Reverse hyper","Good morning, light","Sumo DB RDL"]],
+  ["Glute bridge (floor, bodyweight → plate on hips)",["3 × 12","3 × 15","Back extension 3 × 10"],["Bird dog 3 × 8/side","Cable pull-through","Bodyweight back extension"]],
   ["Seated or lying hamstring curl",["3 × 12","3 × 12","3 × 15"],["Nordic curl (band)","Stability-ball curl","Single-leg curl"]],
   ["Decline sit-up (hold a plate)",["3 × 12","3 × 12","3 × 15"],["Ab wheel rollout","Machine crunch","Lying leg raise"]]]},
  5:{name:"Full body",ex:[
@@ -1456,6 +1456,7 @@ document.querySelector('a[href="#selection"]').addEventListener("click",()=>setT
 /* ---------- AFT progressions by week ---------- */
 function aftProg(name,wk){
  if(/Trap-bar deadlift/i.test(name)){if(wk<=3)return"Weeks 1–3: trap bar on the high handles (or rack pull from knee height), light, 3 × 8. Learn the hinge; the weight is not the point.";if(wk<=8)return"Weeks 4–8: trap bar, high handles, 4 × 5, adding 10 lb when every rep is clean.";if(wk<=13)return"Weeks 9–13: low handles, 4 × 4.";return"Weeks 14+: work up to a heavy set of 3 every other week; that's the AFT event.";}
+ if(/Glute bridge/i.test(name)){if(wk<=4)return"Weeks 1–4: floor glute bridge, bodyweight, 3 × 12 with a 2-s squeeze at the top; add bird dogs 2 × 8 per side after.";if(wk<=8)return"Weeks 5–8: glute bridge with a 25–45 lb plate on the hips, 3 × 12; bodyweight back extensions 2 × 10 if the bench is free.";if(wk<=12)return"Weeks 9–12: bodyweight 45° back extensions 3 × 10, slow, plus the plate bridge.";return"Weeks 13+: weighted back extension 3 × 10, holding a plate to the chest.";}
  if(/Sprint-drag-carry/i.test(name)){if(wk<=3)return"Weeks 1–3, walking version: 25 m walk, 25 m drag a light sled or a 45-lb plate on a towel, 25 m lateral shuffle, 25 m carry two 25-lb dumbbells, 25 m walk. 3 rounds, rest 2 min. No running.";if(wk<=8)return"Weeks 4–8: same five legs at a jog, sled 90 lb, carry 2 × 35 lb. 3–4 rounds.";return"Weeks 9+: at speed, timed, 2 × 40-lb carry, 90-lb drag. Target under 2:30 by day 120.";}
  return null;
 }
