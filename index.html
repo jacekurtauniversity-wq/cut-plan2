@@ -663,7 +663,7 @@ h2{font-size:1.7rem}
 <li><b>Push-ups:</b> hands on a bench weeks 1–2, a low step weeks 3–5, floor from week 6, all with the hand-release at the bottom. The daily 100 is finished on the bench if the floor sets run out.</li>
 <li><b>Plank:</b> knees weeks 1–2, full plank 3×30 s weeks 3–4, then one hold growing 10 s a week to 3 min.</li>
 <li><b>Sprint-drag-carry:</b> walked with light loads weeks 1–3, jogged weeks 4–8, timed at speed from week 9.</li>
-<li><b>Pull-ups:</b> dead hangs and slow negatives until ~250 lb, band-assisted to ~235, strict after that.</li>
+<li><b>Pull-ups, from zero:</b> assisted-machine pull-ups with heavy help, inverted rows and box-supported hangs for the first month; less machine help each week and full dead hangs to ~250 lb; slow negatives to ~240; band-assisted to ~230; strict reps after that. Mon and Wed after the lift, 8–10 minutes.</li>
 <li><b>Ruck:</b> unweighted walks weeks 1–2, then 15 lb adding 5 lb every two weeks to 35, distance up half a mile a week.</li>
 <li><b>Run:</b> the walk-jog program as is; the first 2-mile time trial is at day 45 and it's fine if it's slow. The number only has to move.</li>
 </ul>
@@ -1058,7 +1058,7 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);tl.push(["12:00","One study block, 12:00–14:00. Then the day is free."]);}
  else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);{const r=ruckFor(wk);tl.push(["09:00",`${r.lb?"Ruck: "+r.lb+" lb pack, ":"Walk (no pack yet, weeks 1–2): "}${r.mi} mi, ${r.pace}. Riverside Park path. Boots or the walking shoes, not the running shoes. Log minutes + miles in the run box.`]);}tl.push(["14:00","45-min review of the week's notes. Otherwise off."]);}
  else{tl.push(["05:35","Wake. "+drink]);tl.push(["06:20",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
-  if(dow===1||dow===3){const w7=dlAvg(iso,7);tl.push(["07:10","Pull-up work (8 min): "+pullStage((w7&&w7.w)||START.weight).t]);}
+  if(dow===1||dow===3){const w7=dlAvg(iso,7);tl.push(["07:10","Pull-up work (8–10 min): "+pullStage((w7&&w7.w)||START.weight,wk).t]);}
   if(dow===1||dow===3||dow===5)tl.push(["07:15","Sauna 15–20 min (Mon/Wed/Fri, after the lift). Then 500 ml water with a pinch of salt. Skip it if you felt faint during the session."]);
   tl.push(["08:00",(dow===1||dow===3)?"Study block 1 (fasted, sharpest): 08:00–09:50. Second coffee by 09:00.":"Study block 1 (fasted, sharpest): 08:00–10:30. Second coffee by 09:00, none after noon."]);
   if(cls)tl.push([cls.t,"Class "+cls.t+"–"+cls.e+"."]);
@@ -1437,7 +1437,12 @@ function sundayCookHTML(){return `<div class="block"><h3>Sunday cook-all run she
 <p class="small muted">Food safety: fridge 4 days for cooked chicken, beef and rice; freezer for the rest, moved to the fridge Wednesday night.</p></div>`;}
 
 /* ---------- selection prep ---------- */
-function pullStage(w){return w>250?{n:1,t:"Stage 1: 2 × 20–30 s dead hangs + 3 × 3 slow negatives (5 s down) after the lift."}:w>235?{n:2,t:"Stage 2: band-assisted pull-ups 4 × 5 (thick band), move to a thinner band at 4 × 8."}:{n:3,t:"Stage 3: strict pull-ups, grease the groove: 1–2 reps every time you pass the doorway bar, never to failure. Target 6 strict."};}
+function pullStage(w,wk){
+ if(wk<=4&&w>255)return{n:0,t:"Stage 0 (weeks 1–4): assisted pull-up machine with heavy help (pick the plate that lets you do 8 clean reps, probably 110–140 lb of assist), 3 × 8. Then inverted rows on a bar set at chest height, body at ~45°, 3 × 8. Finish with 3 × 10 s hangs, feet resting lightly on a box."};
+ if(w>250)return{n:1,t:"Stage 1: assisted machine, 10 lb less help each week, 4 × 6. Inverted rows with the bar at waist height 3 × 8. Dead hangs 3 × 15–20 s, feet off the box."};
+ if(w>240)return{n:2,t:"Stage 2: slow negatives: step up to the top from a box, lower over 5 s, 3 × 3. Assisted machine 4 × 6 at about half your bodyweight of help. Hangs 2 × 30 s."};
+ if(w>230)return{n:3,t:"Stage 3: band-assisted pull-ups, thick band, 4 × 5; thinner band each time you reach 4 × 8. Negatives 2 × 3."};
+ return{n:4,t:"Stage 4: strict pull-ups, grease the groove: 1–2 reps every time you pass the doorway bar, never to failure. Target 6 strict."};}
 function plankTarget(wk){return Math.min(180,45+wk*10);}
 function ruckFor(wk){const lb=wk<=2?0:Math.min(35,15+5*Math.floor((wk-3)/2));const mi=Math.min(12,2+0.5*(wk-1));return{lb,mi,pace:lb>=35?"15 min/mi or better":"brisk walk, 16–17 min/mi"};}
 function aftTable(){const w7=dlAvg(new Date().toISOString().slice(0,10),7);const w=(w7&&w7.w)||START.weight;const waist=(w7&&w7.waist)||47;
