@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light dark;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui}img{max-width:100%}[hidden]{display:none!important}tr.cur td{background:rgba(47,93,138,.12)}tr.cur td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+</style>
 </head>
 <body>
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
@@ -219,15 +220,16 @@ h2{font-size:1.7rem}
   <a href="#checkin">Check-in</a>
   <a href="#selection">Selection</a>
 </nav>
-
-<!-- ============ TODAY ============ -->
-<section class="view" id="v-today">
 <div class="daynav">
   <button type="button" class="btn ghost" id="dPrev" aria-label="Previous day">‹</button>
   <input type="date" id="dPick" aria-label="Pick a date">
   <button type="button" class="btn ghost" id="dNext" aria-label="Next day">›</button>
   <button type="button" class="btn ghost" id="dToday">Today</button>
 </div>
+<p class="small muted" id="dayStrip" style="margin:-4px 0 10px"></p>
+
+<!-- ============ TODAY ============ -->
+<section class="view" id="v-today">
 <p class="small muted" id="syncNote">Offline app: everything saves on this device as you type.</p>
 <p class="small muted" id="diag" style="font-family:var(--mono);font-size:.78rem"></p>
 <div class="actions" style="margin:4px 0 10px"><button type="button" class="btn ghost" id="bkExport">Back up log (file)</button><label class="btn ghost" style="cursor:pointer">Restore from file<input type="file" id="bkImport" accept="application/json" hidden></label><span class="status" id="bkStatus"></span></div>
@@ -323,6 +325,7 @@ h2{font-size:1.7rem}
 <section class="view" id="v-schedule">
 <h2>The clock</h2>
 <p>Every day keeps the same skeleton: wake 05:35, train 06:20, eat 11:00–19:00, fast 19:00–11:00. Classes are Mon/Wed 10:10–11:25 and Tue/Thu 14:40–15:55, so Meal 1 moves to 11:30 on Mon/Wed and Meal 2 to 13:45 on Tue/Thu; the fast is still 16 hours or more. Study runs in three blocks: fasted after the gym, after Meal 1, and late afternoon, about 5–6 hours on class days and 7 on Fridays. Day 1 is Friday Nov 13: Full body, moderate carbs, first sauna, and the first fasted morning. Wednesday night Nov 4, eat your last meal by 19:00 so the first fast starts on time.</p>
+<p class="note" id="schNote"></p>
 <div class="seg" id="daySeg">
   <button data-d="lift" class="on">Lift day (Mon·Wed·Fri)</button>
   <button data-d="liftrun">Lift + run (Tue·Thu)</button>
@@ -354,6 +357,7 @@ h2{font-size:1.7rem}
 <section class="view" id="v-meals">
 <h2>Standard meals</h2>
 <p>Four meals, the same every day of the plan. Amounts are in cups, tablespoons and ounces; meat is raw weight in ounces. The protein is identical every day; only the starch (oats, rice, potato) and a little fat change with the day type. Built for cost: the protein comes from the cheapest sources per gram (yogurt, chicken, eggs, cottage cheese, a beef-and-thigh mix) with no whey, and nothing is cheaper per nutrient without going to beans. Season freely: salt, pepper, garlic powder, paprika, cumin, hot sauce, salsa, mustard, vinegar, cinnamon are all free.</p>
+<p class="note" id="mealNote"></p>
 <div class="seg" id="mealSeg">
   <button data-t="H" class="on">High carb · Mon Thu</button>
   <button data-t="M">Moderate · Tue Wed Fri Sat</button>
@@ -437,6 +441,7 @@ h2{font-size:1.7rem}
 <h2>Lifting · 06:00 Mon–Fri · 55 minutes</h2>
 <p>Upper / Lower / Upper / Lower / Full body, Mon–Fri. Every muscle twice a week with basic lifts, machines welcome. Pick a starting weight you could do for 2 more reps than written. When you hit every rep in every set with clean form, add 5 lb (10 lb on squat and deadlift) the next week. If you miss reps two sessions in a row, drop 10% and build back. Rest 2–3 min on the main lift, 60–90 s on everything else.</p>
 
+<p class="note" id="liftNote"></p>
 <div id="liftTable"></div>
 <p class="small">Trap-bar deadlift is back on Thursdays because the Army Fitness Test scores a 3-rep max on it; the trap bar is the safer version and the one they use. Every exercise has a Watch link (opens a YouTube demo in a new tab). No back squats, deadlifts off the floor, hanging work or hip thrusts: leg press and hack squat carry the squat pattern, RDLs carry the hinge, pulldowns carry the pull-up. Every exercise has three swaps for a crowded gym or a missing machine; the Today tab shows them next to each lift. Pick one swap and stick with it for a phase so the log stays comparable.</p>
 <h3>Where your lifts are heading</h3>
@@ -460,7 +465,8 @@ h2{font-size:1.7rem}
 <p>At 269 lb each stride loads your joints with about 3× bodyweight, so the first six weeks are mostly walking on purpose. Two runs a week until week 7, then three. Tuesday and Thursday runs are at 18:00 (not the morning you lifted lower body); Saturday is the long one at 08:00 after coffee and salt water, still fasted. Every run: 5 min walk before, 5 min walk after.</p>
 <p><b>Pace rule:</b> every jog interval is at a pace where you could speak a full sentence. If you can't, you're running too fast, not too weak. Speed comes from dropping weight, not from pushing.</p>
 
-<div class="tblwrap"><table>
+<p class="note" id="runNote"></p>
+<div class="tblwrap"><table id="runTable">
 <thead><tr><th>Weeks</th><th>Days</th><th>Tue (18:00)</th><th>Thu (18:00)</th><th>Sat (08:00)</th><th class="n">Sat distance</th></tr></thead>
 <tbody>
 <tr><td class="n">1–3</td><td class="n">1–21</td><td>Jog 1 min / walk 2 min × 8 (24 min)</td><td class="muted">—</td><td>Jog 1 / walk 2 × 10 (30 min)</td><td class="n">~1.8 mi</td></tr>
@@ -1114,6 +1120,22 @@ function renderDay(off){
  h+=`<div class="mealrow" style="background:var(--bg);margin:6px -12px -10px;padding:10px 12px;border-radius:0 0 6px 6px"><span class="t">Day</span><div><b>Expected by end of day</b><div class="m" style="color:var(--ink);font-family:var(--mono)">${Math.round(P.tt.p)} g protein · ${Math.round(P.tt.c)} g carbs · ${Math.round(P.tt.f)} g fat · ${P.kcal} kcal</div><div class="m">${T.label} day target; the weekly average is ${Math.round(weekAvg(state.adj))} kcal and that is what drives the loss.</div></div></div></div>`;
  $("#dayView").innerHTML=h;
  dlFill(P.iso);dlSummary(P.iso);wireDay(P.iso);
+ syncTabs(P);
+}
+function syncTabs(P){
+ const when=`${DOWN[P.dow]} ${P.d.toLocaleDateString(undefined,{month:"short",day:"numeric"})}`;
+ const lab=P.dayN===0?"Day 0":`Day ${P.dayN}`;
+ const ds=$("#dayStrip");if(ds)ds.textContent=`${lab} · ${when} · week ${P.wk} · ${DAYS[P.type].label}. Every tab follows this date.`;
+ const k=P.dow===0?"sun":P.dow===6?"sat":(P.dow===2||P.dow===4)?"liftrun":"lift";
+ [...$("#daySeg").children].forEach(b=>b.classList.toggle("on",b.dataset.d===k));renderSchedule(k);
+ const sn=$("#schNote");if(sn)sn.innerHTML=`<b>${when} · ${lab}.</b> The exact clock for this date is on the Today tab; below is the standard template for this kind of day.`;
+ curDayType=P.type;[...$("#mealSeg").children].forEach(b=>b.classList.toggle("on",b.dataset.t===P.type));renderMeals();
+ const mn=$("#mealNote");if(mn)mn.innerHTML=`<b>${when} · ${lab} is a ${DAYS[P.type].label.toLowerCase()} day</b> · ${P.kcal} kcal · P ${Math.round(P.tt.p)} g · C ${Math.round(P.tt.c)} g · F ${Math.round(P.tt.f)} g. Kitchen: ${flavorFor(P.dayN).n}.`;
+ document.querySelectorAll("#liftTable tr[data-d]").forEach(tr=>tr.classList.toggle("cur",+tr.dataset.d===P.dow));
+ const ln=$("#liftNote");if(ln)ln.innerHTML=P.train?`<b>${when} · ${lab}: ${P.train.name}</b>${P.deload?" (deload week)":""} · phase ${P.phase}, week ${P.wk}. Highlighted below; targets and the log are on the Today tab.`:`<b>${when} · ${lab}: no lift.</b> ${P.dow===6?"Long run day.":"Rest, ruck and cook-all day."}`;
+ const rows=document.querySelectorAll("#runTable tbody tr");const bands=[[1,3],[4,6],[7,9],[10,12],[13,15],[16,17],[18,99]];
+ rows.forEach((tr,i)=>{const b=bands[i]||[0,0];tr.classList.toggle("cur",P.wk>=b[0]&&P.wk<=b[1]);});
+ const rn=$("#runNote");if(rn){const R=ruckFor(P.wk);rn.innerHTML=P.run?`<b>${when} · ${lab}: ${P.run}</b>`:(P.dow===0?`<b>${when} · ${lab}: Sunday ruck, ${R.mi} mi${R.lb?" with "+R.lb+" lb":" unweighted"}, ${R.pace}.</b>`:`<b>${when} · ${lab}: no run.</b> Week ${P.wk} row highlighted.`);}
 }
 function todayOff(){const t=new Date();t.setHours(12,0,0,0);return Math.round((t-new Date(START.date+"T12:00:00"))/86400000);}
 $("#dPrev").addEventListener("click",()=>renderDay(curOff-1));
@@ -1217,7 +1239,7 @@ function wireDay(iso){
 function renderLiftTable(){
  const el=$("#liftTable");if(!el)return;let h=`<div class="tblwrap"><table class="lifttbl"><thead><tr><th>Day</th><th>Exercise</th><th class="n">Phase 1 (d1–45)</th><th class="n">Phase 2 (d46–90)</th><th class="n">Phase 3 (d91–120)</th><th>Swaps</th></tr></thead><tbody>`;
  const cls={1:"hi",2:"mod",3:"mod",4:"hi",5:"mod"};
- for(const d of [1,2,3,4,5]){const L=LIFT[d];L.ex.forEach((e,i)=>{h+=`<tr>${i===0?`<td rowspan="${L.ex.length}"><b>${DOWN[d]}</b><br><span class="pill ${cls[d]}">${L.name}</span></td>`:""}<td><b>${e[0]}</b> <a class="watch" href="${ytLink(e[0])}" target="_blank" rel="noopener">Watch ↗</a></td><td class="n">${e[1][0]}</td><td class="n">${e[1][1]}</td><td class="n">${e[1][2]}</td><td class="alt">${e[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join("<br>")}</td></tr>`;});}
+ for(const d of [1,2,3,4,5]){const L=LIFT[d];L.ex.forEach((e,i)=>{h+=`<tr data-d="${d}">${i===0?`<td rowspan="${L.ex.length}"><b>${DOWN[d]}</b><br><span class="pill ${cls[d]}">${L.name}</span></td>`:""}<td><b>${e[0]}</b> <a class="watch" href="${ytLink(e[0])}" target="_blank" rel="noopener">Watch ↗</a></td><td class="n">${e[1][0]}</td><td class="n">${e[1][1]}</td><td class="n">${e[1][2]}</td><td class="alt">${e[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join("<br>")}</td></tr>`;});}
  el.innerHTML=h+`</tbody></table></div>`;
 }
 
