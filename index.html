@@ -443,6 +443,7 @@ h2{font-size:1.7rem}
 <div id="strengthProj"></div>
 <h3>Rules that matter more than the exercise list</h3>
 <ul>
+<li><b>Nothing on the gym floor that looks odd:</b> every gym exercise is a standard station (machines, barbells, dumbbells, cables, rower, 45° bench, pull-up bar). Floor work, planks and the daily push-ups live at home.</li>
 <li><b>Sauna Mon/Wed/Fri, 15–20 min after the lift:</b> for recovery and the heart, not fat loss. Never on an empty tank if you felt faint lifting, never more than 20 min, water with a pinch of salt after. Expect the next morning's weigh-in to read a pound light from water; the 7-day average handles it. Run days skip it so the evening run isn't dehydrated.</li>
 <li><b>Daily 100 push-ups + 100 crunches:</b> 4 × 25 spread across the day, never right before an upper-body session. Hands on a bench for the push-ups if 25 straight isn't clean yet; the count matters less than full range. Tick both on the Today tab.</li>
 <li><b>Deload weeks 6, 12 and 17:</b> same exercises, 60% of the weight, 2 sets each. These line up with days 36–42, 78–84 and 113–119 so you arrive at each milestone recovered.</li>
@@ -661,8 +662,8 @@ h2{font-size:1.7rem}
 <ul class="small">
 <li><b>Deadlift:</b> trap bar from the high handles or a knee-height rack pull, light, weeks 1–3; high handles 4×5 weeks 4–8; low handles 4×4 from week 9; heavy triples from week 14.</li>
 <li><b>Push-ups:</b> hands on a bench weeks 1–2, a low step weeks 3–5, floor from week 6, all with the hand-release at the bottom. The daily 100 is finished on the bench if the floor sets run out.</li>
-<li><b>Plank:</b> knees weeks 1–2, full plank 3×30 s weeks 3–4, then one hold growing 10 s a week to 3 min.</li>
-<li><b>Sprint-drag-carry:</b> walked with light loads weeks 1–3, jogged weeks 4–8, timed at speed from week 9.</li>
+<li><b>Plank and push-ups:</b> done at home with the daily 100, never at the gym. Plank 3×20 s weeks 1–2, 3×30 s weeks 3–4, then one hold growing 10 s a week to 3 min.</li>
+<li><b>Sprint-drag-carry:</b> trained as rower + farmer carry rounds (ordinary gym stations) for the first 8 weeks, then sled + carry + rower timed from week 9.</li>
 <li><b>Pull-ups, from zero:</b> assisted-machine pull-ups with heavy help, inverted rows and box-supported hangs for the first month; less machine help each week and full dead hangs to ~250 lb; slow negatives to ~240; band-assisted to ~230; strict reps after that. Mon and Wed after the lift, 8–10 minutes.</li>
 <li><b>Ruck:</b> unweighted walks weeks 1–2, then 15 lb adding 5 lb every two weeks to 35, distance up half a mile a week.</li>
 <li><b>Run:</b> the walk-jog program as is; the first 2-mile time trial is at day 45 and it's fine if it's slow. The number only has to move.</li>
@@ -972,7 +973,7 @@ const LIFT={
  4:{name:"Lower B",ex:[
   ["Trap-bar deadlift (AFT event)",["4 × 5","4 × 4","1 × 3 heavy + 3 × 4"],["Rack pull (knee height)","Romanian deadlift, heavy","Hack squat"]],
   ["Bulgarian split squat (DBs)",["3 × 8/leg","3 × 8","3 × 10"],["DB walking lunge","Step-ups","Split squat (Smith)"]],
-  ["Glute bridge (floor, bodyweight → plate on hips)",["3 × 12","3 × 15","Back extension 3 × 10"],["Bird dog 3 × 8/side","Cable pull-through","Bodyweight back extension"]],
+  ["Back extension (45° bench), bodyweight → weighted",["3 × 10","3 × 12","3 × 10 weighted"],["Leg press, feet high","Cable pull-through","Seated hamstring curl"]],
   ["Seated or lying hamstring curl",["3 × 12","3 × 12","3 × 15"],["Nordic curl (band)","Stability-ball curl","Single-leg curl"]],
   ["Decline sit-up (hold a plate)",["3 × 12","3 × 12","3 × 15"],["Ab wheel rollout","Machine crunch","Lying leg raise"]]]},
  5:{name:"Full body",ex:[
@@ -1438,7 +1439,7 @@ function sundayCookHTML(){return `<div class="block"><h3>Sunday cook-all run she
 
 /* ---------- selection prep ---------- */
 function pullStage(w,wk){
- if(wk<=4&&w>255)return{n:0,t:"Stage 0 (weeks 1–4): assisted pull-up machine with heavy help (pick the plate that lets you do 8 clean reps, probably 110–140 lb of assist), 3 × 8. Then inverted rows on a bar set at chest height, body at ~45°, 3 × 8. Finish with 3 × 10 s hangs, feet resting lightly on a box."};
+ if(wk<=4&&w>255)return{n:0,t:"Stage 0 (weeks 1–4): assisted pull-up machine with heavy help (pick the plate that lets you do 8 clean reps, probably 110–140 lb of assist), 3 × 8. Then inverted rows on a bar set at chest height, body at ~45°, 3 × 8. Finish with 3 × 10 s dead hangs from the pull-up bar (just hold; drop when grip goes)."};
  if(w>250)return{n:1,t:"Stage 1: assisted machine, 10 lb less help each week, 4 × 6. Inverted rows with the bar at waist height 3 × 8. Dead hangs 3 × 15–20 s, feet off the box."};
  if(w>240)return{n:2,t:"Stage 2: slow negatives: step up to the top from a box, lower over 5 s, 3 × 3. Assisted machine 4 × 6 at about half your bodyweight of help. Hangs 2 × 30 s."};
  if(w>230)return{n:3,t:"Stage 3: band-assisted pull-ups, thick band, 4 × 5; thinner band each time you reach 4 × 8. Negatives 2 × 3."};
@@ -1461,12 +1462,12 @@ document.querySelector('a[href="#selection"]').addEventListener("click",()=>setT
 /* ---------- AFT progressions by week ---------- */
 function aftProg(name,wk){
  if(/Trap-bar deadlift/i.test(name)){if(wk<=3)return"Weeks 1–3: trap bar on the high handles (or rack pull from knee height), light, 3 × 8. Learn the hinge; the weight is not the point.";if(wk<=8)return"Weeks 4–8: trap bar, high handles, 4 × 5, adding 10 lb when every rep is clean.";if(wk<=13)return"Weeks 9–13: low handles, 4 × 4.";return"Weeks 14+: work up to a heavy set of 3 every other week; that's the AFT event.";}
- if(/Glute bridge/i.test(name)){if(wk<=4)return"Weeks 1–4: floor glute bridge, bodyweight, 3 × 12 with a 2-s squeeze at the top; add bird dogs 2 × 8 per side after.";if(wk<=8)return"Weeks 5–8: glute bridge with a 25–45 lb plate on the hips, 3 × 12; bodyweight back extensions 2 × 10 if the bench is free.";if(wk<=12)return"Weeks 9–12: bodyweight 45° back extensions 3 × 10, slow, plus the plate bridge.";return"Weeks 13+: weighted back extension 3 × 10, holding a plate to the chest.";}
- if(/Sprint-drag-carry/i.test(name)){if(wk<=3)return"Weeks 1–3, walking version: 25 m walk, 25 m drag a light sled or a 45-lb plate on a towel, 25 m lateral shuffle, 25 m carry two 25-lb dumbbells, 25 m walk. 3 rounds, rest 2 min. No running.";if(wk<=8)return"Weeks 4–8: same five legs at a jog, sled 90 lb, carry 2 × 35 lb. 3–4 rounds.";return"Weeks 9+: at speed, timed, 2 × 40-lb carry, 90-lb drag. Target under 2:30 by day 120.";}
+ if(/Back extension/i.test(name)){if(wk<=4)return"Weeks 1–4: 45° back extension bench, bodyweight, partial range (stop when the back is flat, don't go below), 3 × 8. If that's too much, leg press with feet high 3 × 12 instead.";if(wk<=8)return"Weeks 5–8: bodyweight, full range, 3 × 10, 2-s squeeze at the top.";if(wk<=12)return"Weeks 9–12: bodyweight 3 × 12, slow.";return"Weeks 13+: hold a 10–25 lb plate to the chest, 3 × 10.";}
+ if(/Sprint-drag-carry/i.test(name)){if(wk<=3)return"Weeks 1–3, conditioning version: rower 250 m easy, then farmer carry 2 × 25 lb for 50 m, rest 90 s. 3 rounds. (If Dodge has a sled or turf lane, use it; otherwise this is the same work.)";if(wk<=8)return"Weeks 4–8: rower 250 m hard, farmer carry 2 × 35 lb for 50 m, 10 kettlebell swings. 4 rounds.";return"Weeks 9+: sled push 90 lb 50 m + carry 2 × 40 lb 50 m + rower 250 m, timed, 3 rounds. Target under 2:30 per round by day 120.";}
  return null;
 }
-function pushProg(wk){if(wk<=2)return"hands on a bench, 4 × 15, hand-release at the bottom";if(wk<=5)return"hands on a low step, 4 × 20";if(wk<=9)return"floor, 4 × 15 hand-release; finish the 100 on the bench";return"floor, 4 × 25 hand-release";}
-function plankProg(wk){if(wk<=2)return"3 × 30 s on the knees (forearms)";if(wk<=4)return"3 × 30 s full plank";return`one hold for ${Math.min(180,45+wk*10)} s`;}
+function pushProg(wk){if(wk<=2)return"at home, hands on the kitchen counter or a sturdy table, 4 × 15, chest to the edge, hands lift at the bottom";if(wk<=5)return"at home, hands on the second stair, 4 × 20";if(wk<=9)return"floor, 4 × 15 hand-release; finish the 100 on the counter";return"floor, 4 × 25 hand-release";}
+function plankProg(wk){if(wk<=2)return"at home, 3 × 20 s forearm plank, rest 40 s";if(wk<=4)return"at home, 3 × 30 s";return`at home, one hold for ${Math.min(180,45+wk*10)} s`;}
 /* tabs via hash */
 const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin","selection"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
