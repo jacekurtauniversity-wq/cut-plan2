@@ -217,6 +217,7 @@ h2{font-size:1.7rem}
   <a href="#running">Running</a>
   <a href="#groceries">Groceries</a>
   <a href="#checkin">Check-in</a>
+  <a href="#selection">Selection</a>
 </nav>
 
 <!-- ============ TODAY ============ -->
@@ -269,6 +270,7 @@ h2{font-size:1.7rem}
 <div class="bodyviz" id="bodyViz"></div>
 <p class="small muted">A proportional outline from height, weight and body fat (the way BMI visualizers work), not a photo or a promise. Waist and hips narrow fastest; shoulders and legs hold their width when you keep lifting.</p>
 
+<div class="note"><b>The Army number:</b> <span id="waistLine"></span></div>
 <h3>Milestone targets</h3>
 <div class="tblwrap"><table id="milestones">
 <thead><tr><th>Checkpoint</th><th class="n">Date</th><th class="n">Weight</th><th class="n">Total lost</th><th class="n">Body fat (scale, 35.1% start)</th><th class="n">Body fat (if scale reads 5 high)</th></tr></thead>
@@ -436,7 +438,7 @@ h2{font-size:1.7rem}
 <p>Upper / Lower / Upper / Lower / Full body, Mon–Fri. Every muscle twice a week with basic lifts, machines welcome. Pick a starting weight you could do for 2 more reps than written. When you hit every rep in every set with clean form, add 5 lb (10 lb on squat and deadlift) the next week. If you miss reps two sessions in a row, drop 10% and build back. Rest 2–3 min on the main lift, 60–90 s on everything else.</p>
 
 <div id="liftTable"></div>
-<p class="small">Every exercise has a Watch link (opens a YouTube demo in a new tab). No back squats, deadlifts off the floor, hanging work or hip thrusts: leg press and hack squat carry the squat pattern, RDLs carry the hinge, pulldowns carry the pull-up. Every exercise has three swaps for a crowded gym or a missing machine; the Today tab shows them next to each lift. Pick one swap and stick with it for a phase so the log stays comparable.</p>
+<p class="small">Trap-bar deadlift is back on Thursdays because the Army Fitness Test scores a 3-rep max on it; the trap bar is the safer version and the one they use. Every exercise has a Watch link (opens a YouTube demo in a new tab). No back squats, deadlifts off the floor, hanging work or hip thrusts: leg press and hack squat carry the squat pattern, RDLs carry the hinge, pulldowns carry the pull-up. Every exercise has three swaps for a crowded gym or a missing machine; the Today tab shows them next to each lift. Pick one swap and stick with it for a phase so the log stays comparable.</p>
 <h3>Where your lifts are heading</h3>
 <div id="strengthProj"></div>
 <h3>Rules that matter more than the exercise list</h3>
@@ -633,6 +635,60 @@ h2{font-size:1.7rem}
 </ul>
 <p class="small muted" id="storeNote">Your entries save to this page's private store and reload on any device where you open it.</p>
 </section>
+<!-- ============ SELECTION ============ -->
+<section class="view" id="v-selection">
+<h2>Reenlistment and selection</h2>
+<div class="tiles" id="selTiles"></div>
+<p class="small muted">The Army's only body-composition standard since 2026 is waist-to-height under 0.55, waist at the navel. At 73 in that is a waist under 40.1 in. Everything else below is the fitness you need once you're in. Confirm current prior-service accession rules with a recruiter; standards change and this page is not official.</p>
+
+<h3>The standards</h3>
+<div class="tblwrap"><table>
+<thead><tr><th>Event</th><th>Standard</th><th>Where it's from</th><th>Trained by</th></tr></thead>
+<tbody>
+<tr><td>Waist-to-height</td><td>&lt; 0.55 (waist &lt; 40.1 in)</td><td>Army body composition, 2026</td><td>The deficit. Weekly waist measurement.</td></tr>
+<tr><td>Trap-bar deadlift, 3RM</td><td>AFT: 140 lb minimum (60 pts); 18-series/Ranger slots need 350 total with 60/event; aim 300+ lb</td><td>AFT</td><td>Thursday main lift</td></tr>
+<tr><td>Hand-release push-ups, 2 min</td><td>AFT 60 pts ≈ 10; RASP entry 41; aim 50+</td><td>AFT, RASP</td><td>Daily 100, hand-release form</td></tr>
+<tr><td>Sprint-drag-carry</td><td>AFT 60 pts ≈ 3:00; aim under 2:00</td><td>AFT</td><td>Friday practice rounds</td></tr>
+<tr><td>Plank</td><td>AFT 60 pts ≈ 1:30; RASP entry 2:35; aim 3:30</td><td>AFT, RASP</td><td>Daily plank, +10 s a week</td></tr>
+<tr><td>2-mile run</td><td>AFT 60 pts ≈ 22:00; RASP 14:30; aim under 15:00</td><td>AFT, RASP</td><td>Run program + time trials at days 45/90/120</td></tr>
+<tr><td>Pull-ups</td><td>RASP entry 6; aim 10+</td><td>RASP</td><td>Staged progression Mon/Wed (hangs → negatives → bands → strict)</td></tr>
+<tr><td>Ruck</td><td>RASP 6 mi / 35 lb / 90 min; SFAS 12 mi / 45 lb / under 3 h</td><td>RASP, SFAS</td><td>Sunday ruck, +0.5 mi a week, +5 lb every 2 weeks</td></tr>
+<tr><td>5-mile run</td><td>40:00 (8:00 pace)</td><td>Ranger / SFAS prep</td><td>Long-run build after day 120</td></tr>
+<tr><td>Swim</td><td>SFAS: 100 m in uniform, no time, no touching the sides</td><td>SFAS</td><td>Add pool sessions after day 120</td></tr>
+</tbody></table></div>
+
+<h3>How the app builds up to each event</h3>
+<ul class="small">
+<li><b>Deadlift:</b> trap bar from the high handles or a knee-height rack pull, light, weeks 1–3; high handles 4×5 weeks 4–8; low handles 4×4 from week 9; heavy triples from week 14.</li>
+<li><b>Push-ups:</b> hands on a bench weeks 1–2, a low step weeks 3–5, floor from week 6, all with the hand-release at the bottom. The daily 100 is finished on the bench if the floor sets run out.</li>
+<li><b>Plank:</b> knees weeks 1–2, full plank 3×30 s weeks 3–4, then one hold growing 10 s a week to 3 min.</li>
+<li><b>Sprint-drag-carry:</b> walked with light loads weeks 1–3, jogged weeks 4–8, timed at speed from week 9.</li>
+<li><b>Pull-ups:</b> dead hangs and slow negatives until ~250 lb, band-assisted to ~235, strict after that.</li>
+<li><b>Ruck:</b> unweighted walks weeks 1–2, then 15 lb adding 5 lb every two weeks to 35, distance up half a mile a week.</li>
+<li><b>Run:</b> the walk-jog program as is; the first 2-mile time trial is at day 45 and it's fine if it's slow. The number only has to move.</li>
+</ul>
+<h3>Monthly self-test (days 45, 90, 120)</h3>
+<p class="small muted">Saturday morning, fasted, same order: 2 min hand-release push-ups, 2 min rest, max plank, 5 min rest, pull-ups (strict; log negatives as 0), then the 2-mile time trial. Waist from that morning's log.</p>
+<form class="ci" id="selForm">
+  <label>Test date <input type="date" id="selDate"></label>
+  <label>HR push-ups (2 min) <input type="number" id="selPu" inputmode="numeric"></label>
+  <label>Plank (seconds) <input type="number" id="selPlank" inputmode="numeric"></label>
+  <label>Pull-ups (strict) <input type="number" id="selPull" inputmode="numeric"></label>
+  <label>2-mile time (mm:ss) <input type="text" id="selRun" placeholder="17:45"></label>
+  <label>Trap-bar 3RM (lb) <input type="number" id="selDl" inputmode="numeric"></label>
+  <label>Ruck: lb / miles / minutes <input type="text" id="selRuck" placeholder="25 / 3 / 50"></label>
+  <div class="actions"><button class="btn" type="submit">Save test</button><span class="status" id="selStatus"></span></div>
+</form>
+<div class="tblwrap"><table id="selTbl"><thead><tr><th>Date</th><th class="n">Waist</th><th class="n">HR push-ups</th><th class="n">Plank</th><th class="n">Pull-ups</th><th class="n">2 mi</th><th class="n">Deadlift 3RM</th><th>Ruck</th></tr></thead><tbody></tbody></table></div>
+
+<h3>After day 120</h3>
+<ul>
+<li>Two-week maintenance break, then a second block: the deficit shrinks to ~500 kcal, running goes to 4 days with one tempo session, rucks to 8–12 miles, swim twice a week, and the lifts shift to AFT-specific work (deadlift to a true 3RM, sprint-drag-carry timed weekly).</li>
+<li>Target by late spring: waist under 38, 2-mile under 15:30, 6 strict pull-ups, 50 hand-release push-ups, 3:30 plank, 6-mile ruck under 90 min at 35 lb, 5-mile run under 42.</li>
+<li>Talk to the recruiter now about the prior-service timeline, the MEPS measurement, and whether an 18X or Option 40 contract is open to you; that decides whether RASP or SFAS is the first target.</li>
+</ul>
+</section>
+
 </div>
 
 <script>
@@ -834,7 +890,7 @@ function renderChart(rows){
  svg.innerHTML=s;
 }
 function renderFlavors(){const tb=$("#flavorRows");if(!tb)return;tb.innerHTML=FLAVORS.map((f,i)=>`<tr><td><b>${f.n}</b><br><span class="small muted">days ${i+1}, ${i+8}, ${i+15}…</span></td><td>${f.chx}</td><td>${f.beef}</td><td>${f.veg}</td><td>${f.bowl}</td></tr>`).join("");}
-function renderAll(){renderFlavors();strengthProjection();renderRecipes();renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
+function renderAll(){renderFlavors();renderSelection();strengthProjection();renderRecipes();renderOverview();renderBodyViz();renderMeals();renderLog();renderDay(curOff);}
 
 /* ---------- persistence ---------- */
 async function persist(){
@@ -914,7 +970,7 @@ const LIFT={
   ["Neutral-grip pulldown",["3 × 10","3 × 10","3 × 12"],["Assisted pull-up machine","Single-arm cable pulldown","Machine high row"]],
   ["Rope pushdown + lateral raise",["3 × 12","3 × 12","3 × 15"],["Overhead cable extension + machine lateral","Dips (bench) + DB lateral","Skull crusher + cable lateral"]]]},
  4:{name:"Lower B",ex:[
-  ["Hack squat or leg press (feet high)",["4 × 8","4 × 6","1 × 5 heavy + 3 × 8"],["Leg press","Smith squat","Heavy goblet squat"]],
+  ["Trap-bar deadlift (AFT event)",["4 × 5","4 × 4","1 × 3 heavy + 3 × 4"],["Rack pull (knee height)","Romanian deadlift, heavy","Hack squat"]],
   ["Bulgarian split squat (DBs)",["3 × 8/leg","3 × 8","3 × 10"],["DB walking lunge","Step-ups","Split squat (Smith)"]],
   ["Weighted back extension (45°)",["3 × 10","3 × 10","3 × 12"],["Reverse hyper","Good morning, light","Sumo DB RDL"]],
   ["Seated or lying hamstring curl",["3 × 12","3 × 12","3 × 15"],["Nordic curl (band)","Stability-ball curl","Single-leg curl"]],
@@ -924,7 +980,7 @@ const LIFT={
   ["Dumbbell bench press",["3 × 10","3 × 8","3 × 8"],["Machine chest press","Push-ups","Barbell bench, light"]],
   ["Chest-supported or machine row",["3 × 10","3 × 10","3 × 12"],["Seated cable row","Lat pulldown","Single-arm DB row"]],
   ["Lateral raise + face pulls",["3 × 15","3 × 15","3 × 20"],["Rear-delt fly + lateral machine","Band pull-aparts","Cable laterals"]],
-  ["Farmer carry 40 m + plank 45 s",["4 rounds","5 rounds","6 rounds"],["Suitcase carry + dead bug","Trap-bar carry + plank","Heavy DB hold + side plank"]]]}
+  ["Sprint-drag-carry practice (AFT event)",["3 rounds, 25 m each leg","4 rounds","5 rounds, timed"],["Sled push + farmer carry","Shuttle sprints + KB carry","Rower 250 m + carry"]]]}
 };
 function runFor(wk,dow){ // dow 2=Tue 4=Thu 6=Sat
  const W=wk;
@@ -963,10 +1019,11 @@ function dayPlan(off){
  let train=null,run=null;
  if(dow>=1&&dow<=5){const L=LIFT[dow];train={name:L.name,rows:L.ex.map(e=>[e[0],e[1][phase-1],e[2]])};}
  if(dow===2||dow===6||(dow===4&&wk>=6))run=runFor(wk,dow);
+ if(dow===0){const r=ruckFor(wk);run=r.lb?`Ruck ${r.lb} lb × ${r.mi} mi (${r.pace})`:`Walk ${r.mi} mi, no pack yet (${r.pace})`;}
  if(dow===4&&wk<6&&!run)run=null;
  // tasks
  const tasks=[];
- if(dayN===1)tasks.push("Day 1. Weigh in after the bathroom, before the drink: that's your real starting number. Book a morning lab if you want the baseline testosterone panel.");
+ if(dayN===1)tasks.push("Day 1. Weigh in after the bathroom, before the drink, and measure your waist at the navel: the waist is the number the Army reads (under 40.1 in). Book a morning lab if you want the baseline testosterone panel.");
  if(off<=2)tasks.push("Shopping before Sunday: fresh chicken 7 lb, cottage cheese ×4, eggs, frozen veg ~12 lb, potatoes 10 lb, rice, peanut butter, olive oil, bananas, Sunday salad, onions + garlic, salsa, creatine, vitamin D3, containers. Full list on the Groceries tab / checklist.");
  if(dow===0)tasks.push("07:00 weigh-in + waist + neck in the morning log, then open the Check-in tab: it's prefilled from this week's logs and recalculates your macros.");
  if(dow===0)tasks.push("16:00 cook-all (~2 h): the whole week in one session. The step-by-step list is below the clock. Pull Monday's gym bag.");
@@ -978,6 +1035,9 @@ function dayPlan(off){
  if(holiday==="Thanksgiving"||holiday==="Christmas")tasks.push(holiday+": treat today as a high-carb day. Eat the meal inside 11:00–19:00 if you can, don't log it as a failure, resume tomorrow. Swap the nearest high day to moderate.");
  if(holiday&&holiday.startsWith("Your"))tasks.push("Happy birthday. Day 80 of 120. One meal off plan is fine.");
  if(dayN===14)tasks.push("Two weeks in: the water weight is gone. From here, every pound is real. Auto-adjust starts judging next check-in.");
+ if([43,44,45].includes(dayN)&&dow===6)tasks.push("2-mile time trial today instead of the long run: 5-min walk, then 2 miles as fast as you can hold evenly. Log the time on the Selection tab. Target under 18:00 now, under 15:00 by summer.");
+ if([88,89,90].includes(dayN)&&dow===6)tasks.push("2-mile time trial today. Log it on the Selection tab.");
+ if([118,119,120].includes(dayN)&&dow===6)tasks.push("Final 2-mile time trial. Log it on the Selection tab.");
  if(dayN===45)tasks.push("End of Phase 1. Waist, weight. Phase 2 starts tomorrow: main lifts get heavier (4 × 5–6), running goes to 3 days.");
  if(dayN===90)tasks.push("Day 90: 5K day on Saturday if it isn't already today. End of Phase 2; Phase 3 adds a heavy top set of 3.");
  if(dayN===120)tasks.push("Day 120. Measurements, repeat labs. Hold calories here for 2 weeks (maintenance break) before deciding what's next.");
@@ -996,8 +1056,9 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  const tl=[];
  const drink="500 ml water + 1 scoop electrolyte powder + ½ tsp salt. Coffee if you want it.";
  if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);tl.push(["12:00","One study block, 12:00–14:00. Then the day is free."]);}
- else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);tl.push(["09:00","45–60 min easy walk. Only rest day: nothing harder."]);tl.push(["14:00","45-min review of the week's notes. Otherwise off."]);}
+ else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);{const r=ruckFor(wk);tl.push(["09:00",`${r.lb?"Ruck: "+r.lb+" lb pack, ":"Walk (no pack yet, weeks 1–2): "}${r.mi} mi, ${r.pace}. Riverside Park path. Boots or the walking shoes, not the running shoes. Log minutes + miles in the run box.`]);}tl.push(["14:00","45-min review of the week's notes. Otherwise off."]);}
  else{tl.push(["05:35","Wake. "+drink]);tl.push(["06:20",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
+  if(dow===1||dow===3){const w7=dlAvg(iso,7);tl.push(["07:10","Pull-up work (8 min): "+pullStage((w7&&w7.w)||START.weight).t]);}
   if(dow===1||dow===3||dow===5)tl.push(["07:15","Sauna 15–20 min (Mon/Wed/Fri, after the lift). Then 500 ml water with a pinch of salt. Skip it if you felt faint during the session."]);
   tl.push(["08:00",(dow===1||dow===3)?"Study block 1 (fasted, sharpest): 08:00–09:50. Second coffee by 09:00.":"Study block 1 (fasted, sharpest): 08:00–10:30. Second coffee by 09:00, none after noon."]);
   if(cls)tl.push([cls.t,"Class "+cls.t+"–"+cls.e+"."]);
@@ -1012,7 +1073,7 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  if(run&&(dow===2||dow===4)){tl.push(["17:45","Change, 5-min walk."]);tl.push(["18:00",run]);tl.push(["18:40","Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push(["18:55","Meal 4 · cottage cheese. Window closes 19:00."]);}
  else{tl.push([meals[2].t,"Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push([meals[3].t,"Meal 4 · cottage cheese. Window closes 19:00."]);}
  if(dow===3&&dayN>1)tl.push(["19:15","Freezer to fridge: Thu–Sat containers and Sunday's steaks."]);
- tl.push([dow===0?"10:30":dow===6?"09:30":"10:00","Push-ups + crunches, set 1 of 4 (25 each). Sets 2–4 at the end of each study block or between meals; done by 18:00."]);
+ tl.push([dow===0?"10:30":dow===6?"09:30":"10:00",`Push-ups this week: ${pushProg(wk)}. Crunches 4 × 25. Plank: ${plankProg(wk)}. Spread the sets between study blocks; done by 18:00.`]);
  if(dow>=1&&dow<=5)tl.push(["19:30",dow===5?"Evening is yours. Lights out can slide to 22:00.":"Yours until 21:00: games, a show, friends. Earned by the three study blocks; if one got skipped, this is when it gets made up."]);
  if(dow!==6)tl.push(["21:00","Magnesium. Screens dim, bag and containers set out for tomorrow."]);
  tl.push([dow===6?"22:00":"21:30","Lights out."]);
@@ -1032,13 +1093,13 @@ function renderDay(off){
  const E=daily[P.iso]||{};
  if(P.train){h+=`<div class="block"><h3>06:20 · ${P.train.name}${P.deload?" (deload: 60%, 2 sets)":""}</h3><div id="liftLog">`;
   P.train.rows.forEach((r,i)=>{const last=lastLift(P.iso,P.dow,i);const v=(E.lifts&&E.lifts[i])||"";
-   const nt=nextTarget(r[0],r[1],P.iso);h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off"><span class="restbtns"><button type="button" class="rest" data-s="${i===0?150:90}" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest ${i===0?"2:30":"1:30"}</button><button type="button" class="rest" data-s="60" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest 1:00</button></span>${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}<span class="last" style="color:var(--accent);font-family:var(--body)">${nt.text}</span></div>`;});
+   const nt=nextTarget(r[0],r[1],P.iso);const ap=aftProg(r[0],P.wk);h+=`<div class="lrow"><span class="nm">${r[0]} <a class="watch" href="${ytLink(r[0])}" target="_blank" rel="noopener">Watch ↗</a></span><span class="sets">${r[1]}</span><span class="alt">Swaps: ${r[2].map(a=>`${a} <a class="watch" href="${ytLink(a)}" target="_blank" rel="noopener">↗</a>`).join(" · ")}</span><input type="text" id="lift${i}" placeholder="weight × reps, e.g. 180x6, 180x6, 180x5" value="${v.replace(/"/g,"&quot;")}" autocomplete="off"><span class="restbtns"><button type="button" class="rest" data-s="${i===0?150:90}" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest ${i===0?"2:30":"1:30"}</button><button type="button" class="rest" data-s="60" data-next="${P.train.rows[i+1]?P.train.rows[i+1][0]:"Last exercise"}">Rest 1:00</button></span>${last?`<span class="last">Last: ${last.v} (${fmtDate(last.iso)})</span>`:""}<span class="last" style="color:var(--accent);font-family:var(--body)">${ap?ap:nt.text}</span></div>`;});
   h+=`</div><div class="actions" style="margin-top:8px"><button type="button" class="btn" id="saveLift">Save workout</button><span class="status" id="liftStatus"></span></div><p class="small muted">Warm-up: 3 min incline walk, bar × 10, 50% × 5, 70% × 3. Rest 2–3 min on the first lift, 60–90 s after. Beat last session by a rep or 5 lb; if you can't two sessions running, drop 10%.</p></div>`;}
  if(P.run)h+=`<div class="block"><h3>${P.dow===6?"08:00":"18:00"} · Run</h3><p>${P.run}</p><div class="checks"><label>Minutes <input type="number" id="runMin" step="1" inputmode="numeric" style="width:5em" value="${E.runT||""}"></label><label>Miles <input type="number" id="runMi" step="0.01" inputmode="decimal" style="width:5em" value="${E.runD||""}"></label><label>Avg HR <input type="number" id="runHr" step="1" inputmode="numeric" style="width:5em" value="${E.runHr||""}"></label><button type="button" class="btn ghost" id="saveRun">Save run</button><span class="status" id="runStatus"></span></div>${lastRun(P.iso)?`<p class="small muted">Last run: ${lastRun(P.iso)}</p>`:""}<p class="small muted">Sentence pace. Sharp or joint pain = stop and walk. Repeat the week if it felt hard.</p></div>`;
  h+=`<div class="block"><h3>Done today</h3><div class="checks" id="doneChecks">
   <label><input type="checkbox" id="ck_m1" ${E.m1?"checked":""}> Meal 1</label><label><input type="checkbox" id="ck_m2" ${E.m2?"checked":""}> Meal 2</label><label><input type="checkbox" id="ck_m3" ${E.m3?"checked":""}> Meal 3</label><label><input type="checkbox" id="ck_m4" ${E.m4?"checked":""}> Meal 4</label>
   <label><input type="checkbox" id="ck_fast" ${E.fast?"checked":""}> Fast held (19:00–11:00)</label>
-  <label><input type="checkbox" id="ck_pu" ${E.pu?"checked":""}> 100 push-ups</label><label><input type="checkbox" id="ck_cr" ${E.cr?"checked":""}> 100 crunches</label>
+  <label><input type="checkbox" id="ck_pu" ${E.pu?"checked":""}> 100 HR push-ups</label><label><input type="checkbox" id="ck_cr" ${E.cr?"checked":""}> 100 crunches</label><label><input type="checkbox" id="ck_plank" ${E.plank?"checked":""}> Plank</label>
   ${P.train?`<label><input type="checkbox" id="ck_lift" ${E.lift?"checked":""}> Lifted</label>`:""}${(P.dow===1||P.dow===3||P.dow===5)?`<label><input type="checkbox" id="ck_sauna" ${E.sauna?"checked":""}> Sauna</label>`:""}${P.run?`<label><input type="checkbox" id="ck_run" ${E.run?"checked":""}> Ran</label>`:""}
   ${P.dow===0?`<label><input type="checkbox" id="ck_prep" ${E.prep?"checked":""}> Prepped</label>`:""}
  </div><div class="actions"><button type="button" class="btn ghost" id="roughBtn">Rough day?</button><span class="status" id="ckStatus"></span></div><div id="roughBox" hidden class="note"></div></div>`;
@@ -1374,8 +1435,34 @@ function sundayCookHTML(){return `<div class="block"><h3>Sunday cook-all run she
 <li><b>Sun</b> steak night, cooked fresh at 17:45 during the next cook-all.</li>
 </ul>
 <p class="small muted">Food safety: fridge 4 days for cooked chicken, beef and rice; freezer for the rest, moved to the fridge Wednesday night.</p></div>`;}
+
+/* ---------- selection prep ---------- */
+function pullStage(w){return w>250?{n:1,t:"Stage 1: 2 × 20–30 s dead hangs + 3 × 3 slow negatives (5 s down) after the lift."}:w>235?{n:2,t:"Stage 2: band-assisted pull-ups 4 × 5 (thick band), move to a thinner band at 4 × 8."}:{n:3,t:"Stage 3: strict pull-ups, grease the groove: 1–2 reps every time you pass the doorway bar, never to failure. Target 6 strict."};}
+function plankTarget(wk){return Math.min(180,45+wk*10);}
+function ruckFor(wk){const lb=wk<=2?0:Math.min(35,15+5*Math.floor((wk-3)/2));const mi=Math.min(12,2+0.5*(wk-1));return{lb,mi,pace:lb>=35?"15 min/mi or better":"brisk walk, 16–17 min/mi"};}
+function aftTable(){const w7=dlAvg(new Date().toISOString().slice(0,10),7);const w=(w7&&w7.w)||START.weight;const waist=(w7&&w7.waist)||47;
+ const waistTarget=73*0.55;const lbNeeded=Math.max(0,(waist-waistTarget)*6);const wTarget=w-lbNeeded;
+ let dayHit=null;for(let d=0;d<=119;d++){if(projectedAt(d/7)<=wTarget){dayHit=d+1;break;}}
+ return{w,waist,waistTarget:Math.round(waistTarget*100)/100,wTarget:Math.round(wTarget),dayHit};}
+
+function renderSelection(){const el=$("#selTiles");if(!el)return;const A=aftTable();
+ el.innerHTML=`<div class="tile"><div class="k">Waist now</div><div class="v">${A.waist}"</div><div class="d">target under ${A.waistTarget}" (0.55 × 73)</div></div><div class="tile"><div class="k">Weight that gets you there</div><div class="v">~${A.wTarget} lb</div><div class="d">~1 in of waist per 6 lb at your body fat</div></div><div class="tile"><div class="k">Projected date</div><div class="v">${A.dayHit?fmtDate(addDays(START.date,A.dayHit-1)):"after day 120"}</div><div class="d">${A.dayHit?"Day "+A.dayHit+" on the current pace":"keep the deficit; re-check monthly"}</div></div>`;
+ const tb=$("#selTbl tbody");const tests=(state.tests||[]).slice().sort((a,b)=>a.date<b.date?-1:1);
+ tb.innerHTML=tests.map(t=>{const d=daily[t.date]||{};return `<tr><td>${fmtDate(t.date)}</td><td class="n">${d.waist?d.waist+'"':"—"}</td><td class="n">${t.pu??"—"}</td><td class="n">${t.plank?Math.floor(t.plank/60)+":"+String(t.plank%60).padStart(2,"0"):"—"}</td><td class="n">${t.pull??"—"}</td><td class="n">${t.run||"—"}</td><td class="n">${t.dl??"—"}</td><td>${t.ruck||""}</td></tr>`;}).join("")||`<tr><td colspan="8" class="muted">First self-test is day 45.</td></tr>`;}
+$("#selForm").addEventListener("submit",async ev=>{ev.preventDefault();const n=id=>{const v=parseFloat($("#"+id).value);return isNaN(v)?null:v;};const t={date:$("#selDate").value||new Date().toISOString().slice(0,10),pu:n("selPu"),plank:n("selPlank"),pull:n("selPull"),run:$("#selRun").value.trim()||null,dl:n("selDl"),ruck:$("#selRuck").value.trim()||null};
+ state.tests=(state.tests||[]).filter(x=>x.date!==t.date).concat([t]);lsSave();await persist();renderSelection();$("#selStatus").textContent="Saved.";});
+document.querySelector('a[href="#selection"]').addEventListener("click",()=>setTimeout(renderSelection,0));
+
+/* ---------- AFT progressions by week ---------- */
+function aftProg(name,wk){
+ if(/Trap-bar deadlift/i.test(name)){if(wk<=3)return"Weeks 1–3: trap bar on the high handles (or rack pull from knee height), light, 3 × 8. Learn the hinge; the weight is not the point.";if(wk<=8)return"Weeks 4–8: trap bar, high handles, 4 × 5, adding 10 lb when every rep is clean.";if(wk<=13)return"Weeks 9–13: low handles, 4 × 4.";return"Weeks 14+: work up to a heavy set of 3 every other week; that's the AFT event.";}
+ if(/Sprint-drag-carry/i.test(name)){if(wk<=3)return"Weeks 1–3, walking version: 25 m walk, 25 m drag a light sled or a 45-lb plate on a towel, 25 m lateral shuffle, 25 m carry two 25-lb dumbbells, 25 m walk. 3 rounds, rest 2 min. No running.";if(wk<=8)return"Weeks 4–8: same five legs at a jog, sled 90 lb, carry 2 × 35 lb. 3–4 rounds.";return"Weeks 9+: at speed, timed, 2 × 40-lb carry, 90-lb drag. Target under 2:30 by day 120.";}
+ return null;
+}
+function pushProg(wk){if(wk<=2)return"hands on a bench, 4 × 15, hand-release at the bottom";if(wk<=5)return"hands on a low step, 4 × 20";if(wk<=9)return"floor, 4 × 15 hand-release; finish the 100 on the bench";return"floor, 4 × 25 hand-release";}
+function plankProg(wk){if(wk<=2)return"3 × 30 s on the knees (forearms)";if(wk<=4)return"3 × 30 s full plank";return`one hold for ${Math.min(180,45+wk*10)} s`;}
 /* tabs via hash */
-const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin"];
+const VIEWS=["today","overview","schedule","meals","lifting","running","groceries","checkin","selection"];
 function route(){let h=(location.hash||"#today").slice(1);if(!VIEWS.includes(h))h="today";
  VIEWS.forEach(v=>{document.getElementById("v-"+v).classList.toggle("on",v===h);});
  [...document.querySelectorAll("#tabs a")].forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+h));
