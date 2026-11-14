@@ -205,7 +205,7 @@ h2{font-size:1.7rem}
 <header class="top">
   <span class="eyebrow">120-day cut · starts Sat Nov 14 · lift Mon–Fri 06:20 · 16:8 fasting · carb cycling</span>
   <h1>Stockbuild Cut Plan</h1>
-  <p class="sub">Open the Today tab each morning. 6'1" · 267.8 lb start · 34.9% body fat by scale (last scan) · start Sat Nov 14 · 100.8 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
+  <p class="sub">Open the Today tab each morning. 6'1" · 269.2 lb start · 35.3% body fat by scale (Day 1 scan) · start Sat Nov 14 · 100.6 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
 </header>
 
 <div class="timerbar" id="timerbar" hidden><span>Rest</span><span class="big" id="timerVal">1:30</span><span id="timerNext" class="small" style="flex:1;min-width:0;font-family:var(--body);font-size:.9rem"></span><button type="button" id="timerPlus">+30</button><button type="button" id="timerStop">Done</button></div>
@@ -283,7 +283,7 @@ h2{font-size:1.7rem}
 <li><b>Days 1–14: water first.</b> Dropping carbs and starting fasting empties glycogen, and each gram of glycogen holds ~3 g of water. Expect 6–9 lb down in two weeks; about 5 lb of that is water you don't get credit for as fat. The plan subtracts it from every target.</li>
 <li><b>Weeks 3–12: fat.</b> 2.0–2.4 lb a week. The scale will stall for a few days after high-carb days and after Saturday runs (muscle repair holds water). Judge by the weekly average, not Monday morning.</li>
 <li><b>Weeks 13–17: slower, deliberately.</b> As you get lighter, maintenance drops and loss slows to ~1.8 lb a week. The check-in tab tightens macros only if you fall below the target band two weeks running.</li>
-<li><b>Muscle.</b> Day 1 scan: 100.8 lb skeletal muscle, 163 lb total muscle, 94.4 lb fat, visceral fat 18. With ~200 g protein, five lifting days and this rate, expect roughly 85–90% of non-water loss to be fat. The plan budgets ~4–5 lb of lean mass over 120 days; the morning log tracks skeletal muscle so you can see it. Visceral fat is the number to watch: 18 is high, and it tends to fall fastest on a plan like this; under 12 by day 120 is a realistic target.</li>
+<li><b>Muscle.</b> Day 1 scan (Sat Nov 14): 100.6 lb skeletal muscle, 162.6 lb total muscle, 95.0 lb fat, 174.2 lb fat-free mass, BMR 2,076, visceral fat 18. With ~200 g protein, five lifting days and this rate, expect roughly 85–90% of non-water loss to be fat. The plan budgets ~4–5 lb of lean mass over 120 days; the morning log tracks skeletal muscle so you can see it. Visceral fat is the number to watch: 18 is high, and it tends to fall fastest on a plan like this; under 12 by day 120 is a realistic target.</li>
 </ul>
 
 <div class="note warn"><b>On loose skin.</b> No diet can promise none. What's within your control: a loss rate of about 1%/week (this plan), high protein, resistance training so muscle fills the space fat leaves, hydration, sleep and not smoking. Age, genetics and how long you've carried the weight do the rest, and at 27 age is firmly on your side: skin elasticity is still near its peak. From 269 to ~228 on a broad 6'1" frame, most men see skin tighten over the following 6–12 months rather than hang.</div>
@@ -702,7 +702,7 @@ h2{font-size:1.7rem}
 (function(){
 "use strict";
 /* ---------- constants ---------- */
-const START={date:"2026-11-14",weight:267.8,height:73,bfHi:34.9,bfLo:30};
+const START={date:"2026-11-14",weight:269.2,height:73,bfHi:35.3,bfLo:30};
 const WEEKLY_PLAN=[6.0,3.5,2.4,2.4,2.4,2.4,2.1,2.1,2.1,2.1,2.1,2.1,1.9,1.9,1.9,1.9,1.9,1.8]; // lb lost per week
 const WATER=5;          // lb of the drop that is water, not fat
 const LEAN_FRAC=0.12;   // share of non-water loss assumed lean
@@ -1154,7 +1154,7 @@ diagRender();
 let daily={};          // iso -> {w,bf,smm,water,visc,bmr,waist,sleep,note}
 let dailyRef=null,dailySaving=false;
 const LSD="stockbuild-daily-v1";
-const SEED={};
+const SEED={"2026-11-14":{w:269.2,bmi:34.5,bf:35.3,fatLb:95.0,sub:25.2,visc:18,musPct:60.4,mus:162.6,smmPct:37.4,smm:100.6,bonePct:4.3,bone:11.6,water:47.4,bmr:2076}};
 function applySeed(){let changed=false;for(const k of Object.keys(SEED)){const e=daily[k]||{};for(const f of Object.keys(SEED[k])){if(e[f]===undefined||e[f]===null){e[f]=SEED[k][f];changed=true;}}daily[k]=e;}if(changed)dlSaveLocal();}
 function dlLoadLocal(){try{const o=JSON.parse(localStorage.getItem(LSD)||"{}");if(o&&typeof o==="object")daily=o;}catch(e){}}
 function dlSaveLocal(){try{localStorage.setItem(LSD,JSON.stringify(daily));}catch(e){DIAG.storage="blocked";diagRender();}}
