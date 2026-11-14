@@ -203,9 +203,9 @@ h2{font-size:1.7rem}
 
 <div class="wrap">
 <header class="top">
-  <span class="eyebrow">120-day cut · starts Fri Nov 13 · lift Mon–Fri 06:20 · 16:8 fasting · carb cycling</span>
+  <span class="eyebrow">120-day cut · starts Sat Nov 14 · lift Mon–Fri 06:20 · 16:8 fasting · carb cycling</span>
   <h1>Stockbuild Cut Plan</h1>
-  <p class="sub">Open the Today tab each morning. 6'1" · 267.8 lb start · 34.9% body fat by scale (last scan) · start Fri Nov 13 · 100.8 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
+  <p class="sub">Open the Today tab each morning. 6'1" · 267.8 lb start · 34.9% body fat by scale (last scan) · start Sat Nov 14 · 100.8 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
 </header>
 
 <div class="timerbar" id="timerbar" hidden><span>Rest</span><span class="big" id="timerVal">1:30</span><span id="timerNext" class="small" style="flex:1;min-width:0;font-family:var(--body);font-size:.9rem"></span><button type="button" id="timerPlus">+30</button><button type="button" id="timerStop">Done</button></div>
@@ -592,7 +592,7 @@ h2{font-size:1.7rem}
 <li>For two people the monthly meat is ~40 lb and the veg another ~40 lb (now bought 20 lb at a time, which also halves the freezer problem). Most UWS freezers won't take that in one go: do Costco twice a month instead (meat + half the veg on trip one, the rest of the veg + anything low on trip two), or buy half the veg fresh at the top-up. The plan doesn't care which.</li>
 <li>Portion everything the day you get home: chicken bags are already individual; beef into 300 g flat zip bags (one bag feeds both of you at dinner); steaks wrapped individually. Flat bags thaw overnight in the fridge for Sunday prep.</li>
 <li>Sunday 16:00 prep now cooks 7 × 340 g chicken and 6 × 300 g beef, pulled from the freezer Saturday night. Budget 90 minutes instead of 75.</li>
-<li>Thanksgiving falls on day 14 and Christmas on day 43. Make those high-carb days (swap with the nearest Mon/Thu), eat the meal, don't log it as a failure, and resume. The check-in's two-week average absorbs one day.</li>
+<li>Thanksgiving falls on day 13 and Christmas on day 42. Make those high-carb days (swap with the nearest Mon/Thu), eat the meal, don't log it as a failure, and resume. The check-in's two-week average absorbs one day.</li>
 </ul>
 <p class="small muted">Already applied to cut cost: half the beef is chicken thigh (−$13/month), whey is replaced by Kirkland yogurt (−$14/month), veg, cottage cheese, eggs, potatoes, oil, peanut butter and supplements moved to Walmart (−$35/month). The next step down is all-thigh instead of the beef mix (−$12 more) and dropping sirloin for flank or chuck on sale; neither changes the macros much.</p>
 </section>
@@ -702,7 +702,7 @@ h2{font-size:1.7rem}
 (function(){
 "use strict";
 /* ---------- constants ---------- */
-const START={date:"2026-11-13",weight:267.8,height:73,bfHi:34.9,bfLo:30};
+const START={date:"2026-11-14",weight:267.8,height:73,bfHi:34.9,bfLo:30};
 const WEEKLY_PLAN=[6.0,3.5,2.4,2.4,2.4,2.4,2.1,2.1,2.1,2.1,2.1,2.1,1.9,1.9,1.9,1.9,1.9,1.8]; // lb lost per week
 const WATER=5;          // lb of the drop that is water, not fat
 const LEAN_FRAC=0.12;   // share of non-water loss assumed lean
@@ -817,13 +817,13 @@ function renderOverview(){
  const tiles=$("#goalTiles");
  const W45=projectedAt(45/7),W90=projectedAt(90/7),W120=projectedAt(120/7);
  tiles.innerHTML=[
-  ["Day 1",`${START.weight} lb`,`${START.bfHi}% BF by scale · Fri ${fmtDate(START.date)}`],
+  ["Day 1",`${START.weight} lb`,`${START.bfHi}% BF by scale · Sat ${fmtDate(START.date)}`],
   ["Day 45",`${Math.round(W45)} lb`,`${r1(bfAfter(START.bfHi,W45))}% → ${r1(bfAfter(START.bfLo,W45))}% BF · ${fmtDate(addDays(START.date,44))}`],
   ["Day 90",`${Math.round(W90)} lb`,`${r1(bfAfter(START.bfHi,W90))}% → ${r1(bfAfter(START.bfLo,W90))}% BF · ${fmtDate(addDays(START.date,89))}`],
   ["Day 120",`${Math.round(W120)} lb`,`${r1(bfAfter(START.bfHi,W120))}% → ${r1(bfAfter(START.bfLo,W120))}% BF · ${fmtDate(addDays(START.date,119))}`]
  ].map(([k,v,d])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join("");
  const tb=$("#milestones tbody");
- tb.innerHTML=[[14,"Day 14 · water gone"],[45,"Day 45 · end of base"],[60,"Day 60 · refeed day"],[80,"Day 80 · 28th birthday"],[90,"Day 90 · 5K"],[120,"Day 120 · plan end"]].map(([d,lab])=>{const w=projectedAt(d/7);return `<tr><td>${lab}</td><td class="n">${fmtDate(addDays(START.date,d-1))}</td><td class="n">${Math.round(w)} lb</td><td class="n">−${Math.round(START.weight-w)} lb${d===14?" (≈5 water)":""}</td><td class="n">${r1(bfAfter(START.bfHi,w))}%</td><td class="n">${r1(bfAfter(START.bfLo,w))}%</td></tr>`;}).join("");
+ tb.innerHTML=[[14,"Day 14 · water gone"],[45,"Day 45 · end of base"],[60,"Day 60 · refeed day"],[79,"Day 79 · 28th birthday"],[90,"Day 90 · 5K"],[120,"Day 120 · plan end"]].map(([d,lab])=>{const w=projectedAt(d/7);return `<tr><td>${lab}</td><td class="n">${fmtDate(addDays(START.date,d-1))}</td><td class="n">${Math.round(w)} lb</td><td class="n">−${Math.round(START.weight-w)} lb${d===14?" (≈5 water)":""}</td><td class="n">${r1(bfAfter(START.bfHi,w))}%</td><td class="n">${r1(bfAfter(START.bfLo,w))}%</td></tr>`;}).join("");
  const a=state.adj;
  $("#kcalH").textContent=Math.round(dayTotals("H",a).kcal)+" kcal";
  $("#kcalM").textContent=Math.round(dayTotals("M",a).kcal)+" kcal";
@@ -875,7 +875,7 @@ function renderLog(){
  const v=$("#verdict");
  if(rows.length){const last=rows[rows.length-1];const proj=projectedAt(last.wk);const diff=last.weight-proj;
   v.innerHTML=`<div class="verdict ${last.vcls||""}"><b>${last.vtitle||"Saved"}</b><p>${last.vtext||""}</p><p class="small muted">Plan projected ${Math.round(proj)} lb for week ${last.wk}; you're ${Math.abs(r1(diff))} lb ${diff<=0?"ahead":"behind"}. ${last.bf?`Navy-method body fat estimate: ${r1(last.bf)}% (±3%).`:"Add waist and neck for a body-fat estimate."} Current macro level: ${state.adj>0?"+":""}${state.adj}.</p></div>`;}
- else v.innerHTML=`<div class="verdict"><b>Baseline: ${START.weight} lb, ${START.bfHi}% BF on ${fmtDate(START.date)}</b><p>Day 1 is Friday Nov 13. First check-in is Sunday Nov 15, a short first week: expect 2–4 lb down, mostly water, and the plan knows that.</p></div>`;
+ else v.innerHTML=`<div class="verdict"><b>Baseline: ${START.weight} lb, ${START.bfHi}% BF on ${fmtDate(START.date)}</b><p>Day 1 is Saturday Nov 14. First check-in is Sunday Nov 15, a short first week: expect 2–4 lb down, mostly water, and the plan knows that.</p></div>`;
  renderChart(rows);
 }
 function renderChart(rows){
@@ -1002,18 +1002,18 @@ function runFor(wk,dow){ // dow 2=Tue 4=Thu 6=Sat
 }
 const DOWN=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 const WEEK1_END=4; // offsets 0-4 are the first short week (Wed–Sun)
-const OVERRIDES={"2026-11-12":{task:"Day 0. Tonight sets up tomorrow: a two-day cook (Fri + Sat), the bag, the drink, and an early night. Sunday is the first full cook-all.",meals:["11:00","14:30","18:30","18:50"],tl:[
- ["14:40","Class 14:40–15:55."],["16:15","Groceries check: potatoes, frozen veg, cottage cheese, Greek yogurt, eggs, bananas, salsa, spices. Thaw tonight's beef (16 oz) + thigh (16 oz) and one 36-oz chicken bag in the fridge, and Sunday's steak pair."],
- ["17:00","Cook for Fri + Sat (60 min): oven 400°F, 4 potatoes in (2 medium you, 2 small her). Rice cooker: 1 cup dry. Chicken: 24 oz from the bag, lemon-oregano, sheet pan 24 min (Fri garlic-lemon plate + Sat fried rice; Fri lunch is the canned-chicken poke bowl). Ninja: 16 oz beef + 16 oz thigh plain, brown, drain; season half Italian for Sat chili (oregano, basil, ½ cup tomatoes), half plain for a spare. Freeze the rest of the chicken bag raw."],
+const OVERRIDES={"2026-11-13":{task:"Day 0. Tonight sets up tomorrow: cook for Saturday, the drink, running shoes by the door, and an early night. Sunday is the first full cook-all.",meals:["11:00","14:30","18:30","18:50"],tl:[
+ ["16:15","Groceries check: potatoes, frozen veg, cottage cheese, Greek yogurt, eggs, bananas, salsa, spices. Thaw tonight's beef (16 oz) + thigh (16 oz) and one 36-oz chicken bag in the fridge, and Sunday's steak pair."],
+ ["17:00","Cook for Sat (60 min): oven 400°F, 4 potatoes in (2 medium you, 2 small her). Rice cooker: 1 cup dry. Chicken: 24 oz from the bag, lemon-oregano, sheet pan 24 min (Fri garlic-lemon plate + Sat fried rice; Fri lunch is the canned-chicken poke bowl). Ninja: 16 oz beef + 16 oz thigh plain, brown, drain; season half Italian for Sat chili (oregano, basil, ½ cup tomatoes), half plain for a spare. Freeze the rest of the chicken bag raw."],
  ["18:00","Eat a normal dinner from what you cooked: 7 oz beef-thigh, 1 potato, 2 cups veg, 2 tsp oil. Last bite by 19:00."],
  ["18:45","Pack 4 containers: Fri M2 (rice + veg; can at lunch), Fri M3 (chicken + potato wedges + veg), Sat M2 (rice base + peas + scallion), Sat M3 (chili + potato). Pancake mix bag for Sat, oat bag ½ cup for Fri. Label lids."],
  ["19:15","Set out: 500 ml bottle, electrolyte scoop + ½ tsp salt beside it, creatine and D3 by the yogurt, gym bag with shoes, towel for the sauna, phone charger. Alarm 05:35."],
- ["19:45","Yours until 21:00."],["21:00","Magnesium. Screens dim. Read the Day 1 page once so there are no surprises: Full body at 06:20, sauna 07:15, Meal 1 at 11:00."],["21:30","Lights out. Scale first thing tomorrow, before the drink."]]}};
+ ["19:45","Yours until 21:00."],["21:00","Magnesium. Screens dim. Read the Day 1 page once so there are no surprises: long run at 08:00 (jog 1 / walk 2 × 10, fasted), Meal 1 at 11:00, first lift Monday 06:20."],["21:30","Lights out. Scale first thing tomorrow, before the drink."]]}};
 
 function dayPlan(off){
  const iso=addDays(START.date,off);const d=new Date(iso+"T12:00:00");const dow=d.getDay();
  const dayN=off+1; // 0 = the night before
- const wk=Math.floor((off+4)/7)+1; // training week, Mon-based; Fri Nov 13 = week 1
+ const wk=Math.floor((off+5)/7)+1; // training week, Mon-based; Sat Nov 14 + Sun = week 1, Mon Nov 16 starts week 2
  const phase=dayN<=45?1:dayN<=90?2:3;
  const type=(dow===1||dow===4)?"H":dow===0?"L":"M";
  const deload=[6,12,17].includes(wk);
@@ -1042,9 +1042,9 @@ function dayPlan(off){
  if(holiday==="Thanksgiving"||holiday==="Christmas")tasks.push(holiday+": treat today as a high-carb day. Eat the meal inside 11:00–19:00 if you can, don't log it as a failure, resume tomorrow. Swap the nearest high day to moderate.");
  if(holiday&&holiday.startsWith("Your"))tasks.push("Happy birthday. Day 80 of 120. One meal off plan is fine.");
  if(dayN===14)tasks.push("Two weeks in: the water weight is gone. From here, every pound is real. Auto-adjust starts judging next check-in.");
- if([43,44,45].includes(dayN)&&dow===6)tasks.push("2-mile time trial today instead of the long run: 5-min walk, then 2 miles as fast as you can hold evenly. Log the time on the Selection tab. Target under 18:00 now, under 15:00 by summer.");
- if([88,89,90].includes(dayN)&&dow===6)tasks.push("2-mile time trial today. Log it on the Selection tab.");
- if([118,119,120].includes(dayN)&&dow===6)tasks.push("Final 2-mile time trial. Log it on the Selection tab.");
+ if(dayN>=43&&dayN<=49&&dow===6)tasks.push("2-mile time trial today instead of the long run: 5-min walk, then 2 miles as fast as you can hold evenly. Log the time on the Selection tab. Target under 18:00 now, under 15:00 by summer.");
+ if(dayN>=85&&dayN<=91&&dow===6)tasks.push("2-mile time trial today. Log it on the Selection tab.");
+ if(dayN>=114&&dayN<=120&&dow===6)tasks.push("Final 2-mile time trial. Log it on the Selection tab.");
  if(dayN===45)tasks.push("End of Phase 1. Waist, weight. Phase 2 starts tomorrow: main lifts get heavier (4 × 5–6), running goes to 3 days.");
  if(dayN===90)tasks.push("Day 90: 5K day on Saturday if it isn't already today. End of Phase 2; Phase 3 adds a heavy top set of 3.");
  if(dayN===120)tasks.push("Day 120. Measurements, repeat labs. Hold calories here for 2 weeks (maintenance break) before deciding what's next.");
