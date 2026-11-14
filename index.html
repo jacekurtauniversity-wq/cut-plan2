@@ -722,7 +722,7 @@ const F={
  thigh:{n:"Chicken thigh, boneless skinless, raw",p:19,c:0,f:8},
  canchx:{n:"Kirkland canned chicken breast, drained",p:23,c:0,f:1.8},
  pot:{n:"Potato, raw",p:2,c:17,f:0},
- cc:{n:"Cottage cheese 2% (4%: +3 g fat, +30 kcal)",p:11,c:4,f:2.5},
+ cc:{n:"Cottage cheese 4% (what you bought)",p:11,c:3.5,f:4.3},
  sir:{n:"Sirloin steak, raw",p:21.5,c:0,f:8},
  egg:{n:"Whole eggs (2 large = 100 g)",p:12.6,c:0,f:10},
  salad:{n:"Salad: greens, cucumber, tomato",p:1.5,c:3,f:0.2}
@@ -1051,7 +1051,7 @@ function dayPlan(off){
  if(dow===4&&wk<7)tasks.push("No run tonight: Thursday runs start week 7. Evening is free; 20-min walk if you want it.");
  if(dow===6&&wk<=6)tasks.push("Long run at 08:00 fasted: electrolyte drink + coffee first, 5-min walk to start. Sentence-pace or slower.");
  // meals: week-1 canned chicken note
- CUR_T=type;const meals=DAYS[type].meals.map(m=>{const x=macros(m.items,a);return{t:m.t,name:m.name,items:x.rows.map(r=>amt(r)+" "+r.name.replace(/,.*$/,"").replace(" (1 scoop = 30 g)","").toLowerCase()),p:Math.round(x.p),c:Math.round(x.c),f:Math.round(x.f),kcal:Math.round(x.kcal)};});
+ CUR_T=type;const meals=DAYS[type].meals.map(m=>{const x=macros(m.items,a);return{t:m.t,name:m.name,items:x.rows.map(r=>amt(r)+" "+r.name.replace(/\s*\([^)]*\)/g,"").replace(/,.*$/,"").toLowerCase()),p:Math.round(x.p),c:Math.round(x.c),f:Math.round(x.f),kcal:Math.round(x.kcal)};});
 if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) replaces the 8 oz raw breast. No added salt on this plate.";
  if(dow===0)meals[2].note="Strip steak: trim the fat cap, skip the oil on the salad (vinegar, mustard, hot sauce instead).";
  if(dow===3)meals[0].note="Wednesday also carries the 19:15 re-prep after Meal 4.";
@@ -1061,28 +1061,31 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  if(dow===2||dow===4){meals[1].t="13:45";}
  // timeline
  const tl=[];
- const drink="500 ml water + 1 scoop electrolyte powder + ½ tsp salt. Coffee if you want it.";
- if(dow===6){tl.push(["06:30","Wake. "+drink]);tl.push(["08:00",run]);tl.push(["09:00","Stretch 10 min, shower."]);tl.push(["12:00","One study block, 12:00–14:00. Then the day is free."]);}
- else if(dow===0){tl.push(["07:00","Weigh-in, waist, neck. Log on Check-in."]);{const r=ruckFor(wk);tl.push(["09:00",`${r.lb?"Ruck: "+r.lb+" lb pack, ":"Walk (no pack yet, weeks 1–2): "}${r.mi} mi, ${r.pace}. Riverside Park path. Boots or the walking shoes, not the running shoes. Log minutes + miles in the run box.`]);}tl.push(["14:00","45-min review of the week's notes. Otherwise off."]);}
- else{tl.push(["05:35","Wake. "+drink]);tl.push(["06:20",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
+ const drink="Drink 1 (16 oz water + 1 scoop Dr. Berg electrolyte powder + ½ tsp table salt), then black coffee #1. Nothing with calories.";
+ const plate=i=>meals[i].items.join(", ");
+ if(dow===6){tl.push(["06:30","Wake, bathroom, scale (before the drink), fill in the morning log. Then "+drink]);tl.push(["07:50","Shoes on. Carry a 16-oz bottle of plain water."]);tl.push(["08:00",run]);tl.push(["09:00","Drink 2: 16 oz water + pinch of salt. Stretch 10 min, shower."]);tl.push(["12:00","One study block, 12:00–14:00, with Drink 3 (16 oz plain water) on the desk. Then the day is free."]);}
+ else if(dow===0){tl.push(["07:00","Bathroom, then scale, waist at the navel, neck: fill in the morning log, then the Check-in tab. Then "+drink]);tl.push(["08:45","Drink 2: 16 oz plain water before the ruck. Boots or walking shoes."]);{const r=ruckFor(wk);tl.push(["09:00",`${r.lb?"Ruck: "+r.lb+" lb pack, ":"Walk (no pack yet, weeks 1–2): "}${r.mi} mi, ${r.pace}. Riverside Park path. Boots or the walking shoes, not the running shoes. Log minutes + miles in the run box.`]);}tl.push(["10:15","Drink 3: 16 oz water + pinch of salt after the ruck. Shower."]);tl.push(["14:00","45-min review of the week's notes, Drink 6 (16 oz) on the desk. Otherwise off."]);}
+ else{tl.push(["05:35","Wake, bathroom, scale, fill in the morning log. Then "+drink]);tl.push(["06:00","Out the door with a 16-oz bottle of plain water for the session. Gym bag: shoes, towel, phone."]);tl.push(["06:20",train.name+" (55 min incl. 8-min warm-up). Log each lift."+(deload?" DELOAD: 60%, 2 sets.":"")]);
   if(dow===1||dow===3){const w7=dlAvg(iso,7);tl.push(["07:10","Pull-up work (8–10 min): "+pullStage((w7&&w7.w)||START.weight,wk).t]);}
-  if(dow===1||dow===3||dow===5)tl.push(["07:15","Sauna 15–20 min (Mon/Wed/Fri, after the lift). Then 500 ml water with a pinch of salt. Skip it if you felt faint during the session."]);
-  tl.push(["08:00",(dow===1||dow===3)?"Study block 1 (fasted, sharpest): 08:00–09:50. Second coffee by 09:00.":"Study block 1 (fasted, sharpest): 08:00–10:30. Second coffee by 09:00, none after noon."]);
+  if(dow===1||dow===3||dow===5)tl.push(["07:15","Sauna 15–20 min (Mon/Wed/Fri, after the lift). Then Drink 2: 16 oz water + pinch of salt. Skip the sauna if you felt faint during the session."]);else tl.push(["07:20","Drink 2: 16 oz water + pinch of salt on the walk home."]);
+  tl.push(["08:00",(dow===1||dow===3)?"Study block 1 (fasted, sharpest): 08:00–09:50. Coffee #2 by 09:00 (last caffeine of the day). Drink 3: 16 oz plain water on the desk.":"Study block 1 (fasted, sharpest): 08:00–10:30. Coffee #2 by 09:00 (last caffeine of the day). Drink 3: 16 oz plain water on the desk."]);
   if(cls)tl.push([cls.t,"Class "+cls.t+"–"+cls.e+"."]);
   if(dow===1||dow===3)tl.push(["12:00","Study block 2: 12:00–14:15, fed. Break at 14:15."]);
   if(dow===2||dow===4)tl.push(["11:45","Study block 2: 11:45–13:30. Meal 2 at 13:45 is the fuel for class and the evening."]);
   if(dow===2||dow===4)tl.push(["16:15",(dow===4&&wk<7)?"Study block 3: 16:15–18:00. No run yet on Thursdays (starts week 7).":"Study block 3: 16:15–17:30, then change for the run."]);
   if(dow===1||dow===3||dow===5)tl.push(["15:30","Study block 3: 15:30–17:30 (lighter: review, problem sets). Push-ups/crunches + 10-min walk at 17:30."]);
   if(dow===5)tl.push(["10:15","Study block 2: 10:15–13:00 (no class Fridays)."]);}
- tl.push([meals[0].t,"Meal 1 · "+meals[0].name.split("· ")[1]+" + 1 tsp creatine + vitamin D3. Window opens."]);
- tl.push([meals[1].t,"Meal 2 · "+meals[1].name.split("· ")[1]+(run&&dow!==6?". Eat 60–90 min before any long study block.":"")]);
+ tl.push([meals[0].t,"Meal 1 · "+meals[0].name.split("· ")[1]+": "+plate(0)+". Stir in creatine 5 g (1 heaping tsp) and swallow 1 vitamin D3 cap with it (it needs the fat). Drink 4: 16 oz water. Window opens."]);
+ tl.push([meals[1].t,"Meal 2 · "+meals[1].name.split("· ")[1]+": "+plate(1)+". Microwave 2½ min, stir, 1 min. Drink 5: 16 oz water."+((dow>=1&&dow<=5)?" Eat 60–90 min before any long study block.":"")]);
  if(dow===0)tl.push(["16:00","Meal prep, ~90 min."]);
- if(run&&(dow===2||dow===4)){tl.push(["17:45","Change, 5-min walk."]);tl.push(["18:00",run]);tl.push(["18:40","Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push(["18:55","Meal 4 · cottage cheese. Window closes 19:00."]);}
- else{tl.push([meals[2].t,"Meal 3 · "+meals[2].name.split("· ")[1]]);tl.push([meals[3].t,"Meal 4 · cottage cheese. Window closes 19:00."]);}
+ if(run&&(dow===2||dow===4)){tl.push(["17:45","Change, 8 oz water + pinch of salt, 5-min walk to warm up."]);tl.push(["18:00",run]);tl.push(["18:40","Meal 3 · "+meals[2].name.split("· ")[1]+": "+plate(2)+". Fish oil 2 caps with it if you have it. Drink 7: 16 oz water."]);tl.push(["18:55","Meal 4 · "+plate(3)+". Window closes 19:00: water only after this."]);}
+ else{tl.push([meals[2].t,"Meal 3 · "+meals[2].name.split("· ")[1]+": "+plate(2)+". Microwave 3 min. Fish oil 2 caps with it if you have it. Drink 7: 16 oz water."]);tl.push([meals[3].t,"Meal 4 · "+plate(3)+". Window closes 19:00: water only after this."]);}
  if(dow===3&&dayN>1)tl.push(["19:15","Freezer to fridge: Thu–Sat containers and Sunday's steaks."]);
  tl.push([dow===0?"10:30":dow===6?"09:30":"10:00",`Push-ups this week: ${pushProg(wk)}. Crunches 4 × 25. Plank: ${plankProg(wk)}. Spread the sets between study blocks; done by 18:00.`]);
  if(dow>=1&&dow<=5)tl.push(["19:30",dow===5?"Evening is yours. Lights out can slide to 22:00.":"Yours until 21:00: games, a show, friends. Earned by the three study blocks; if one got skipped, this is when it gets made up."]);
- if(dow!==6)tl.push(["21:00","Magnesium. Screens dim, bag and containers set out for tomorrow."]);
+ if(dow>=1&&dow<=5)tl.push(["16:30","Drink 6: 16 oz water. That's ~100 oz for the day with the meals; sip only after 20:00 so you sleep through."]);
+ if(dow!==6)tl.push(["21:00","Magnesium glycinate 200–400 mg (1–2 caps) with a few sips of water. Screens dim. Set out: bottle + electrolyte scoop + salt, creatine and D3 by the yogurt, tomorrow's containers to the fridge, gym bag by the door."]);
+ else tl.push(["21:30","Magnesium glycinate 1–2 caps. Set out tomorrow's bottle, scoop and salt; walking shoes by the door for the ruck."]);
  tl.push([dow===6?"22:00":"21:30","Lights out."]);
  if(OVERRIDES[iso]){const o=OVERRIDES[iso];tl.length=0;for(const x of o.tl)tl.push(x);if(o.meals)o.meals.forEach((t,i)=>{meals[i].t=t;});if(o.task)tasks.unshift(o.task);}
  tl.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
