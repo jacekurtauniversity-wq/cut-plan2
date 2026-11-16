@@ -1087,7 +1087,7 @@ if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) repla
  if(dow!==6)tl.push(["21:00","Magnesium glycinate 200–400 mg (1–2 caps) with a few sips of water. (Ashwagandha 600 mg KSM-66 here too, only if you bought it.) Screens dim. Set out: bottle + electrolyte scoop + salt, creatine and D3 by the yogurt, tomorrow's containers to the fridge, gym bag by the door."]);
  else tl.push(["21:30","Magnesium glycinate 1–2 caps. Set out tomorrow's bottle, scoop and salt; walking shoes by the door for the ruck."]);
  tl.push([dow===6?"22:00":"21:30","Lights out."]);
- if(OVERRIDES[iso]){const o=OVERRIDES[iso];tl.length=0;for(const x of o.tl)tl.push(x);if(o.meals)o.meals.forEach((t,i)=>{meals[i].t=t;});if(o.task)tasks.unshift(o.task);}
+ if(OVERRIDES[iso]){const o=OVERRIDES[iso];if(o.tl){tl.length=0;for(const x of o.tl)tl.push(x);}if(o.meals)o.meals.forEach((t,i)=>{meals[i].t=t;});if(o.task)tasks.unshift(o.task);}
  tl.sort((a,b)=>a[0]<b[0]?-1:a[0]>b[0]?1:0);
  return{iso,d,dow,dayN,wk,phase,type,kcal,tt,train,run,tasks,meals,tl,deload,holiday,cls};
 }
@@ -1271,7 +1271,7 @@ $("#exportBtn").addEventListener("click",async()=>{
 /* ---------- backup / restore ---------- */
 $("#bkExport").addEventListener("click",()=>{const data={exported:new Date().toISOString(),daily,state};const blob=new Blob([JSON.stringify(data,null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="cut-plan-log-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);$("#bkStatus").textContent="Backup file created; save it to Files or iCloud.";});
 $("#bkImport").addEventListener("change",ev=>{const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(rd.result);if(d.daily&&typeof d.daily==="object"){for(const k of Object.keys(d.daily)){daily[k]=Object.assign({},daily[k]||{},d.daily[k]);}}if(d.state&&Array.isArray(d.state.entries)){state=d.state;}dlSaveLocal();lsSave();renderAll();$("#bkStatus").textContent="Restored "+Object.keys(d.daily||{}).length+" days.";}catch(e){$("#bkStatus").textContent="That file isn't a plan backup.";}};rd.readAsText(f);});
-const BUILD="20261116-1109";
+const BUILD="20261116-1110";
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").then(r=>{r.update().catch(()=>{});}).catch(()=>{});});}
 async function checkBuild(){try{const r=await fetch("index.html?v="+Date.now(),{cache:"no-store"});const t=await r.text();const m=t.match(/const BUILD="([^"]+)"/);if(m&&m[1]!==BUILD){const bar=document.getElementById("updBar");if(bar){bar.hidden=false;}else{location.reload();}}}catch(e){}}
 window.addEventListener("load",()=>setTimeout(checkBuild,1500));document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkBuild();});
