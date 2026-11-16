@@ -1046,6 +1046,7 @@ function dayPlan(off){
  if(dow===6&&wk<=6)tasks.push("Long run at 08:00 fasted: electrolyte drink + coffee first, 5-min walk to start. Sentence-pace or slower.");
  // meals: week-1 canned chicken note
  CUR_T=type;const meals=DAYS[type].meals.map(m=>{const x=macros(m.items,a);return{t:m.t,name:m.name,items:x.rows.map(r=>amt(r)+" "+r.name.replace(/\s*\([^)]*\)/g,"").replace(/,.*$/,"").toLowerCase()),p:Math.round(x.p),c:Math.round(x.c),f:Math.round(x.f),kcal:Math.round(x.kcal)};});
+if(type==="H"&&iso<="2026-11-22"){meals[0].items=meals[0].items.filter(x=>!/banana/i.test(x)).map(x=>/rolled oats/.test(x)?"¾ cup rolled oats (banana swapped for +¼ cup oats until you buy some)":x);}
 if(false)meals[1].note="Week 1: one drained can of Kirkland chicken (7 oz) replaces the 8 oz raw breast. No added salt on this plate.";
  if(dow===0)meals[2].note="Strip steak: trim the fat cap, skip the oil on the salad (vinegar, mustard, hot sauce instead).";
  if(dow===3)meals[0].note="Wednesday also carries the 19:15 re-prep after Meal 4.";
@@ -1280,7 +1281,7 @@ document.addEventListener("click",ev=>{const b=ev.target.closest("button.rest");
 function swapOptions(i,m,t){
  const P=m.p,K=m.kcal;
  const o=[];
- if(i===0){o.push(["Eating out / café","Greek yogurt parfait or egg-white omelet, no pastry; a piece of fruit on high-carb days. Aim ~"+P+" g protein, ~"+K+" kcal."]);o.push(["No yogurt","3 whole eggs + 4 egg whites scrambled, the day's oats or 1 slice toast, 1 tbsp peanut butter."]);o.push(["Protein shake","2 scoops whey in water + the day's oats + banana (high days) or 1 tbsp peanut butter."]);}
+ if(i===0){o.push(["No banana","+¼ cup dry oats (same 23 g carbs), or 1 cup frozen berries, or 1 medium apple."]);o.push(["Eating out / café","Greek yogurt parfait or egg-white omelet, no pastry; a piece of fruit on high-carb days. Aim ~"+P+" g protein, ~"+K+" kcal."]);o.push(["No yogurt","3 whole eggs + 4 egg whites scrambled, the day's oats or 1 slice toast, 1 tbsp peanut butter."]);o.push(["Protein shake","2 scoops whey in water + the day's oats + banana (high days) or 1 tbsp peanut butter."]);}
  if(i===1){o.push(["Eating out","Grilled chicken, fish or lean steak, fist-size rice or potato ("+(t==="L"?"skip the starch today":"half portion on moderate days")+"), double vegetables, dressing on the side."]);o.push(["No time to cook","1 can tuna or chicken (drained), microwave rice cup ("+(t==="L"?"skip":"1 cup")+"), frozen veg 4 min, hot sauce."]);o.push(["Fast food","Grilled chicken sandwich (no mayo) + side salad, or a burrito bowl: double chicken, rice "+(t==="L"?"none":"half")+", beans no, salsa, no cheese or sour cream."]);}
  if(i===2){o.push(["Eating out","Any lean protein the size of your palm and a half, potato or rice "+(t==="L"?"none":"fist-size")+", vegetables. Skip bread, fried sides and dessert."]);o.push(["No time to cook","Rotisserie chicken (skin off, ~8 oz) + microwave potato + frozen veg."]);o.push(["Have eggs & cheese","4-egg omelet with 1 oz cheese and a big salad; add the potato on high/moderate days."]);}
  if(i===3){o.push(["No cottage cheese","1 cup Greek yogurt, or 1 scoop whey in water, or 3 egg whites + 1 egg."]);o.push(["Skip it","If you're not hungry, skip Meal 4 and add 1 extra egg to tomorrow's Meal 2. Don't chase the calories."]);}
