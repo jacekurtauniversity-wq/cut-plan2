@@ -203,9 +203,9 @@ h2{font-size:1.7rem}
 
 <div class="wrap">
 <header class="top">
-  <span class="eyebrow">120-day cut · starts Mon Nov 16 · lift Mon–Fri 06:20 · 16:8 fasting · carb cycling</span>
+  <span class="eyebrow">120-day cut · starts Tue Nov 17 · lift Mon–Fri 06:20 · 16:8 fasting · carb cycling</span>
   <h1>Stockbuild Cut Plan</h1>
-  <p class="sub">Open the Today tab each morning. 6'1" · 269.2 lb start · 35.7% body fat by scale (Day 1 scan) · start Mon Nov 16 · 100.2 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
+  <p class="sub">Open the Today tab each morning. 6'1" · 269.2 lb start · 35.7% body fat by scale (Nov 16 scan) · start Tue Nov 17 · 100.2 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
 <p class="small" style="margin:6px 0 0;opacity:.7">Build <span id="buildTag"></span></p>
 </header>
 
@@ -285,7 +285,7 @@ h2{font-size:1.7rem}
 <li><b>Days 1–14: water first.</b> Dropping carbs and starting fasting empties glycogen, and each gram of glycogen holds ~3 g of water. Expect 6–9 lb down in two weeks; about 5 lb of that is water you don't get credit for as fat. The plan subtracts it from every target.</li>
 <li><b>Weeks 3–12: fat.</b> 2.0–2.4 lb a week. The scale will stall for a few days after high-carb days and after Saturday runs (muscle repair holds water). Judge by the weekly average, not Monday morning.</li>
 <li><b>Weeks 13–17: slower, deliberately.</b> As you get lighter, maintenance drops and loss slows to ~1.8 lb a week. The check-in tab tightens macros only if you fall below the target band two weeks running.</li>
-<li><b>Muscle.</b> Day 1 scan (Mon Nov 16): 100.2 lb skeletal muscle, 161.8 lb total muscle, 96.0 lb fat, 173.0 lb fat-free mass, BMR 2,067, visceral fat 19. With ~200 g protein, five lifting days and this rate, expect roughly 85–90% of non-water loss to be fat. The plan budgets ~4–5 lb of lean mass over 120 days; the morning log tracks skeletal muscle so you can see it. Visceral fat is the number to watch: 19 is high, and it tends to fall fastest on a plan like this; under 12 by day 120 is a realistic target.</li>
+<li><b>Muscle.</b> Day 0 scan (Mon Nov 16): 100.2 lb skeletal muscle, 161.8 lb total muscle, 96.0 lb fat, 173.0 lb fat-free mass, BMR 2,067, visceral fat 19. With ~200 g protein, five lifting days and this rate, expect roughly 85–90% of non-water loss to be fat. The plan budgets ~4–5 lb of lean mass over 120 days; the morning log tracks skeletal muscle so you can see it. Visceral fat is the number to watch: 19 is high, and it tends to fall fastest on a plan like this; under 12 by day 120 is a realistic target.</li>
 </ul>
 
 <div class="note warn"><b>On loose skin.</b> No diet can promise none. What's within your control: a loss rate of about 1%/week (this plan), high protein, resistance training so muscle fills the space fat leaves, hydration, sleep and not smoking. Age, genetics and how long you've carried the weight do the rest, and at 27 age is firmly on your side: skin elasticity is still near its peak. From 269 to ~228 on a broad 6'1" frame, most men see skin tighten over the following 6–12 months rather than hang.</div>
@@ -305,8 +305,8 @@ h2{font-size:1.7rem}
 
 <h3>Weekly rhythm</h3>
 <div class="week">
-  <div class="day"><b>Mon</b><span class="pill hi">High carb</span><small>Chest/Tri 06:20 · sauna 19:30</small></div>
-  <div class="day"><b>Tue</b><span class="pill mod">Moderate</span><small>Quads 06:20 · Run 18:00</small></div>
+  <div class="day"><b>Mon</b><span class="pill hi">High carb</span><small>Quads 06:20 · sauna 19:30</small></div>
+  <div class="day"><b>Tue</b><span class="pill mod">Moderate</span><small>Chest/Tri 06:20 · Run 18:00</small></div>
   <div class="day"><b>Wed</b><span class="pill mod">Moderate</span><small>Back/Bi 06:20 · sauna 19:30</small></div>
   <div class="day"><b>Thu</b><span class="pill hi">High carb</span><small>Hams 06:20 · Run 18:00 (wk 7+)</small></div>
   <div class="day"><b>Fri</b><span class="pill mod">Moderate</span><small>Shoulders/Arms 06:20 · sauna 19:30</small></div>
@@ -315,7 +315,7 @@ h2{font-size:1.7rem}
 </div>
 
 <div class="tiles">
-  <div class="tile"><div class="k">High-carb day</div><div class="v" id="kcalH"></div><div class="d">Mon · Thu (chest day / hinge day)</div></div>
+  <div class="tile"><div class="k">High-carb day</div><div class="v" id="kcalH"></div><div class="d">Mon · Thu (leg day / hinge day)</div></div>
   <div class="tile"><div class="k">Moderate day</div><div class="v" id="kcalM"></div><div class="d">Tue · Wed · Fri · Sat</div></div>
   <div class="tile"><div class="k">Low-carb day</div><div class="v" id="kcalL"></div><div class="d">Sunday rest</div></div>
   <div class="tile"><div class="k">Weekly average</div><div class="v" id="kcalAvg"></div><div class="d" id="protNote">per day</div></div>
@@ -441,7 +441,7 @@ h2{font-size:1.7rem}
 <!-- ============ LIFTING ============ -->
 <section class="view" id="v-lifting">
 <h2>Lifting · 06:20 Mon–Fri · 55–60 minutes</h2>
-<p>A body-part strength split, Mon–Fri: <b>Chest &amp; Triceps · Quads &amp; Calves · Back &amp; Biceps · Hamstrings &amp; Posterior Chain · Shoulders &amp; Arms</b>. Each day opens with one <b>main lift</b> trained for strength (5 × 5, 2–3 min rest, +5 lb a week upper / +10 lb lower when every rep is clean), then four body-part exercises in the 8–15 range for muscle. Everything is a standard station: barbell, dumbbells, machines, cables. No back squats, no deadlifts off the floor, no hanging, no hip thrusts.</p>
+<p>A body-part strength split, Mon–Fri: <b>Quads &amp; Calves · Chest &amp; Triceps · Back &amp; Biceps · Hamstrings &amp; Posterior Chain · Shoulders &amp; Arms</b>. Each day opens with one <b>main lift</b> trained for strength (5 × 5, 2–3 min rest, +5 lb a week upper / +10 lb lower when every rep is clean), then four body-part exercises in the 8–15 range for muscle. Everything is a standard station: barbell, dumbbells, machines, cables. No back squats, no deadlifts off the floor, no hanging, no hip thrusts.</p>
 <p><b>Days 1–60 (Foundation, intermediate):</b> you haven't lifted in a while, so the first 60 days are about re-learning the main lifts and building a base. Weeks 1–2: every set 2 reps shy of failure, pick weights you could do for 2–3 more reps. Weeks 3–8: the 5 × 5 climbs week to week; the app sets each target from your last log. Week 6 is a deload. <b>Days 61–90 (Strength):</b> main lifts drop to 4 × 4, accessories tighten to 6–10. <b>Days 91–120 (Peak):</b> one heavy top triple, then back-off sets. If you miss reps two sessions in a row the app backs the weight off 10% and rebuilds.</p>
 
 <p class="note" id="liftNote"></p>
@@ -595,7 +595,7 @@ h2{font-size:1.7rem}
 <li>For two people the monthly meat is ~40 lb and the veg another ~40 lb (now bought 20 lb at a time, which also halves the freezer problem). Most UWS freezers won't take that in one go: do Costco twice a month instead (meat + half the veg on trip one, the rest of the veg + anything low on trip two), or buy half the veg fresh at the top-up. The plan doesn't care which.</li>
 <li>Portion everything the day you get home: chicken bags are already individual; beef into 300 g flat zip bags (one bag feeds both of you at dinner); steaks wrapped individually. Flat bags thaw overnight in the fridge for Sunday prep.</li>
 <li>Sunday 16:00 prep now cooks 7 × 340 g chicken and 6 × 300 g beef, pulled from the freezer Saturday night. Budget 90 minutes instead of 75.</li>
-<li>Thanksgiving falls on day 11 and Christmas on day 40. Make those high-carb days (swap with the nearest Mon/Thu), eat the meal, don't log it as a failure, and resume. The check-in's two-week average absorbs one day.</li>
+<li>Thanksgiving falls on day 10 and Christmas on day 39. Make those high-carb days (swap with the nearest Mon/Thu), eat the meal, don't log it as a failure, and resume. The check-in's two-week average absorbs one day.</li>
 </ul>
 <p class="small muted">Already applied to cut cost: half the beef is chicken thigh (−$13/month), whey is replaced by Kirkland yogurt (−$14/month), veg, cottage cheese, eggs, potatoes, oil, peanut butter and supplements moved to Walmart (−$35/month). The next step down is all-thigh instead of the beef mix (−$12 more) and dropping sirloin for flank or chuck on sale; neither changes the macros much.</p>
 </section>
@@ -705,7 +705,7 @@ h2{font-size:1.7rem}
 (function(){
 "use strict";
 /* ---------- constants ---------- */
-const START={date:"2026-11-16",weight:269.2,height:73,bfHi:35.7,bfLo:30};
+const START={date:"2026-11-17",weight:269.2,height:73,bfHi:35.7,bfLo:30};
 const WEEKLY_PLAN=[6.0,3.5,2.4,2.4,2.4,2.4,2.1,2.1,2.1,2.1,2.1,2.1,1.9,1.9,1.9,1.9,1.9,1.8]; // lb lost per week
 const WATER=5;          // lb of the drop that is water, not fat
 const LEAN_FRAC=0.12;   // share of non-water loss assumed lean
@@ -820,13 +820,13 @@ function renderOverview(){
  const tiles=$("#goalTiles");
  const W45=projectedAt(45/7),W90=projectedAt(90/7),W120=projectedAt(120/7);
  tiles.innerHTML=[
-  ["Day 1",`${START.weight} lb`,`${START.bfHi}% BF by scale · Mon ${fmtDate(START.date)}`],
+  ["Day 1",`${START.weight} lb`,`${START.bfHi}% BF by scale · Tue ${fmtDate(START.date)}`],
   ["Day 45",`${Math.round(W45)} lb`,`${r1(bfAfter(START.bfHi,W45))}% → ${r1(bfAfter(START.bfLo,W45))}% BF · ${fmtDate(addDays(START.date,44))}`],
   ["Day 90",`${Math.round(W90)} lb`,`${r1(bfAfter(START.bfHi,W90))}% → ${r1(bfAfter(START.bfLo,W90))}% BF · ${fmtDate(addDays(START.date,89))}`],
   ["Day 120",`${Math.round(W120)} lb`,`${r1(bfAfter(START.bfHi,W120))}% → ${r1(bfAfter(START.bfLo,W120))}% BF · ${fmtDate(addDays(START.date,119))}`]
  ].map(([k,v,d])=>`<div class="tile"><div class="k">${k}</div><div class="v">${v}</div><div class="d">${d}</div></div>`).join("");
  const tb=$("#milestones tbody");
- tb.innerHTML=[[14,"Day 14 · water gone"],[45,"Day 45 · end of base"],[60,"Day 60 · refeed day"],[77,"Day 77 · 28th birthday"],[90,"Day 90 · 5K"],[120,"Day 120 · plan end"]].map(([d,lab])=>{const w=projectedAt(d/7);return `<tr><td>${lab}</td><td class="n">${fmtDate(addDays(START.date,d-1))}</td><td class="n">${Math.round(w)} lb</td><td class="n">−${Math.round(START.weight-w)} lb${d===14?" (≈5 water)":""}</td><td class="n">${r1(bfAfter(START.bfHi,w))}%</td><td class="n">${r1(bfAfter(START.bfLo,w))}%</td></tr>`;}).join("");
+ tb.innerHTML=[[14,"Day 14 · water gone"],[45,"Day 45 · end of base"],[60,"Day 60 · refeed day"],[76,"Day 76 · 28th birthday"],[90,"Day 90 · 5K"],[120,"Day 120 · plan end"]].map(([d,lab])=>{const w=projectedAt(d/7);return `<tr><td>${lab}</td><td class="n">${fmtDate(addDays(START.date,d-1))}</td><td class="n">${Math.round(w)} lb</td><td class="n">−${Math.round(START.weight-w)} lb${d===14?" (≈5 water)":""}</td><td class="n">${r1(bfAfter(START.bfHi,w))}%</td><td class="n">${r1(bfAfter(START.bfLo,w))}%</td></tr>`;}).join("");
  const a=state.adj;
  $("#kcalH").textContent=Math.round(dayTotals("H",a).kcal)+" kcal";
  $("#kcalM").textContent=Math.round(dayTotals("M",a).kcal)+" kcal";
@@ -878,7 +878,7 @@ function renderLog(){
  const v=$("#verdict");
  if(rows.length){const last=rows[rows.length-1];const proj=projectedAt(last.wk);const diff=last.weight-proj;
   v.innerHTML=`<div class="verdict ${last.vcls||""}"><b>${last.vtitle||"Saved"}</b><p>${last.vtext||""}</p><p class="small muted">Plan projected ${Math.round(proj)} lb for week ${last.wk}; you're ${Math.abs(r1(diff))} lb ${diff<=0?"ahead":"behind"}. ${last.bf?`Navy-method body fat estimate: ${r1(last.bf)}% (±3%).`:"Add waist and neck for a body-fat estimate."} Current macro level: ${state.adj>0?"+":""}${state.adj}.</p></div>`;}
- else v.innerHTML=`<div class="verdict"><b>Baseline: ${START.weight} lb, ${START.bfHi}% BF on ${fmtDate(START.date)}</b><p>Day 1 is Monday Nov 16. First check-in is Sunday Nov 22, a short first week: expect 2–4 lb down, mostly water, and the plan knows that.</p></div>`;
+ else v.innerHTML=`<div class="verdict"><b>Baseline: ${START.weight} lb, ${START.bfHi}% BF on ${fmtDate(START.date)}</b><p>Day 1 is Tuesday Nov 17. First check-in is Sunday Nov 22, a short first week: expect 2–4 lb down, mostly water, and the plan knows that.</p></div>`;
  renderChart(rows);
 }
 function renderChart(rows){
@@ -961,18 +961,18 @@ $("#mealSeg").addEventListener("click",ev=>{const b=ev.target.closest("button");
 /* ---------- day-by-day ---------- */
 function ytLink(name){const q=encodeURIComponent(name.replace(/\(.*?\)/g,"").replace(/,.*$/,"").trim()+" form");return "https://www.youtube.com/results?search_query="+q;}
 const LIFT={
- 1:{name:"Chest & Triceps (press strength)",ex:[
-  ["Barbell bench press (main lift)",["5 × 5","4 × 4","1 × 3 heavy + 3 × 5"],["DB bench press","Machine chest press","Smith bench"]],
-  ["Incline dumbbell press",["3 × 8","3 × 6","3 × 6"],["Incline machine press","Incline Smith press","Incline barbell press"]],
-  ["Machine chest press or pec-deck fly",["3 × 12","3 × 10","3 × 10"],["Cable fly","DB fly","Push-ups on a bench"]],
-  ["Overhead cable triceps extension",["3 × 12","3 × 10","3 × 10"],["Skull crusher (EZ bar)","DB overhead extension","Close-grip bench"]],
-  ["Rope pushdown",["3 × 12","3 × 12","3 × 15"],["Straight-bar pushdown","Bench dips","Machine dip"]]]},
- 2:{name:"Quads & Calves (leg strength)",ex:[
+ 1:{name:"Quads & Calves (leg strength)",ex:[
   ["Leg press (main lift)",["5 × 5","4 × 4","1 × 3 heavy + 3 × 6"],["Hack squat","Smith squat","Heavy goblet squat"]],
   ["Hack squat",["3 × 8","3 × 6","3 × 6"],["Smith squat","Leg press, feet low","Goblet squat"]],
   ["DB walking lunge",["3 × 10/leg","3 × 10/leg","3 × 12/leg"],["Step-ups","Split squat (Smith)","Reverse lunge"]],
   ["Leg extension",["3 × 12","3 × 12","3 × 15"],["Sissy squat","Split squat","Leg press, light"]],
   ["Standing calf raise",["4 × 12","4 × 12","4 × 15"],["Seated calf raise","Leg-press calf raise","Single-leg calf raise"]]]},
+ 2:{name:"Chest & Triceps (press strength)",ex:[
+  ["Barbell bench press (main lift)",["5 × 5","4 × 4","1 × 3 heavy + 3 × 5"],["DB bench press","Machine chest press","Smith bench"]],
+  ["Incline dumbbell press",["3 × 8","3 × 6","3 × 6"],["Incline machine press","Incline Smith press","Incline barbell press"]],
+  ["Machine chest press or pec-deck fly",["3 × 12","3 × 10","3 × 10"],["Cable fly","DB fly","Push-ups on a bench"]],
+  ["Overhead cable triceps extension",["3 × 12","3 × 10","3 × 10"],["Skull crusher (EZ bar)","DB overhead extension","Close-grip bench"]],
+  ["Rope pushdown",["3 × 12","3 × 12","3 × 15"],["Straight-bar pushdown","Bench dips","Machine dip"]]]},
  3:{name:"Back & Biceps (pull strength)",ex:[
   ["Barbell row (main lift)",["5 × 5","4 × 4","1 × 3 heavy + 3 × 5"],["Chest-supported row","T-bar row","Single-arm DB row, heavy"]],
   ["Lat pulldown",["4 × 8","4 × 6","4 × 6"],["Assisted pull-up machine","Neutral-grip pulldown","Machine high row"]],
@@ -1010,7 +1010,7 @@ const OVERRIDES={};
 function dayPlan(off){
  const iso=addDays(START.date,off);const d=new Date(iso+"T12:00:00");const dow=d.getDay();
  const dayN=off+1; // 0 = the night before
- const wk=Math.floor(off/7)+1; // training week, Mon-based; Mon Nov 16 = week 1
+ const wk=Math.floor((off+1)/7)+1; // training week, Mon-based; Tue Nov 17 = week 1, Mon Nov 23 starts week 2
  const phase=dayN<=60?1:dayN<=90?2:3;
  const type=(dow===1||dow===4)?"H":dow===0?"L":"M";
  const deload=[6,12,17].includes(wk);
@@ -1271,9 +1271,9 @@ $("#exportBtn").addEventListener("click",async()=>{
 /* ---------- backup / restore ---------- */
 $("#bkExport").addEventListener("click",()=>{const data={exported:new Date().toISOString(),daily,state};const blob=new Blob([JSON.stringify(data,null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="cut-plan-log-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);$("#bkStatus").textContent="Backup file created; save it to Files or iCloud.";});
 $("#bkImport").addEventListener("change",ev=>{const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(rd.result);if(d.daily&&typeof d.daily==="object"){for(const k of Object.keys(d.daily)){daily[k]=Object.assign({},daily[k]||{},d.daily[k]);}}if(d.state&&Array.isArray(d.state.entries)){state=d.state;}dlSaveLocal();lsSave();renderAll();$("#bkStatus").textContent="Restored "+Object.keys(d.daily||{}).length+" days.";}catch(e){$("#bkStatus").textContent="That file isn't a plan backup.";}};rd.readAsText(f);});
-const BUILD="20261116-1051";
+const BUILD="20261116-1104";
 if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").then(r=>{r.update().catch(()=>{});}).catch(()=>{});});}
-async function checkBuild(){try{const r=await fetch("index.html?v="+Date.now(),{cache:"no-store"});const t=await r.text();const m=t.match(/const BUILD="([^"]+)"/);if(m&&m[1]!==BUILD){const bar=document.getElementById("updBar");if(bar){bar.hidden=false;}else{location.reload();}}}catch(e){}}
+async function checkBuild(){try{const r=await fetch("index.html?v="+Date.now(),{cache:"no-store"});const t=await r.text();const m=t.match(/const BUILD="20261116-1104"]+)"/);if(m&&m[1]!==BUILD){const bar=document.getElementById("updBar");if(bar){bar.hidden=false;}else{location.reload();}}}catch(e){}}
 window.addEventListener("load",()=>setTimeout(checkBuild,1500));document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkBuild();});
 document.addEventListener("click",e=>{if(e.target.closest("#updBar")){caches&&caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k)))).finally(()=>location.reload(true));}});
 /* ---------- rest timer ---------- */
