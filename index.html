@@ -206,9 +206,11 @@ h2{font-size:1.7rem}
   <span class="eyebrow">120-day cut · starts Mon Nov 16 · lift Mon–Fri 06:20 · 16:8 fasting · carb cycling</span>
   <h1>Stockbuild Cut Plan</h1>
   <p class="sub">Open the Today tab each morning. 6'1" · 269.2 lb start · 35.7% body fat by scale (Day 1 scan) · start Mon Nov 16 · 100.2 lb skeletal muscle · broad frame. Standardized meals, strength + run program, bi-weekly groceries, and a Sunday check-in that re-sets your macros.</p>
+<p class="small" style="margin:6px 0 0;opacity:.7">Build <span id="buildTag"></span></p>
 </header>
 
 <div class="timerbar" id="timerbar" hidden><span>Rest</span><span class="big" id="timerVal">1:30</span><span id="timerNext" class="small" style="flex:1;min-width:0;font-family:var(--body);font-size:.9rem"></span><button type="button" id="timerPlus">+30</button><button type="button" id="timerStop">Done</button></div>
+<div id="updBar" hidden style="background:var(--accent);color:var(--accent-ink);padding:10px 14px;border-radius:10px;margin:0 0 10px;font-weight:600;cursor:pointer">New version ready. Tap here to update.</div>
 <nav class="tabs" id="tabs">
   <a href="#today">Today</a>
   <a href="#overview">Goals</a>
@@ -1269,7 +1271,11 @@ $("#exportBtn").addEventListener("click",async()=>{
 /* ---------- backup / restore ---------- */
 $("#bkExport").addEventListener("click",()=>{const data={exported:new Date().toISOString(),daily,state};const blob=new Blob([JSON.stringify(data,null,1)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="cut-plan-log-"+new Date().toISOString().slice(0,10)+".json";document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},1000);$("#bkStatus").textContent="Backup file created; save it to Files or iCloud.";});
 $("#bkImport").addEventListener("change",ev=>{const f=ev.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(rd.result);if(d.daily&&typeof d.daily==="object"){for(const k of Object.keys(d.daily)){daily[k]=Object.assign({},daily[k]||{},d.daily[k]);}}if(d.state&&Array.isArray(d.state.entries)){state=d.state;}dlSaveLocal();lsSave();renderAll();$("#bkStatus").textContent="Restored "+Object.keys(d.daily||{}).length+" days.";}catch(e){$("#bkStatus").textContent="That file isn't a plan backup.";}};rd.readAsText(f);});
-if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").catch(()=>{});});}
+const BUILD="20261116-1051";
+if("serviceWorker" in navigator){window.addEventListener("load",()=>{navigator.serviceWorker.register("sw.js").then(r=>{r.update().catch(()=>{});}).catch(()=>{});});}
+async function checkBuild(){try{const r=await fetch("index.html?v="+Date.now(),{cache:"no-store"});const t=await r.text();const m=t.match(/const BUILD="([^"]+)"/);if(m&&m[1]!==BUILD){const bar=document.getElementById("updBar");if(bar){bar.hidden=false;}else{location.reload();}}}catch(e){}}
+window.addEventListener("load",()=>setTimeout(checkBuild,1500));document.addEventListener("visibilitychange",()=>{if(document.visibilityState==="visible")checkBuild();});
+document.addEventListener("click",e=>{if(e.target.closest("#updBar")){caches&&caches.keys().then(ks=>Promise.all(ks.map(k=>caches.delete(k)))).finally(()=>location.reload(true));}});
 /* ---------- rest timer ---------- */
 let tLeft=0,tInt=null;
 function tShow(){$("#timerVal").textContent=Math.floor(tLeft/60)+":"+String(tLeft%60).padStart(2,"0");}
@@ -1509,7 +1515,7 @@ function ciPrefill(){const iso=$("#ciDate").value;if(!iso)return;const a=dlAvg(i
 $("#ciDate").addEventListener("change",ciPrefill);
 document.querySelector('a[href="#checkin"]').addEventListener("click",()=>setTimeout(ciPrefill,0));
 document.querySelector('a[href="#lifting"]').addEventListener("click",()=>setTimeout(strengthProjection,0));
-renderLiftTable();renderAll();route();initStore();
+renderLiftTable();renderAll();route();initStore();{const b=document.getElementById("buildTag");if(b)b.textContent=BUILD;}
 })();
 </script>
 
